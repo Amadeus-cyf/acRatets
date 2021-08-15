@@ -14,8 +14,8 @@ const labelStyle = {
 
 const rankLabel = (props : BangumiRankType) => {
     const { bangumiInfo, rankNumber } = props;
-    const titleBrief : string = bangumiInfo.title.length <= 30 
-    ? bangumiInfo.title : bangumiInfo.title.substring(0, 30) + '...';
+    const titleBrief : string = bangumiInfo.title.length <= 20 
+    ? bangumiInfo.title : bangumiInfo.title.substring(0, 20) + '...';
 
     return (
         <Label style = { labelStyle } key = { rankNumber }>

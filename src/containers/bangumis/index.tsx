@@ -66,7 +66,7 @@ class BangumisView extends React.Component<{}, BangumisState> {
         const loadingView : JSX.Element = <div>loading</div>
 
         return (
-            <div className = 'mainStyle'>
+            <div className = 'bangumiPageStyle'>
                 <NaviSection currentTab = '番剧'/>
                 <div className = 'bangumilistStyle' style = {{width: this.state.bangumiSectionWidth}}>
                     { this.state.bangumis.length > 0 ? bangumiPageView : loadingView }

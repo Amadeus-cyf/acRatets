@@ -1,26 +1,16 @@
-.bangumiPageStyle {
+.timelinePageStyle {
     width: 100%;
     height: 100%;
     background-image: url('../../assets/bangumi_background.jpeg');
     background-attachment: fixed;
     background-size: 100%;
-} 
-
-.bangumilistStyle {
-    margin: 0 auto;
-    width: 75%;
-    min-width: 75%;
-    height: 100%;
-    min-height: 700px;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.6);
-    margin-top: 1%;
 }
 
-.pageNavigatorStyle {
-    display: flex;
-    justify-content: center;
-    padding-top: 10pt;
-    padding-bottom: 10pt;
-    flex-wrap: wrap;
+.timelineBangumi{
+    margin: 0 auto;
+    width: 75%;
+    min-height: 700px;
+    background-size: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    margin-top: 1%;
 }

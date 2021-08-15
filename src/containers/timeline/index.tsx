@@ -3,7 +3,9 @@ import { getCurrentDate } from '../../utils/getCurrentDate';
 import { BangumiSeasonType } from '../../interface/BangumiSeasonType';
 import { BangumiType } from '../../interface/BangumiType';
 import BangumiLabel from '../../components/bangumiLabel';
+import NaviSection from '../naviSection';
 import TimelineApi from '../../api/TimelineApi';
+import './index.css'
 
 interface TimeState {
     year: number,
@@ -49,13 +51,12 @@ class Timeline extends React.Component<{}, TimeState> {
 
         const loadingView : JSX.Element = <div>loading</div>
 
-        if(bangumiPageView.length === 0) {
-            return loadingView;
-        }
-
         return (
-            <div>
-                { bangumiPageView }
+            <div className='timelinePageStyle'>
+                <NaviSection currentTab = '时间表'/>
+                <div className='timelineBangumi'>
+                    { bangumiPageView.length > 0 ? bangumiPageView : loadingView}
+                </div>
             </div>
         )
     }
