@@ -1,0 +1,4 @@
+.hoverPartStyle:hover {
+    cursor: pointer;
+    color: rgba(50, 154, 255, 1);
+}

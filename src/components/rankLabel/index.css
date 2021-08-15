@@ -1,0 +1,19 @@
+.titleStyle {
+    color: black;
+    font-size: 10.5pt;
+}
+
+.titleStyle:hover {
+    cursor: pointer;
+    color: rgba(50, 154, 255, 1);
+}
+
+.scoreStyle {
+    position: absolute;
+    right: 100px;
+}
+
+.userNumberStyle {
+    position: absolute;
+    right: 50px;
+}

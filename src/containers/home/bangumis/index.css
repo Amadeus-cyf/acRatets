@@ -1,0 +1,19 @@
+.bangumiSection {
+    margin-bottom: 1%;
+    border-radius: 6px;
+    overflow: hidden;
+    min-width: 400px;
+    min-height: 550px;
+    background:  rgba(255, 255, 255, 0.6);
+}
+
+.bangumiData {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-grow: 1; 
+}
+
+.bangumiCard {
+    width: 30%;
+}

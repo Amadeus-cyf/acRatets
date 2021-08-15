@@ -1,0 +1,13 @@
+.sectionStyle {
+    position: relative;
+    height: 170px;
+    margin-top: 0;
+    background-image: url('../../assets/navi_background.jpeg');
+    background-position: center 40%; 
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.navibarStyle {
+    display: flex;
+}

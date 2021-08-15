@@ -1,0 +1,21 @@
+.contentStyle{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    background-image: url('../../assets/home_background.png');
+    background-attachment: fixed;
+    background-size: 100%;
+    overflow: hidden;
+    padding-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.bangumiStyle {
+    width: 65%;
+    margin: 1% 1% 0% 2%;
+}
+
+.leftSectionStyle {
+    width: 30%;
+    margin: 1% 2% 0% 1%;
+}

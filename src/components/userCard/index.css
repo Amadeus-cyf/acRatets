@@ -1,0 +1,10 @@
+.backgroundStyle {
+    width: 100%;
+    height: 200px;
+}
+
+.userInfoStyle {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
