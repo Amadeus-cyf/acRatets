@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCurrentDate } from '../../utils/getCurrentDate';
+import { getCurrentDate } from '../../utils/dateutil';
 import { BangumiSeasonType } from '../../interface/BangumiSeasonType';
 import { BangumiType } from '../../interface/BangumiType';
 import BangumiLabel from '../../components/bangumiLabel';
