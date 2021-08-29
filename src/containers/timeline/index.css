@@ -6,11 +6,24 @@
     background-size: 100%;
 }
 
+.timeline {
+    display: flex;
+    justify-content: space-around;
+    margin: 1%;
+    background-size: 100%;
+}
+
 .timelineBangumi{
     margin: 0 auto;
-    width: 75%;
+    min-width: 75%;
     min-height: 700px;
-    background-size: 100%;
-    background: rgba(255, 255, 255, 0.6);
-    margin-top: 1%;
+    background: rgba(255, 255, 255, 0.65);
+    margin-right: 5px;
+    border-radius: 6px;
+}
+
+.timelineDate {
+    background: rgba(255, 255, 255, 0.65);
+    font-size: bold;
+    border-radius: 6px;
 }

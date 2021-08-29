@@ -21,7 +21,7 @@ class BangumisView extends React.Component<{}, BangumisState> {
             bangumis: new Array<BangumiType>(),
             currentPage: 1,
             pageNum: 0,
-            bangumiSectionWidth: '75%',
+            bangumiSectionWidth: '85%',
         }
         this.onPageClicked = this.onPageClicked.bind(this);
     }

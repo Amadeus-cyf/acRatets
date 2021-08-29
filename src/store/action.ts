@@ -1,8 +1,8 @@
 import { UserType } from '../interface/UserType';
-import { ActionType } from "../interface/ActionType";
+import { UserActionType } from "../interface/ActionType";
 import InitialUser from '../const/initialUser';
 
-export const setUser = (user : UserType) : ActionType => {
+export const setUser = (user : UserType) : UserActionType => {
     return (
         {
             type: 'GET_USER',
@@ -11,7 +11,7 @@ export const setUser = (user : UserType) : ActionType => {
     )
 }
 
-export const clearUser = () : ActionType => {
+export const clearUser = () : UserActionType => {
     return (
         {
             type: 'DELETE_USER',
@@ -20,7 +20,7 @@ export const clearUser = () : ActionType => {
     )
 }
 
-export const error = () : ActionType => {
+export const error = () : UserActionType => {
     return (
         {
             type: 'ERROR',

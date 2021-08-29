@@ -1,8 +1,8 @@
-import { ActionType } from '../../interface/ActionType';
+import { UserActionType } from '../../interface/ActionType';
 import initialUser from '../../const/initialUser';
 import { UserType } from '../../interface/UserType';
 
-export default function userReducer(state = { user: initialUser }, action : ActionType) : UserType {
+export default function userReducer(state = { user: initialUser }, action : UserActionType) : UserType {
     switch(action.type) {
         case "GET_USER":
             if (localStorage.getItem("user") !== null) {

@@ -4,68 +4,77 @@ const getCurrentDate = () : BangumiSeasonType => {
     let date = new Date();
     let year = date.getFullYear();
     let month = date.getMonth()+1;
-    let season = 'winter';
-    if (month >= 1 && month < 4) {
-        season = 'winter';
-        return {
-            year: year,
-            month: 1,
-            season: season
-        }
-    } else if (month >= 4 && month < 7) {
-        season = 'spring';
-        return {
-            year: year,
-            month: 4,
-            season: season,
-        }
-    } else if (month >= 7 && month < 10) {
-        season = 'summer';
-        return {
-            year: year,
-            month: 7,
-            season: season,
-        }
-    } else {
-        season = 'fall';
-        return {
-            year: year,
-            month: 10,
-            season: season,
-        }
+    switch(true) {
+        case month >= 1 && month < 4:
+            return {
+                year: year,
+                month: 1,
+                season: 'winter',
+            }
+        case month >= 4 && month < 7:
+            return {
+                year: year,
+                month: 4,
+                season: 'spring',
+            }
+        case month >= 7 && month < 10:
+            return {
+                year: year,
+                month: 7,
+                season: 'summer',
+            }
+        default:
+            return {
+                year: year,
+                month: 10,
+                season: 'fall',
+            }
     }
 }
 
-
 const getPreviousDate = () : BangumiSeasonType => {
     let date = new Date();
-        let year = date.getFullYear();
-        let month = date.getMonth()+1;
-        if (month >= 1 && month < 4) {
+    let year = date.getFullYear();
+    let month = date.getMonth()+1;
+    switch(true) {
+        case month >= 1 && month < 4: 
             return {
                 month: 10,
                 year: year - 1,
                 season: 'fall',
             }
-        } else if (month >= 4 && month < 7) {
+        case month >= 4 && month < 7:
             return {
                 month: 1,
                 year: year,
                 season: 'winter',
             }
-        } else if (month >= 7 && month < 10) {
+        case month >= 7 && month < 10:
             return {
                 month: 4,
                 year: year,
                 season: 'spring',
             }
-        } else {
+        default:
             return {
                 month: 7,
                 year: year,
                 season: 'summer',
             }
-        }
+    }
 }
 
-export { getCurrentDate, getPreviousDate }
+const getSeasonFromMonth = (month : number) : string => {
+    switch(true) {
+        case month >= 1 && month < 4:
+            return 'winter';
+        case month >= 4 && month < 7:
+            return 'spring';
+        case month >= 7 && month < 10:
+            return 'summer';
+        default:
+            return 'fall';
+    }
+}
+
+export { getCurrentDate, getPreviousDate, getSeasonFromMonth }

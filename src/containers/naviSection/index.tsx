@@ -24,7 +24,7 @@ const NaviSection = ( props : NaviProps ) : JSX.Element => {
         <div className = 'sectionStyle'>
             <div className = 'navibarStyle'>
                 <Navibar />
-                <Searchbar searchbarStyle = {searchbarStyle}/>
+                <Searchbar searchbarStyle = { searchbarStyle }/>
             </div>
             <SubNavibar currentTab = { currentTab }/>
         </div>

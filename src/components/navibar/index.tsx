@@ -6,7 +6,7 @@ import mapStateToProps from '../../utils/mapStateToProps';
 import { mapUserDispatchToProps } from '../../utils/mapDispatchToProps';
 import avatar from '../../assets/avatar.jpeg';
 import { UserType } from '../../interface/UserType';
-import { ActionType } from '../../interface/ActionType';
+import { UserActionType } from '../../interface/ActionType';
 import { ACTION } from '../../const/actions';
 import { Dispatch } from 'redux';
 
@@ -16,7 +16,7 @@ interface StateType {
 
 interface PropsType {
     user: UserType,
-    setUser: (user : UserType) => ActionType,
+    setUser: (user : UserType) => UserActionType,
 }
 
 class Navibar extends React.PureComponent<PropsType, StateType> {
@@ -71,7 +71,7 @@ class Navibar extends React.PureComponent<PropsType, StateType> {
     }
 }
 
-const mapDispatchToProps = (dispatch : Dispatch<ActionType>) => ({
+const mapDispatchToProps = (dispatch : Dispatch<UserActionType>) => ({
     setUser: mapUserDispatchToProps(dispatch, ACTION.SET_USER),
 })
 
