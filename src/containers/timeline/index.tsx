@@ -30,7 +30,7 @@ class Timeline extends React.Component<{}, TimeState> {
     }
 
     public componentDidMount() : void {
-        var date : BangumiSeasonType = getCurrentDate()
+        const date : BangumiSeasonType = getCurrentDate()
         this.setState({
             year: date.year,
             month: date.month,
@@ -70,7 +70,7 @@ class Timeline extends React.Component<{}, TimeState> {
                 <NaviSection currentTab = '时间表'/>
                 <div className='timeline'>
                     <div className='timelineBangumi'>
-                            { bangumiPageView.length > 0 ? bangumiPageView : loadingView}
+                            { bangumiPageView.length > 0 ? bangumiPageView : loadingView }
                     </div>
                     <div className='timelineDate'>
                         <DateSection switchDateListener = { this.onSwitchDate }/>
