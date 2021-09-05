@@ -72,8 +72,10 @@ const getSeasonFromMonth = (month : number) : string => {
             return 'spring';
         case month >= 7 && month < 10:
             return 'summer';
-        default:
+        case month >= 10:
             return 'fall';
+        default:
+            return 'allyear'
     }
 }
 

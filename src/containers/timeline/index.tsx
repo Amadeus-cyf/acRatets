@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCurrentDate } from '../../utils/dateutil';
+import { getCurrentDate, getSeasonFromMonth } from '../../utils/dateutil';
 import { BangumiSeasonType } from '../../interface/BangumiSeasonType';
 import { BangumiType } from '../../interface/BangumiType';
 import BangumiLabel from '../../components/bangumiLabel';
@@ -36,10 +36,11 @@ class Timeline extends React.Component<{}, TimeState> {
             month: date.month,
             season: date.season,
         })
-        this.onSwitchDate(date.year, date.season);
+        this.onSwitchDate(date.year, date.month);
     }
 
-    private onSwitchDate(year : number, season : string) : void {
+    private onSwitchDate(year : number, month : number) : void {
+        const season : string = getSeasonFromMonth(month)
         if(year === this.state.year && season === this.state.season) {
             return;
         }

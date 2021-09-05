@@ -15,10 +15,12 @@
 
 .timelineBangumi{
     margin: 0 auto;
+    max-width: 77%;
     min-width: 75%;
     min-height: 700px;
     background: rgba(255, 255, 255, 0.65);
     margin-right: 5px;
+    margin-bottom: 10px;
     border-radius: 6px;
 }
 
@@ -26,4 +28,5 @@
     background: rgba(255, 255, 255, 0.65);
     font-size: bold;
     border-radius: 6px;
+    max-height: 400px;
 }
