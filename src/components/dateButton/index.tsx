@@ -11,7 +11,7 @@ type PropsType = {
 
 const DateButton = (props : PropsType) => {    
     return <Button content={ props.date } 
-            style={ {...props.style, focus: {outline:0}, color: props.selected ? Color.PINK : Color.BLACK} } 
+            style={ {...props.style, color: props.selected ? Color.PINK : Color.BLACK} } 
             onClick={ props.onClick } outline='none'/>
 }
 
