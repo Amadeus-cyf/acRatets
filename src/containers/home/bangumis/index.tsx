@@ -39,18 +39,12 @@ class Bangumis extends React.Component<BangumiSeasonType, BangumisState> {
                 bangumis: res.data.data.bangumiList,
             })
         }).catch(err => {
-            alert(err);
+            console.log(err);
         })
     }
 
     public render() : JSX.Element {
         const { month, year } = this.props;
-        const bangumiLabels : Array<JSX.Element> = Array.from(this.state.bangumis).map((bangumi : BangumiType) => {
-            return (
-                <BangumiLabel key = {bangumi.anime_id} anime_id = { bangumi.anime_id } title = { bangumi.title } 
-                image_url = { bangumi.image_url } width = '33%'/>
-            );
-        });
     
         return(
             <div className = 'bangumiSection'>
@@ -59,7 +53,15 @@ class Bangumis extends React.Component<BangumiSeasonType, BangumisState> {
                 </Header>
                 <Divider style={ divierStyle }/>
                 <div className='bangumiData'>
-                    { bangumiLabels }
+                    { 
+                        Array.from(this.state.bangumis).map((bangumi : BangumiType) => {
+                            return (
+                                <BangumiLabel key = {bangumi.anime_id} 
+                                    anime_id = { bangumi.anime_id } title = { bangumi.title } 
+                                    image_url = { bangumi.image_url } width = '33%'/>
+                            );
+                        })
+                    }
                 </div>
             </div>
         )

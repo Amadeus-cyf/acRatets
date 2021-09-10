@@ -69,7 +69,7 @@ class Login extends React.Component<RouteComponentProps, LoginState> {
                 })
             }
         }).catch(err => {
-            alert(err);
+            console.log(err);
         })
     }
 
@@ -77,44 +77,32 @@ class Login extends React.Component<RouteComponentProps, LoginState> {
         const isvalid = (this.state.email === "" || this.state.password === "");
 
         return(
-            <>
-                <div className = 'container'>
-                    <div className = 'imageStyle'>
-                    </div>
-                    <Form 
-                    onSubmit = { this.formloginHandler } 
-                    style = { style.formStyle }>
-                        <h3 className = 'title'> Log In </h3>
-                        <Form.Field>
-                            <p className = 'error' 
-                            style={{display: this.state.errorDisplay}}> 
-                                Incorrect email or password 
-                            </p>
-                            <div className = 'subtitle'> Email </div>
-                            <Form.Input size = 'big' 
-                            name = 'email'
-                            value = { this.state.email }
-                            onChange = { this.emailHandler } 
-                            type = 'text' placeholder = 'your email'/>
-                            <div className = 'subtitle'> 
-                                Password 
-                            </div>
-                            <Form.Input size = 'big' 
-                            name = "password" 
-                            value = { this.state.password }
-                            onChange = { this.passwordHandler } 
-                            type = 'password' placeholder = 'password'/>
-                        </Form.Field>
-                        <Button
-                        style= {style.buttonStyle} 
-                        disabled={isvalid} 
-                        color = 'blue'> Log in </Button>
-                        <Button style = {style.buttonStyle} 
-                        color = 'blue'> Sign up 
-                        </Button>
-                    </Form>
+            <div className = 'container'>
+                <div className = 'imageStyle'>
                 </div>
-            </>
+                <Form onSubmit = { this.formloginHandler } style = { style.formStyle }>
+                    <h3 className = 'title'> Log In </h3>
+                    <Form.Field>
+                        <p className = 'error' style={{display: this.state.errorDisplay}}> 
+                            Incorrect email or password 
+                        </p>
+                        <div className = 'subtitle'> Email </div>
+                        <Form.Input size = 'big' name = 'email' value = { this.state.email }
+                            onChange = { this.emailHandler } type = 'text' placeholder = 'your email'/>
+                        <div className = 'subtitle'> 
+                            Password 
+                        </div>
+                        <Form.Input size = 'big' name = "password" value = { this.state.password }
+                            onChange = { this.passwordHandler } type = 'password' placeholder = 'password'/>
+                    </Form.Field>
+                    <Button style= {style.buttonStyle} disabled={isvalid} color = 'blue'> 
+                        Log in 
+                    </Button>
+                    <Button style = {style.buttonStyle} color = 'blue'> 
+                        Sign up 
+                    </Button>
+                </Form>
+            </div>
         )
     }
 }

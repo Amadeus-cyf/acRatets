@@ -37,7 +37,7 @@ class RankSection extends React.Component<{}, RankSectionState> {
                 bangumis: res.data.data.bangumiList,
             })
         }).catch(err => {
-            alert(err);
+            console.log(err);
         })
     }
 

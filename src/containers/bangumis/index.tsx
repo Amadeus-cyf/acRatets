@@ -89,7 +89,7 @@ class BangumisView extends React.Component<{}, BangumisState> {
                     bangumis: res.data.data.bangumiList,
                 })
             } else {
-               alert("No bangumi found"); 
+               console.log("No bangumi found"); 
             }
         }).catch(err => {
             console.log(err);
