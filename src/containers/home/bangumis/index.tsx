@@ -53,15 +53,10 @@ class Bangumis extends React.Component<BangumiSeasonType, BangumisState> {
                 </Header>
                 <Divider style={ divierStyle }/>
                 <div className='bangumiData'>
-                    { 
-                        Array.from(this.state.bangumis).map((bangumi : BangumiType) => {
-                            return (
-                                <BangumiLabel key = {bangumi.anime_id} 
-                                    anime_id = { bangumi.anime_id } title = { bangumi.title } 
-                                    image_url = { bangumi.image_url } width = '33%'/>
-                            );
-                        })
-                    }
+                    {Array.from(this.state.bangumis).map((bangumi : BangumiType) => (
+                        <BangumiLabel key = {bangumi.anime_id} anime_id = { bangumi.anime_id } 
+                            title = { bangumi.title } image_url = { bangumi.image_url } width = '33%'/>
+                    ))}
                 </div>
             </div>
         )
