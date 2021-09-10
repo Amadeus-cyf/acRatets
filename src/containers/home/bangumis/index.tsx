@@ -4,19 +4,8 @@ import { BangumiType } from '../../../interface/BangumiType';
 import { BangumiSeasonType } from '../../../interface/BangumiSeasonType';
 import BangumiLabel from '../../../components/bangumiLabel';
 import BangumiApi from '../../../api/BangumiApi';
+import { headerStyle, divierStyle } from './style';
 import './index.css';
-
-const headerStyle = {
-    position: 'relative',
-    left: '15px',
-    top: '15px',
-}
-
-const divierStyle = {
-    marginLeft: '1.5%', 
-    marginRight: '1.5%',
-    marginTop: '25px',
-}
 
 interface BangumisState {
     bangumis: Array<BangumiType>,
@@ -44,19 +33,20 @@ class Bangumis extends React.Component<BangumiSeasonType, BangumisState> {
     }
 
     public render() : JSX.Element {
-        const { month, year } = this.props;
+        const { month, year } = this.props
+        const bangumisView = Array.from(this.state.bangumis).map((bangumi : BangumiType) => (
+            <BangumiLabel key = {bangumi.anime_id} anime_id = { bangumi.anime_id } title = { bangumi.title } 
+                image_url = { bangumi.image_url } width = '33%'/>
+        ))
     
-        return(
+        return (
             <div className = 'bangumiSection'>
                 <Header size = 'medium' style = { headerStyle }> 
                     {year + '年' + month + '月番'}
                 </Header>
                 <Divider style={ divierStyle }/>
                 <div className='bangumiData'>
-                    {Array.from(this.state.bangumis).map((bangumi : BangumiType) => (
-                        <BangumiLabel key = {bangumi.anime_id} anime_id = { bangumi.anime_id } 
-                            title = { bangumi.title } image_url = { bangumi.image_url } width = '33%'/>
-                    ))}
+                    { bangumisView }
                 </div>
             </div>
         )

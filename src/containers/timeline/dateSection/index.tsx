@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { Header } from 'semantic-ui-react';
 import { getCurrentDate } from '../../../utils/dateutil';
 import { BangumiSeasonType } from '../../../interface/BangumiSeasonType';
 import DateButton from '../../../components/dateButton';
@@ -26,9 +27,9 @@ class DateSection extends React.Component<PropsType, StateType> {
     public render() : JSX.Element {
         return(
             <div className='buttonSection'>
-                <h4>年份</h4>
+                <Header>年份</Header>
                 { this.renderYears() }
-                <h4>季度</h4>
+                <Header>季度</Header>
                 { this.renderMonths() }
             </div>
         )
