@@ -59,7 +59,7 @@ class BangumisView extends React.Component<{}, BangumisState> {
 
     public render() : JSX.Element {
         const bangumiPageView : Array<JSX.Element> = this.state.bangumis.map(bangumi => {
-            return <BangumiLabel key={ bangumi.anime_id } anime_id = { bangumi.anime_id } title = { bangumi.title } 
+            return <BangumiLabel key={ "BangumisView " + bangumi.anime_id } anime_id = { bangumi.anime_id } title = { bangumi.title } 
             image_url = { bangumi.image_url } width = '25%'/>
         })
 
@@ -71,9 +71,7 @@ class BangumisView extends React.Component<{}, BangumisState> {
                 <div className = 'bangumilistStyle' style = {{width: this.state.bangumiSectionWidth}}>
                     { this.state.bangumis.length > 0 ? bangumiPageView : loadingView }
                 </div>
-                <div className = 'pageNavigatorStyle'>
-                    { this.state.pageNum > 0 ? <PageNavigator page={ this.state.pageNum } onPageClicked = { this.onPageClicked }/> : null }
-                </div>
+                { this.state.pageNum > 0 ? <PageNavigator subkey="BangumisViewNavi" page={ this.state.pageNum } onPageClicked = { this.onPageClicked }/> : null }
             </div>
         )
     }

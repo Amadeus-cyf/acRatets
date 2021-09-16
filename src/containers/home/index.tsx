@@ -57,13 +57,10 @@ class Home extends React.Component<HomeProps, HomeState> {
             <div>
                 <NaviSection currentTab = '主页' />
                 <div className = 'contentStyle'>
-                    <div  style = {{ width : this.state.bangumiSectionWidth }} 
-                        className = 'bangumiStyle'>
-                        <Bangumis year = { this.currentSeason.year } 
-                            month = { this.currentSeason.month }
+                    <div  style = {{ width : this.state.bangumiSectionWidth }} className = 'bangumiStyle'>
+                        <Bangumis year = { this.currentSeason.year } month = { this.currentSeason.month }
                             season = { this.currentSeason.season } />
-                        <Bangumis year = { this.previousSeason.year } 
-                            month = { this.previousSeason.month }
+                        <Bangumis year = { this.previousSeason.year } month = { this.previousSeason.month }
                             season = { this.previousSeason.season } />
                     </div>
                     <div className = 'leftSectionStyle' style = {{display: this.state.visibility}} >

@@ -14,11 +14,3 @@
     background: rgba(255, 255, 255, 0.65);
     margin-top: 1%;
 }
-
-.pageNavigatorStyle {
-    display: flex;
-    justify-content: center;
-    padding-top: 10pt;
-    padding-bottom: 10pt;
-    flex-wrap: wrap;
-}

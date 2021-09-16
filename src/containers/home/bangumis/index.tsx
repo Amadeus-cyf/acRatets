@@ -35,7 +35,7 @@ class Bangumis extends React.Component<BangumiSeasonType, BangumisState> {
     public render() : JSX.Element {
         const { month, year } = this.props
         const bangumisView = Array.from(this.state.bangumis).map((bangumi : BangumiType) => (
-            <BangumiLabel key = {bangumi.anime_id} anime_id = { bangumi.anime_id } title = { bangumi.title } 
+            <BangumiLabel key = { "Bangumis " + bangumi.anime_id } anime_id = { bangumi.anime_id } title = { bangumi.title } 
                 image_url = { bangumi.image_url } width = '33%'/>
         ))
     

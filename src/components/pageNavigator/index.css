@@ -1,3 +1,11 @@
+.pageNavigatorStyle{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 10pt;
+    padding-bottom: 5pt;
+}
+
 .ellipsisStyle{
     color: white;
     margin-left: 5pt;

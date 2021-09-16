@@ -23,6 +23,12 @@ class PageList {
     }    
 
     private init() : void {
+        if(this.pageCount <= 10) {
+            for (let i = 1; i <= this.pageCount; i++) {
+                this.pages.push(i);
+            }
+            return
+        }
         for (let i = 1; i <= Math.min(this.pageCount, 3); i++) {
             this.pages.push(i);
         }

@@ -18,7 +18,7 @@ const rankLabel = (props : BangumiRankType) => {
     ? bangumiInfo.title : bangumiInfo.title.substring(0, 20) + '...';
 
     return (
-        <Label style = { labelStyle } key = { rankNumber }>
+        <Label style = { labelStyle } key = { "Rank " + rankNumber }>
             <NumberLabel rank = { rankNumber } width = { 20 } height = { 27 }/>
             <p className = 'titleStyle'> { titleBrief } </p>
             <p className = 'scoreStyle'> { bangumiInfo.score + ' 分' } </p>
