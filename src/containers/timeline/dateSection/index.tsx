@@ -49,7 +49,7 @@ class DateSection extends React.Component<PropsType, StateType> {
         }
         const yearsView : Array<JSX.Element> = years.map(year => {
             const listener = () => { onYearClick(year) }
-            return <DateButton date = { String(year) } onClick = { listener } 
+            return <DateButton key = { "timeline-year" + year } date = { String(year) } onClick = { listener } 
                 style={{ background: 'rgba(255, 255, 255, 0)' }} 
                 selected={ year === this.state.selectedYear }/>
         })
@@ -66,7 +66,7 @@ class DateSection extends React.Component<PropsType, StateType> {
         }
         const monthsView : Array<JSX.Element> = months.map(month => {
             const listener = () => { onMonthClick(month) }
-            return <DateButton date = { month > 0 ? month + '月' : '全部' } onClick = { listener } 
+            return <DateButton key = { "timeline-month" + month } date = { month > 0 ? month + '月' : '全部' } onClick = { listener } 
                 style={{ background: 'rgba(255, 255, 255, 0)' }} 
                 selected={ month === this.state.selectedMonth }/>
         })

@@ -97,12 +97,12 @@ class Timeline extends React.Component<{}, TimeState> {
                 <div className='timeline'>
                     <div className='timelineBangumi'>
                             { bangumiPageView.length > 0 ? bangumiPageView : loadingView }
+                            { bangumiPageView.length && this.state.pageNum > 0 ? <PageNavigator subkey="TimelineNavi" pageNum = { this.state.pageNum } onPageClicked = { this.onPageClicked }/> : null }
                     </div>
                     <div className='timelineDate'>
                         <DateSection switchDateListener = { this.onSwitchDate }/>
                     </div>
                 </div>
-                { this.state.pageNum > 0 ? <PageNavigator subkey="TimelineNavi" page = { this.state.pageNum } onPageClicked = { this.onPageClicked }/> : null }
             </div>
         )
     }

@@ -71,7 +71,7 @@ class BangumisView extends React.Component<{}, BangumisState> {
                 <div className = 'bangumilistStyle' style = {{width: this.state.bangumiSectionWidth}}>
                     { this.state.bangumis.length > 0 ? bangumiPageView : loadingView }
                 </div>
-                { this.state.pageNum > 0 ? <PageNavigator subkey="BangumisViewNavi" page={ this.state.pageNum } onPageClicked = { this.onPageClicked }/> : null }
+                { this.state.pageNum > 0 ? <PageNavigator subkey="BangumisViewNavi" pageNum={ this.state.pageNum } onPageClicked = { this.onPageClicked }/> : null }
             </div>
         )
     }

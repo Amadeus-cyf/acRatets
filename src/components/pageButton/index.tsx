@@ -3,6 +3,7 @@ import { Button } from 'semantic-ui-react';
 
 type PropsType = {
     pageNum : number, 
+    isFocus: boolean
     onPageClicked : (pageNum : number) => void,
 }
 
@@ -13,12 +14,15 @@ const pageButton = (props : PropsType) : JSX.Element => {
         onPageClicked(pageNum);
     }
 
-    return (
+    return props.isFocus? (
         <Button style = {{ marginLeft: '5pt', marginRight: '5pt', marginTop: '3pt'}}
-        color = 'blue' onClick = { clickListener } size = 'small'> { pageNum } </Button>
+            color = 'blue' compact onClick = { clickListener } size = 'medium' content = { pageNum }/>
+    ) :  (
+        <Button style = {{ marginLeft: '5pt', marginRight: '5pt', marginTop: '3pt'}}
+            inverted color = 'blue' compact onClick = { clickListener } size = 'medium' content = { pageNum }/>
     )
 }
 
 export default memo(pageButton, (prevProps : PropsType, props : PropsType) : boolean => {
-    return prevProps.pageNum === props.pageNum;
+    return prevProps.pageNum === props.pageNum && prevProps.isFocus === props.isFocus;
 });
