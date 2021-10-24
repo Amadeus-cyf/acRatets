@@ -67,7 +67,6 @@ class pageNavigator extends Component<PropsType, StateType> {
         if (this.state.selectedPage === this.props.pageNum) {
             return
         }
-        console.log(this.state.selectedPage)
         this.onPageClicked(this.state.selectedPage+1)
     }
 
