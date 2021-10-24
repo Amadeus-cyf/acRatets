@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
-import PageList from '../../model/pageList';
+import PageList from '../../model/pagelist';
 import PageButton from '../pageButton';
 
 import './index.css'

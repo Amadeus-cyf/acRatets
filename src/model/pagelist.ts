@@ -30,10 +30,6 @@ class PageList {
         }); 
     }    
 
-    public getPageNum() : number {
-        return this.pages.length > 0 ? this.pages[this.pages.length-1] : 0;
-    }
-    
     private init() : void {
         if(this.pageCount <= 10) {
             for (let i = 1; i <= this.pageCount; i++) {
