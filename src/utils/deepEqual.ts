@@ -2,16 +2,13 @@
 *  return true if two objs are the same in value
 */
 export const deepEqual = (obj1 : any, obj2 : any) : boolean => {
-    if (obj1 === obj2) {
-        return true;
-    }
     if (typeof obj1 !== typeof obj2) {
         return false;
     }
     if (typeof obj1 !== 'object') {
         return obj1 === obj2;
     }
-    if (Object.keys(obj1) !== Object.keys(obj2)) {
+    if (Object.keys(obj1).length !== Object.keys(obj2).length) {
         return false
     }
     let isEqual : boolean = true;
