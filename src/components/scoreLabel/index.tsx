@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import  { Label, Header } from 'semantic-ui-react';
 import Color from '../../const/color';
+import { deepEqual } from '../../utils/deepEqual';
 import './index.css'
 
 interface PropsType {
@@ -24,5 +25,6 @@ const scoreLabel = (props : PropsType) => {
 }
 
 export default memo(scoreLabel, (prevProps : PropsType, props : PropsType) : boolean => {
-    return prevProps.score === props.score && prevProps.user === props.user; 
+    return prevProps.score === props.score && prevProps.user === props.user 
+        && deepEqual(prevProps.style, props.style); 
 });

@@ -16,5 +16,5 @@ const DateButton = (props : PropsType) => {
 }
 
 export default memo(DateButton, (prevProps : PropsType, props : PropsType) : boolean => { 
-    return prevProps.selected === props.selected 
+    return prevProps.date === props.date && prevProps.selected === props.selected 
 });

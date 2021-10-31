@@ -1,19 +1,10 @@
 import React, { memo } from 'react';
 import NumberLabel from '../numberLabel';
 import { Label, Image, Header, Divider } from 'semantic-ui-react';
+import { BangumiRankType } from '../../interface/BangumiRankType';
 import ScoreLabel from '../scoreLabel';
 import Color from '../../const/color'
 import './index.css';
-
-type BangumiDetailType = {
-    anime_id: string,
-    image_url: string,
-    synopsis: string,
-    title: string,
-    rank: number,
-    score: number,
-    userNumber: number,
-}
 
 const imageStyle = {
     width: '190px',
@@ -32,8 +23,8 @@ const labelStyle = {
     background: 'rgba(255, 255, 255, 0)',
 }
 
-const rankDetailLabel = (props : BangumiDetailType) : JSX.Element => {
-    const {title, image_url, synopsis, rank, score, userNumber} = props;
+const rankDetailLabel = (props : BangumiRankType) : JSX.Element => {
+    const { title, image_url, synopsis, rank, score, userNumber } = props;
 
     const synoBrief = synopsis.length > 200 ? (synopsis.substring(0, 200) + '...') : synopsis;
     

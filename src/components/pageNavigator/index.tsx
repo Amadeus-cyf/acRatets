@@ -73,7 +73,21 @@ class pageNavigator extends Component<PropsType, StateType> {
     }
 
     public render() : JSX.Element {
-        const navigatorView : Array<JSX.Element> = this.state.pageList.pages.map((num, idx) => {
+        const navigatorView : Array<JSX.Element> = this.toNavigatorView(this.state.pageList.pages)
+
+        return (
+            <div className='pageNavigatorStyle'>
+                <Button key = { this.props.subkey + 'button-previous' } onClick = { this.onPrevClicked } content = 'Previous' color = 'blue'
+                    size = 'medium' compact disabled = {this.state.selectedPage === 1}/>
+                { navigatorView }
+                <Button key = { this.props.subkey + 'button-next' } onClick = { this.onNextClicked } content = 'Next' color = 'blue'
+                    size = 'medium' compact disabled = { this.state.selectedPage === this.props.pageNum }/>
+            </div>
+        )
+    }
+
+    public toNavigatorView(pages : number[]) : Array<JSX.Element> {
+        return pages.map((num, idx) => {
             if (idx > 0 && num - this.state.pageList.pages[idx-1] !== 1) {
                 return (
                     <div key = { this.props.subkey+num }>
@@ -85,15 +99,6 @@ class pageNavigator extends Component<PropsType, StateType> {
             return <PageButton key = { this.props.subkey + 'button-' + num } pageNum = { num } onPageClicked = { this.onPageClicked } 
                 isFocus ={ num === this.state.selectedPage }/>
         });
-        return(
-            <div className='pageNavigatorStyle'>
-                <Button key = { this.props.subkey + 'button-previous' } onClick = { this.onPrevClicked } content = 'Previous' color = 'blue'
-                    size = 'medium' compact disabled = {this.state.selectedPage === 1}/>
-                { navigatorView }
-                <Button key = { this.props.subkey + 'button-next' } onClick = { this.onNextClicked } content = 'Next' color = 'blue'
-                    size = 'medium' compact disabled = { this.state.selectedPage === this.props.pageNum }/>
-            </div>
-        )
     }
 } 
 

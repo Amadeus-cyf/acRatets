@@ -63,11 +63,11 @@ class BangumisView extends React.Component<{}, BangumisState> {
         return (
             <div className = 'bangumiPageStyle'>
                 <NaviSection currentTab = '番剧'/>
-                <div className = 'bangumilistStyle' style = {{width: this.state.bangumiSectionWidth}}>
+                <div className = 'bangumilistStyle' style = {{ width: this.state.bangumiSectionWidth }}>
                     { this.state.bangumis.length > 0 ? renderBangumiList(this.state.bangumis, '25%') : loadingView }
                 </div>
                 { this.state.pageNum > 0 ? <PageNavigator subkey="BangumisViewNavi" pageNum={ this.state.pageNum } onPageClicked = { this.onPageClicked } 
-                selectedPage = { this.state.currentPage }/> : null }
+                    selectedPage = { this.state.currentPage }/> : null }
             </div>
         )
     }

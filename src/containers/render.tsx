@@ -21,6 +21,7 @@ export const renderBangumiBreifRank = (bangumis : Array<BangumiBriefScoreType>) 
 export const renderBangumiRank = (bangumis : Array<BangumiRankType>) : Array<JSX.Element> => {
     return bangumis.map((bangumi, i) => (
         <RankDetailLabel anime_id={ bangumi.anime_id } title={ bangumi.title } rank = { i+1 } 
-            score={ bangumi.score } userNumber={ bangumi.userNumber } image_url={ bangumi.image_url } synopsis={ bangumi.synopsis}/>
+            score={ bangumi.score } userNumber={ bangumi.userNumber } image_url={ bangumi.image_url } synopsis={ bangumi.synopsis}
+            totalScore={ bangumi.totalScore }/>
     ))
 }

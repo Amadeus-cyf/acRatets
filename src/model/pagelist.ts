@@ -1,3 +1,5 @@
+import  { MaxPagesThreshold } from './const';
+
 class PageList {
     pages : Array<number>;
     pageCount : number;
@@ -17,9 +19,9 @@ class PageList {
                 this.pages.push(i);
             }
         }
-        if (pageNum <= 3 || pageNum >= this.pageCount - 2) {
+        if (this.pages.length < MaxPagesThreshold) {
             let mid : number = Math.floor(this.pageCount / 2);
-            for (let i = Math.max(1, mid - 2); i <= Math.min(mid + 2, this.pageCount); i++) {
+            for (let i = Math.max(1, mid - 2);  i <= Math.min(mid + 2, this.pageCount) && this.pages.length < MaxPagesThreshold; i++) {
                 if(this.pages.indexOf(i) < 0) {
                     this.pages.push(i);
                 }
@@ -31,7 +33,7 @@ class PageList {
     }    
 
     private init() : void {
-        if (this.pageCount <= 10) {
+        if (this.pageCount < MaxPagesThreshold) {
             for (let i = 1; i <= this.pageCount; i++) {
                 this.pages.push(i);
             }
@@ -41,10 +43,10 @@ class PageList {
             this.pages.push(i);
         }
         let mid : number = Math.floor(this.pageCount / 2);
-        for (let i = Math.max(1, mid - 2); i <= Math.min(mid + 2, this.pageCount); i++) {
+        for (let i = Math.max(1, mid - 2); i <= Math.min(mid + 2, this.pageCount) && this.pages.length < MaxPagesThreshold; i++) {
             this.pages.push(i);
         }
-        for (let i = this.pageCount - 2; i <= this.pageCount; i++) {
+        for (let i = this.pageCount - 2; i <= this.pageCount && this.pages.length < MaxPagesThreshold; i++) {
             this.pages.push(i);
         }
     }
