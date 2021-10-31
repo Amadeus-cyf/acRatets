@@ -27,11 +27,11 @@ const rankDetailLabel = (props : BangumiRankType) : JSX.Element => {
     const { title, image_url, synopsis, rank, score, userNumber } = props;
 
     const synoBrief = synopsis.length > 200 ? (synopsis.substring(0, 200) + '...') : synopsis;
-    
+
     return (
         <Label style={ labelStyle }>
             <div className="bangumiDetailLabelStyle">
-                <NumberLabel rank = { rank } width = { 37 } height = { 42 } color = { Color.PINK } fontSize='12pt'/>
+                <NumberLabel rank = { rank } width = { 37 } height = { 42 } style = {{ background: Color.PINK, fontSize:'12pt' }}/>
                 <Image className = 'hoverPartStyle' style = { imageStyle } src = {image_url} rounded/>
                 <div className='bangumiInfoStyle'>
                     <Header size='large' className = 'hoverPartStyle' style = { titleStyle }> { title } </Header>

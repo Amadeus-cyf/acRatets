@@ -6,23 +6,28 @@ type PropsType = {
     rank : number,
     width: number,
     height: number,
-    color?: string,
-    fontSize?: string,
+    style?: object
 }
 
 const numberLabel = (props : PropsType) : JSX.Element => {
-    const { rank, width, height, color, fontSize } = props;
+    let { rank, width, height, style } = props;
     
-    const labelStyle = {
+    if(!style) {
+        style = {
+            background: Color.BLUE,
+            fontSize: "9pt",
+        }
+    }
+    
+    let labelStyle = {
+        ...style,
         width: width + 'px',
         height: height + 'px',
         marginRight: '15px',
-        background: color? color : Color.BLUE,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         color: Color.WHITE,
-        fontSize: fontSize? fontSize : '9pt',
     }
 
     return (

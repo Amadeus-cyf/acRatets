@@ -11,6 +11,9 @@ export const deepEqual = (obj1 : any, obj2 : any) : boolean => {
     if (typeof obj1 !== 'object') {
         return obj1 === obj2;
     }
+    if (Object.keys(obj1) !== Object.keys(obj2)) {
+        return false
+    }
     let isEqual : boolean = true;
     for (let key in obj1) {
         if (typeof obj1[key] === 'object') {

@@ -11,10 +11,10 @@ interface PropsType {
 }
 
 const scoreLabel = (props : PropsType) => {
-    const { score, user,style } = props
+    const { score, user, style } = props
     
     const labelStyle = {
-        style,
+        ...style,
         width: '100%',
         background: 'rgba(255, 255, 255, 0)',
     }

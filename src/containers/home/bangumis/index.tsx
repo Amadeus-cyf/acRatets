@@ -6,6 +6,7 @@ import BangumiApi from '../../../api/bangumi';
 import { headerStyle, divierStyle } from './style';
 import './index.css';
 import { renderBangumiList } from '../../render';
+import { deepEqual } from '../../../utils/deepEqual';
 
 interface BangumisState {
     bangumis: Array<BangumiType>,
@@ -30,6 +31,10 @@ class Bangumis extends React.Component<BangumiSeasonType, BangumisState> {
         }).catch(err => {
             console.log(err);
         })
+    }
+
+    public shouldComponentUpdate(nextProps : BangumiSeasonType, nextState : BangumisState) : boolean {
+        return !deepEqual(this.props, nextProps) || !deepEqual(this.state, nextState);
     }
 
     public render() : JSX.Element {

@@ -4,6 +4,7 @@ import NaviSection from '../naviSection';
 import BangumiListApi from '../../api/bangumi_list';
 import { renderBangumiRank } from '../render';
 import './index.css'
+import { deepEqual } from "../../utils/deepEqual";
 
 interface StateType {
     bangumis: Array<BangumiRankType>
@@ -25,6 +26,10 @@ class Rank extends React.Component<{}, StateType> {
         }).catch(err => {
             console.log(err)
         })
+    }
+
+    public shouldComponentUpdate(nextProps : {}, nextState : StateType) : boolean {
+        return !deepEqual(this.state, nextState);
     }
 
     public render() : JSX.Element {

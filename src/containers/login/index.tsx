@@ -17,7 +17,7 @@ interface LoginState {
     errorDisplay: ErrorDisplayType,
 }
 
-class Login extends React.Component<RouteComponentProps, LoginState> {
+class Login extends React.PureComponent<RouteComponentProps, LoginState> {
     public constructor(props : RouteComponentProps) {
         super(props);
         this.state = {

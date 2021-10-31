@@ -29,13 +29,14 @@ class BangumisView extends React.Component<{}, BangumisState> {
     public componentDidMount() : void {
         const order = -1;
         this.fetchBangumiData(this.state.currentPage, order);
-        BangumiListApi.getBangumiCount()
-        .then(res => {
+        BangumiListApi.getBangumiCount().then(res => {
             let bangumiNumber : number = res.data.data.bangumiNumber;
             const pageNumber = bangumiNumber % 24 === 0 ? bangumiNumber/24 : Math.floor(bangumiNumber/24 + 1);
             this.setState({
                 pageNum: pageNumber,
             })
+        }).catch(err => {
+            console.log(err)
         });
         window.onresize = () => {
             let width : string = window.innerWidth < USER_CARD_VISIBLE_MIN_WINDOW_SIZE ? '100%' : '75%';

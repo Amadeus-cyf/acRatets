@@ -8,6 +8,7 @@ import DateSection from './dateSection';
 import PageNavigator from '../../components/pageNavigator';
 import './index.css'
 import { renderBangumiList } from '../render';
+import { deepEqual } from '../../utils/deepEqual';
 
 interface TimeState {
     year: number,
@@ -40,6 +41,10 @@ class Timeline extends React.Component<{}, TimeState> {
             season: date.season,
         })
         this.onSwitchDate(date.year, date.month);
+    }
+
+    public shouldComponentUpdate(nextProps : {}, nextState : TimeState) : boolean {
+        return !deepEqual(this.state, nextState);
     }
 
     private onSwitchDate(year : number, month : number) : void {

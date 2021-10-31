@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { Menu } from 'semantic-ui-react';
 import Color from '../../../const/color';
@@ -68,4 +68,6 @@ const SubNavibar = (props : PropsType) : JSX.Element => {
     )
 }
 
-export default withRouter(SubNavibar);
+export default withRouter(memo(SubNavibar, (prevProps : PropsType, props : PropsType) => {
+    return prevProps.currentTab === props.currentTab;
+}));

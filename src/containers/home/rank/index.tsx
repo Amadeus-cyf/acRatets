@@ -2,6 +2,7 @@ import React from 'react';
 import { Label, Header, Divider } from 'semantic-ui-react';
 import { BangumiBriefScoreType } from '../../../interface/BangumiBriefScoreType';
 import BangumiListApi from '../../../api/bangumi_list';
+import { deepEqual } from '../../../utils/deepEqual';
 import { renderBangumiBreifRank } from '../../render';
 
 const labelStyle = {
@@ -39,6 +40,10 @@ class RankSection extends React.Component<{}, RankSectionState> {
         }).catch(err => {
             console.log(err);
         })
+    }
+
+    public shouldComponentUpdate(nextProps : {}, nextState : RankSectionState) : boolean {
+        return !deepEqual(this.state, nextState);
     }
 
     public render() : JSX.Element {

@@ -4,6 +4,7 @@ import { getCurrentDate } from '../../../utils/dateutil';
 import { BangumiSeasonType } from '../../../interface/BangumiSeasonType';
 import DateButton from '../../../components/dateButton';
 import './index.css';
+import { deepEqual } from '../../../utils/deepEqual';
 
 type StateType = {
     selectedYear: number,
@@ -22,6 +23,10 @@ class DateSection extends React.Component<PropsType, StateType> {
             selectedYear: currDate.year,
             selectedMonth: currDate.month,
         }
+    }
+
+    public shouldComponentUpdate(nextProps : PropsType, nextState : StateType) : boolean {
+        return !deepEqual(this.state, nextState);
     }
 
     public render() : JSX.Element {
@@ -74,4 +79,4 @@ class DateSection extends React.Component<PropsType, StateType> {
     }
 }
 
-export default memo(DateSection, (prev : PropsType, curr : PropsType) : boolean => { return true });
+export default memo(DateSection, () : boolean => { return true });

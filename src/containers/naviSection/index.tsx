@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Navibar from '../../components/navibar';
 import Searchbar from '../../components/searchbar';
 import SubNavibar from './subNavibar';
@@ -31,4 +31,6 @@ const NaviSection = ( props : NaviProps ) : JSX.Element => {
     )
 }
 
-export default NaviSection;
+export default memo(NaviSection, (prevProps : NaviProps, props : NaviProps) => {
+    return prevProps.currentTab === props.currentTab;
+});
