@@ -1,7 +1,7 @@
 /*
 *  return true if two objs are the same in value
 */
-export const deepCompare = (obj1 : any, obj2 : any) : boolean => {
+export const deepEqual = (obj1 : any, obj2 : any) : boolean => {
     if (obj1 === obj2) {
         return true;
     }
@@ -14,7 +14,7 @@ export const deepCompare = (obj1 : any, obj2 : any) : boolean => {
     let isEqual : boolean = true;
     for (let key in obj1) {
         if (typeof obj1[key] === 'object') {
-            isEqual = isEqual && deepCompare(obj1[key], obj2[key]);
+            isEqual = isEqual && deepEqual(obj1[key], obj2[key]);
         } else {
             isEqual = isEqual && (obj1[key] === obj2[key]);
         }

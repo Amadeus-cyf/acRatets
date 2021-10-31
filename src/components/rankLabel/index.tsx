@@ -1,9 +1,7 @@
 import React, { memo } from 'react';
 import { Label } from 'semantic-ui-react';
 import NumberLabel from '../numberLabel';
-import { deepCompare } from '../../utils/deepCompare';
 import './index.css';
-import { BangumiRankType } from '../../interface/BangumiRankType';
 
 const labelStyle = {
     width: '100%',
@@ -12,22 +10,29 @@ const labelStyle = {
     justifyContent: 'flex-start',
 }
 
-const rankLabel = (props : BangumiRankType) => {
-    const { bangumiInfo, rankNumber } = props;
-    const titleBrief : string = bangumiInfo.title.length <= 20 
-    ? bangumiInfo.title : bangumiInfo.title.substring(0, 20) + '...';
+type PropsType = {
+    title : string,
+    score : number,
+    userNumber : number,
+    rank: number,
+}
+
+const rankLabel = (props : PropsType) => {
+    const { title, score, userNumber, rank } = props;
+    const titleBrief : string = title.length <= 20 
+    ? title : title.substring(0, 20) + '...';
 
     return (
-        <Label style = { labelStyle } key = { "Rank " + rankNumber }>
-            <NumberLabel rank = { rankNumber } width = { 20 } height = { 27 }/>
+        <Label style = { labelStyle } key = { "Rank " + rank }>
+            <NumberLabel rank = { rank } width = { 22 } height = { 27 }/>
             <p className = 'titleStyle'> { titleBrief } </p>
-            <p className = 'scoreStyle'> { bangumiInfo.score + ' 分' } </p>
-            <p className = 'userNumberStyle'> { bangumiInfo.userNumber + '人评分' } </p>
+            <p className = 'scoreStyle'> { score.toFixed(1) + ' 分' } </p>
+            <p className = 'userNumberStyle'> { userNumber + '人评分' } </p>
         </Label>
     )
 }
 
-export default memo(rankLabel, (prevProps : BangumiRankType, props : BangumiRankType) : boolean => {
-    return deepCompare(prevProps.bangumiInfo, props.bangumiInfo) 
-    && (prevProps.rankNumber === props.rankNumber);
+export default memo(rankLabel, (prevProps : PropsType, props : PropsType) : boolean => {
+    return (prevProps.title === props.title) && (prevProps.score === props.score) 
+        && (prevProps.userNumber === props.userNumber) && (prevProps.rank === props.rank);
 });

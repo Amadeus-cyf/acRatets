@@ -1,6 +1,5 @@
 import { BangumiBriefScoreType } from "./BangumiBriefScoreType";
 
-export interface BangumiRankType {
-    bangumiInfo : BangumiBriefScoreType,
-    rankNumber : number,
+export interface BangumiRankType extends BangumiBriefScoreType {
+    rank : number,
 }

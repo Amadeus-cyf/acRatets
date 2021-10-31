@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Button } from 'semantic-ui-react';
 import Color from '../../const/color';
 
@@ -15,4 +15,6 @@ const DateButton = (props : PropsType) => {
             onClick={ props.onClick } outline='none'/>
 }
 
-export default DateButton;
+export default memo(DateButton, (prevProps : PropsType, props : PropsType) : boolean => { 
+    return prevProps.selected === props.selected 
+});

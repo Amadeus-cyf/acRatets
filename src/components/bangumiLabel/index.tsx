@@ -21,7 +21,7 @@ const titleStyle = {
 }
 
 const bangumiLabel = (props : BangumiBriefType) : JSX.Element => {
-    const {title, image_url, width} = props;
+    const { title, image_url, width } = props;
 
     const labelStyle = {
         width: width,

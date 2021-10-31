@@ -1,0 +1,26 @@
+.bangumiDetailLabelStyle{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow: hidden;
+    padding-left: 10pt;
+}
+
+.bangumiInfoStyle {
+    margin-left: 20px;
+}
+
+.bangumiScoreStyle {
+    position: absolute;
+    top: 2px;
+    right: 50px;
+}
+
+.synopsisStyle{
+    font-size: 12pt;
+    line-height: 1.5;
+    width: 80%;
+    word-spacing: 1pt;
+    color: rgba(0,0,0,0.7);
+    margin: 5px 0px 0px 7px;
+}

@@ -13,6 +13,7 @@ interface StateType {
 interface PropsType {
     pageNum: number,
     subkey: string,
+    selectedPage: number,
     onPageClicked: (page : number) => void,
 }
 
@@ -20,9 +21,10 @@ class pageNavigator extends Component<PropsType, StateType> {
     constructor(props : PropsType) {
         super(props);
         const pageNum : number = this.props.pageNum;
+        const selectedPage : number = this.props.selectedPage;
         this.state = {
             pageList: new PageList(pageNum),
-            selectedPage: 1,
+            selectedPage: selectedPage,
         }
         this.onPageClicked = this.onPageClicked.bind(this);
         this.onPrevClicked = this.onPrevClicked.bind(this);
@@ -85,11 +87,11 @@ class pageNavigator extends Component<PropsType, StateType> {
         });
         return(
             <div className='pageNavigatorStyle'>
-                <Button key = { this.props.subkey + 'button-previous'} onClick = {this.onPrevClicked} content = 'Previous' color = 'blue'
+                <Button key = { this.props.subkey + 'button-previous' } onClick = { this.onPrevClicked } content = 'Previous' color = 'blue'
                     size = 'medium' compact disabled = {this.state.selectedPage === 1}/>
                 { navigatorView }
-                <Button key = { this.props.subkey + 'button-next'} onClick = {this.onNextClicked} content = 'Next' color = 'blue'
-                    size = 'medium' compact disabled = {this.state.selectedPage === this.props.pageNum}/>
+                <Button key = { this.props.subkey + 'button-next' } onClick = { this.onNextClicked } content = 'Next' color = 'blue'
+                    size = 'medium' compact disabled = { this.state.selectedPage === this.props.pageNum }/>
             </div>
         )
     }

@@ -17,7 +17,7 @@ class PageList {
                 this.pages.push(i);
             }
         }
-        if(pageNum <= 3 || pageNum >= this.pageCount - 2) {
+        if (pageNum <= 3 || pageNum >= this.pageCount - 2) {
             let mid : number = Math.floor(this.pageCount / 2);
             for (let i = Math.max(1, mid - 2); i <= Math.min(mid + 2, this.pageCount); i++) {
                 if(this.pages.indexOf(i) < 0) {
@@ -31,7 +31,7 @@ class PageList {
     }    
 
     private init() : void {
-        if(this.pageCount <= 10) {
+        if (this.pageCount <= 10) {
             for (let i = 1; i <= this.pageCount; i++) {
                 this.pages.push(i);
             }

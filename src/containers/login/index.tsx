@@ -6,7 +6,7 @@ import { RouteComponentProps } from 'react-router';
 import { Header, Button, Form } from 'semantic-ui-react';
 import { style } from './style';
 import './index.css';
-import AuthApi from '../../api/AuthApi';
+import AuthApi from '../../api/auth';
 import { UserType } from '../../interface/UserType';
 
 type ErrorDisplayType =  'none' | 'inline' | 'block';
@@ -28,10 +28,6 @@ class Login extends React.Component<RouteComponentProps, LoginState> {
         this.onEmaiChange= this.onEmaiChange.bind(this);
         this.login = this.login.bind(this);
         this.onPasswordChange = this.onPasswordChange.bind(this);
-    }
-    
-    public componentDidMount() : void {
-        
     }
     
     private onEmaiChange(event : React.ChangeEvent<HTMLInputElement>) : void {

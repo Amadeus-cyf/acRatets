@@ -3,7 +3,7 @@ import { Image, Header, Card, Icon } from 'semantic-ui-react';
 import avatar from '../../assets/avatar.jpeg';
 import background from '../../assets/background.jpg';
 import { UserType } from '../../interface/UserType';
-import { deepCompare } from '../../utils/deepCompare';
+import { deepEqual } from '../../utils/deepEqual';
 import './index.css';
 import { cardStyle } from './style';
 
@@ -33,6 +33,5 @@ const userCard = (props : PropsType) => {
 }
 
 export default memo(userCard, (prevProps : PropsType, props : PropsType) => {
-    console.log(deepCompare(prevProps.user, props.user))
-    return deepCompare(prevProps.user, props.user);
+    return deepEqual(prevProps.user, props.user);
 });

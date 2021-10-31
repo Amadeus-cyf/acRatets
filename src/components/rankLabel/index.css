@@ -1,6 +1,7 @@
 .titleStyle {
     color: black;
     font-size: 10.5pt;
+    margin-top: 5px;
 }
 
 .titleStyle:hover {
@@ -11,9 +12,11 @@
 .scoreStyle {
     position: absolute;
     right: 100px;
+    margin-top: 5px;
 }
 
 .userNumberStyle {
     position: absolute;
-    right: 50px;
+    right: 45px;
+    margin-top: 5px;
 }

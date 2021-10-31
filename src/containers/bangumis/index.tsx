@@ -1,10 +1,10 @@
 import React from 'react';
 import { BangumiType } from '../../interface/BangumiType';
-import BangumiLabel from '../../components/bangumiLabel';
 import NaviSection from '../naviSection';
 import PageNavigator from '../../components/pageNavigator';
-import BangumiListApi from '../../api/BangumiListApi';
+import BangumiListApi from '../../api/bangumi_list';
 import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from '../../const/window_size_threshold';
+import { renderBangumiList } from '../render';
 import './index.css';  
 
 interface BangumisState {
@@ -58,20 +58,16 @@ class BangumisView extends React.Component<{}, BangumisState> {
     }
 
     public render() : JSX.Element {
-        const bangumiPageView : Array<JSX.Element> = this.state.bangumis.map(bangumi => {
-            return <BangumiLabel key={ "BangumisView " + bangumi.anime_id } anime_id = { bangumi.anime_id } title = { bangumi.title } 
-            image_url = { bangumi.image_url } width = '25%'/>
-        })
-
         const loadingView : JSX.Element = <div>loading</div>
 
         return (
             <div className = 'bangumiPageStyle'>
                 <NaviSection currentTab = '番剧'/>
                 <div className = 'bangumilistStyle' style = {{width: this.state.bangumiSectionWidth}}>
-                    { this.state.bangumis.length > 0 ? bangumiPageView : loadingView }
+                    { this.state.bangumis.length > 0 ? renderBangumiList(this.state.bangumis, '25%') : loadingView }
                 </div>
-                { this.state.pageNum > 0 ? <PageNavigator subkey="BangumisViewNavi" pageNum={ this.state.pageNum } onPageClicked = { this.onPageClicked }/> : null }
+                { this.state.pageNum > 0 ? <PageNavigator subkey="BangumisViewNavi" pageNum={ this.state.pageNum } onPageClicked = { this.onPageClicked } 
+                selectedPage = { this.state.currentPage }/> : null }
             </div>
         )
     }

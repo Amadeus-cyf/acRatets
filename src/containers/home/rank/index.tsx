@@ -1,8 +1,8 @@
 import React from 'react';
 import { Label, Header, Divider } from 'semantic-ui-react';
-import RankLabel from '../../../components/rankLabel';
 import { BangumiBriefScoreType } from '../../../interface/BangumiBriefScoreType';
-import BangumiListApi from '../../../api/BangumiListApi';
+import BangumiListApi from '../../../api/bangumi_list';
+import { renderBangumiBreifRank } from '../../render';
 
 const labelStyle = {
     width: '100%',
@@ -42,14 +42,11 @@ class RankSection extends React.Component<{}, RankSectionState> {
     }
 
     public render() : JSX.Element {
-        const bangumiListView : Array<JSX.Element>= Array.from(this.state.bangumis).map((bangumi : BangumiBriefScoreType, index : number) => {
-            return (<RankLabel key = { `${bangumi.anime_id}-${index+1}` } bangumiInfo = { bangumi } rankNumber = { index + 1 }/>);
-        });
         return (
             <Label style = { labelStyle }>
                 <Header size='large' style={headerStyle}>排行榜</Header>
                 <Divider/>
-                { bangumiListView  }
+                { renderBangumiBreifRank(this.state.bangumis) }
             </Label>
         )
     }
