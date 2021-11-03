@@ -55,21 +55,17 @@ class Navibar extends React.Component<PropsType, StateType> {
 
         return (
             <Menu secondary>
-                <Menu.Item
-                name='主站'
-                style={{color: 'white', position: 'absolute', top: '10px'}}
+                <Menu.Item name='主站'
+                    style={{ color: 'white', position: 'absolute', top: '10px' }}
                 />
-                <Menu.Item
-                style = {{color: 'white', position: 'absolute', right: '100px',}}>
+                <Menu.Item style = {{ color: 'white', position: 'absolute', right: '100px' }}>
                     <Image avatar src = { userAvatar }/>
                 </Menu.Item>
-                <Menu.Item
-                name='登陆'
-                style={{color: 'white', position: 'absolute', right: '50px', top: '10px'}}
+                <Menu.Item  name='登陆'
+                    style={{ color: 'white', position: 'absolute', right: '50px', top: '10px' }}
                 />
-                <Menu.Item
-                name='注册'
-                style={{color: 'white',  position: 'absolute', right: '5px', top: '10px'}}
+                <Menu.Item name='注册'
+                    style={{ color: 'white',  position: 'absolute', right: '5px', top: '10px' }}
                 />
             </Menu>
         )

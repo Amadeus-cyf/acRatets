@@ -20,7 +20,7 @@ const scoreLabel = (props : PropsType) => {
     }
     return <Label style={ labelStyle }>
         <Header size='large' style={{ "color": Color.YELLOW }}>{ score.toFixed(1) }</Header>
-        <div className='userNumStyle'>{ user + '评分'}</div>
+        <div className='userNumStyle'>{ `${user}评分`}</div>
     </Label>
 }
 

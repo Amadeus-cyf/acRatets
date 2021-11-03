@@ -8,20 +8,22 @@ import Login from './containers/login';
 import Timeline from './containers/timeline';
 import Rank from './containers/rank';
 
-function App() {
-  return (
-    <Provider store = {store}>
-      <Router>
-        <Switch>
-          <Route exact path = '/login' component = { Login }/>
-          <Route exact path = '/' component = { Home }/>
-          <Route exact path = '/bangumi' component = { BangumisView }/>
-          <Route exact path = '/timeline' component = { Timeline } />
-          <Route exact path = '/rank' component = { Rank } />
-        </Switch>      
-      </Router>
-    </Provider>
-  );
+class App extends React.Component<{}, {}> {
+    public render() : JSX.Element {
+      return (
+        <Provider store = {store}>
+          <Router>
+            <Switch>
+              <Route exact path = '/login' component = { Login }/>
+              <Route exact path = '/' component = { Home }/>
+              <Route exact path = '/bangumi' component = { BangumisView }/>
+              <Route exact path = '/timeline' component = { Timeline } />
+              <Route exact path = '/rank' component = { Rank } />
+            </Switch>      
+          </Router>
+        </Provider>
+      );
+    }
 }
 
 export default App;

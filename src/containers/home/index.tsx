@@ -36,17 +36,16 @@ class Home extends React.PureComponent<PropsType, StateType> {
     public componentDidMount() : void {
         // when the window size is smaller than the threshold, make user card invisible
         window.onresize = () => {
+            let visibility : string = 'block';
+            let bangumiSectionWidth : string = '65%';
             if (window.innerWidth < USER_CARD_VISIBLE_MIN_WINDOW_SIZE) {
-                this.setState({
-                    visibility: 'none',
-                    bangumiSectionWidth: '100%',
-                });
-            } else {
-                this.setState({
-                    visibility: 'block',
-                    bangumiSectionWidth: '65%',
-                });
+                visibility = 'none'
+                bangumiSectionWidth = '100%'
             }
+            this.setState({
+                visibility: visibility,
+                bangumiSectionWidth: bangumiSectionWidth,
+            })
         }
     }
 

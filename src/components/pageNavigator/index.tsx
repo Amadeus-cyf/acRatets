@@ -77,10 +77,10 @@ class pageNavigator extends React.Component<PropsType, StateType> {
 
         return (
             <div className='pageNavigatorStyle'>
-                <Button key = { this.props.subkey + 'button-previous' } onClick = { this.onPrevClicked } content = 'Previous' color = 'blue'
+                <Button key = { `${this.props.subkey}button-previous` } onClick = { this.onPrevClicked } content = 'Previous' color = 'blue'
                     size = 'medium' compact disabled = {this.state.selectedPage === 1}/>
                 { navigatorView }
-                <Button key = { this.props.subkey + 'button-next' } onClick = { this.onNextClicked } content = 'Next' color = 'blue'
+                <Button key = { `${this.props.subkey}button-next` } onClick = { this.onNextClicked } content = 'Next' color = 'blue'
                     size = 'medium' compact disabled = { this.state.selectedPage === this.props.pageNum }/>
             </div>
         )
@@ -92,11 +92,11 @@ class pageNavigator extends React.Component<PropsType, StateType> {
                 return (
                     <div key = { this.props.subkey+num }>
                         <span className = 'ellipsisStyle'>...</span>
-                        <PageButton key = { this.props.subkey + 'button-' + num } pageNum = { num } onPageClicked = { this.onPageClicked } isFocus ={ num === this.state.selectedPage }/>
+                        <PageButton key = { `${this.props.subkey}button-${num}` } pageNum = { num } onPageClicked = { this.onPageClicked } isFocus ={ num === this.state.selectedPage }/>
                     </div>
                 )
             }
-            return <PageButton key = { this.props.subkey + 'button-' + num } pageNum = { num } onPageClicked = { this.onPageClicked } 
+            return <PageButton key = { `${this.props.subkey}button-${num}` } pageNum = { num } onPageClicked = { this.onPageClicked } 
                 isFocus ={ num === this.state.selectedPage }/>
         });
     }

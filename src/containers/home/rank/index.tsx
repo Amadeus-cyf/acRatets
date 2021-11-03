@@ -49,7 +49,7 @@ class RankSection extends React.Component<{}, RankSectionState> {
     public render() : JSX.Element {
         return (
             <Label style = { labelStyle }>
-                <Header size='large' style={headerStyle}>排行榜</Header>
+                <Header size = 'large' style = { headerStyle } content = '排行榜'/>
                 <Divider/>
                 { renderBangumiBreifRank(this.state.bangumis) }
             </Label>

@@ -36,7 +36,7 @@ const bangumiLabel = (props : BangumiBriefType) : JSX.Element => {
     return (
         <Label style = { labelStyle }>
             <Image className = 'hoverPartStyle' style = { imageStyle } src = { image_url } rounded/>
-            <Header size='small' className = 'hoverPartStyle' style = { titleStyle }> { titleBrief } </Header>
+            <Header size='small' className = 'hoverPartStyle' style = { titleStyle } content = { titleBrief }/>
         </Label>
     )
 }

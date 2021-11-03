@@ -42,9 +42,7 @@ class Bangumis extends React.Component<BangumiSeasonType, BangumisState> {
         
         return (
             <div className = 'bangumiSection'>
-                <Header size = 'medium' style = { headerStyle }> 
-                    {year + '年' + month + '月番'}
-                </Header>
+                <Header size = 'medium' style = { headerStyle } content = { `${year}年${month}月番` }/>
                 <Divider style={ divierStyle }/>
                 <div className='bangumiData'>
                     { renderBangumiList(this.state.bangumis, '25%') }

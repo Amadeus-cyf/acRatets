@@ -21,9 +21,9 @@ class Login extends React.PureComponent<RouteComponentProps, LoginState> {
     public constructor(props : RouteComponentProps) {
         super(props);
         this.state = {
-            email: "",
-            password: "",
-            errorDisplay: "none",
+            email: '',
+            password: '',
+            errorDisplay: 'none',
         }
         this.onEmaiChange= this.onEmaiChange.bind(this);
         this.login = this.login.bind(this);
@@ -46,18 +46,18 @@ class Login extends React.PureComponent<RouteComponentProps, LoginState> {
         AuthApi.login(this.state.email, this.state.password)
         .then(res => {
             switch(res.data.message) {
-            case "Successfully Login": 
+            case 'Successfully Login': 
                 this.props.history.push('/');
                 this.saveUserToContext(res.data)
                 break
-            case "Could not find user":
+            case 'Could not find user':
                 this.setState({
-                    password: "",
-                    errorDisplay: "block",
+                    password: '',
+                    errorDisplay: 'block',
                 })
                 break
             default:
-                console.log("Unknown message type")
+                console.log('Unknown message type')
             }
         }).catch(err => {
             console.log(err);
@@ -79,25 +79,25 @@ class Login extends React.PureComponent<RouteComponentProps, LoginState> {
     }
 
     public render() : JSX.Element {
-        const isvalid = (this.state.email === "" || this.state.password === "");
+        const isvalid = (this.state.email === '' || this.state.password === '');
 
         return (
             <div className = 'container'>
             <div className = 'imageStyle'>
             </div>
             <Form onSubmit = { this.login } style = { style.formStyle }>
-                <Header className = 'title'> Log In </Header>
+                <Header className = 'title' content = 'Log In'/>
                 <Form.Field>
                     <p className = 'error' style={{display: this.state.errorDisplay}}> Incorrect email or password </p>
                     <div className = 'subtitle'> Email </div>
                     <Form.Input size = 'big' name = 'email' value = { this.state.email } onChange = { this.onEmaiChange } 
                         type = 'text' placeholder = 'your email'/>
                     <div className = 'subtitle'> Password </div>
-                    <Form.Input size = 'big' name = "password" value = { this.state.password } onChange = { this.onPasswordChange } 
+                    <Form.Input size = 'big' name = 'password' value = { this.state.password } onChange = { this.onPasswordChange } 
                         type = 'password' placeholder = 'password'/>
                 </Form.Field>
-                <Button content="Log in" style= {style.buttonStyle} disabled={isvalid} color = 'blue'/>
-                <Button content="Sign up" style = {style.buttonStyle} color = 'blue'/>
+                <Button content='Log in' style= {style.buttonStyle} disabled={isvalid} color = 'blue'/>
+                <Button content='Sign up' style = {style.buttonStyle} color = 'blue'/>
             </Form>
             </div>
         )

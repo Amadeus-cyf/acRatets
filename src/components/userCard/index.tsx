@@ -21,12 +21,12 @@ const userCard = (props : PropsType) => {
         <Card style = { cardStyle.cardStyle } >
             <Image className = 'backgroundStyle' src = { background }/>
             <Image avatar src = { userAvatar } style={ cardStyle.avatarStyle }/>
-            <Header size = 'medium' style={ cardStyle.userHeaderStyle }> { userName } </Header>
+            <Header size = 'medium' style={ cardStyle.userHeaderStyle } content = { userName }/>
             <Card.Content extra>
                 <Icon name = 'heart'/>
-                { followerNum + ' 粉丝'}
+                { `${followerNum}粉丝` }
                 <Icon name = 'user outline' style = { cardStyle.iconStyle }/>
-                { followingNum + ' 关注'}
+                { `${followingNum}关注` }
             </Card.Content>
         </Card>
     )

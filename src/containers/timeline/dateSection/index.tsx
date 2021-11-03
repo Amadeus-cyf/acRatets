@@ -32,9 +32,9 @@ class DateSection extends React.Component<PropsType, StateType> {
     public render() : JSX.Element {
         return(
             <div className='buttonSection'>
-                <Header>年份</Header>
+                <Header content = '年份'/>
                 { this.renderYears() }
-                <Header>季度</Header>
+                <Header content = '季度'/>
                 { this.renderMonths() }
             </div>
         )

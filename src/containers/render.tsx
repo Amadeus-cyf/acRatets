@@ -6,7 +6,7 @@ import RankDetailLabel from '../components/rankDetailLabel';
 import { BangumiBriefScoreType } from '../interface/BangumiBriefScoreType';
 
 export const renderBangumiList = (bangumis : Array<BangumiType>, width : string = '25%') : Array<JSX.Element> => {
-    return bangumis.map(bangumi => (<BangumiLabel key={ "BangumisView " + bangumi.anime_id } 
+    return bangumis.map(bangumi => (<BangumiLabel key={ `BangumisView ${bangumi.anime_id}` } 
         anime_id = { bangumi.anime_id } title = { bangumi.title } 
     image_url = { bangumi.image_url } width = { width }/>))
 }

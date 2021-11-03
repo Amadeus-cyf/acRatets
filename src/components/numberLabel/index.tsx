@@ -20,8 +20,8 @@ const numberLabel = (props : PropsType) : JSX.Element => {
     
     let labelStyle = {
         ...style,
-        width: width + 'px',
-        height: height + 'px',
+        width: `${width}px`,
+        height: `${height}px`,
         marginRight: '15px',
         display: 'flex',
         justifyContent: 'center',
@@ -31,7 +31,7 @@ const numberLabel = (props : PropsType) : JSX.Element => {
 
     return (
         <Label style={ labelStyle }>
-            { rank + '' }
+            { rank }
         </Label>
     )
 }

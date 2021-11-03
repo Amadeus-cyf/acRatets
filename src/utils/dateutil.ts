@@ -1,65 +1,71 @@
 import { BangumiSeasonType } from "../interface/BangumiSeasonType";
 
+const WINTER = 'winter'
+const SPRING = 'spring'
+const SUMMER = 'summer'
+const FALL = 'fall'
+const ALL_YEAR = 'allyear'
+
 const getCurrentDate = () : BangumiSeasonType => {
-    let date = new Date();
-    let year = date.getFullYear();
-    let month = date.getMonth()+1;
+    let date : Date = new Date();
+    let year : number = date.getFullYear();
+    let month : number = date.getMonth()+1;
     switch(true) {
         case month >= 1 && month < 4:
             return {
                 year: year,
                 month: 1,
-                season: 'winter',
+                season: WINTER,
             }
         case month >= 4 && month < 7:
             return {
                 year: year,
                 month: 4,
-                season: 'spring',
+                season: SPRING,
             }
         case month >= 7 && month < 10:
             return {
                 year: year,
                 month: 7,
-                season: 'summer',
+                season: SUMMER,
             }
         default:
             return {
                 year: year,
                 month: 10,
-                season: 'fall',
+                season: FALL,
             }
     }
 }
 
 const getPreviousDate = () : BangumiSeasonType => {
-    let date = new Date();
-    let year = date.getFullYear();
-    let month = date.getMonth()+1;
+    let date : Date = new Date();
+    let year : number = date.getFullYear();
+    let month : number = date.getMonth()+1;
     switch(true) {
         case month >= 1 && month < 4: 
             return {
                 month: 10,
                 year: year - 1,
-                season: 'fall',
+                season: FALL,
             }
         case month >= 4 && month < 7:
             return {
                 month: 1,
                 year: year,
-                season: 'winter',
+                season: WINTER,
             }
         case month >= 7 && month < 10:
             return {
                 month: 4,
                 year: year,
-                season: 'spring',
+                season: SPRING,
             }
         default:
             return {
                 month: 7,
                 year: year,
-                season: 'summer',
+                season: SUMMER,
             }
     }
 }
@@ -67,15 +73,15 @@ const getPreviousDate = () : BangumiSeasonType => {
 const getSeasonFromMonth = (month : number) : string => {
     switch(true) {
         case month >= 1 && month < 4:
-            return 'winter';
+            return WINTER;
         case month >= 4 && month < 7:
-            return 'spring';
+            return SPRING;
         case month >= 7 && month < 10:
-            return 'summer';
+            return SUMMER;
         case month >= 10:
-            return 'fall';
+            return FALL;
         default:
-            return 'allyear'
+            return ALL_YEAR;
     }
 }
 

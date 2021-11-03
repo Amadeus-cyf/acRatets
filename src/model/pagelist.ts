@@ -30,7 +30,11 @@ class PageList {
         this.pages.sort((first, second) => {
             return first - second;
         }); 
-    }    
+    }
+
+    public length() : number {
+        return this.pages.length;
+    }
 
     private init() : void {
         if (this.pageCount <= MaxPagesThreshold) {
@@ -57,7 +61,8 @@ class PageList {
 
     [Symbol.iterator]() {
         let current : number = 1;
-        let end : number = this.pageCount;
+        let end : number = this.pages.length;
+        const pages = this.pages
         return {
             next() {
                 if (current > end) {
@@ -66,7 +71,7 @@ class PageList {
                     }
                 }
                 return {
-                    value: current++, 
+                    value: pages[current++-1], 
                     done: false,
                 }
             }
