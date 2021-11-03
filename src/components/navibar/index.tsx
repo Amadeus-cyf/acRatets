@@ -9,6 +9,7 @@ import { UserType } from '../../interface/UserType';
 import { UserActionType } from '../../interface/ActionType';
 import { ACTION } from '../../const/actions';
 import { Dispatch } from 'redux';
+import { deepEqual } from '../../utils/deepEqual';
 
 interface StateType {
     user: UserType,
@@ -19,7 +20,7 @@ interface PropsType {
     setUser: (user : UserType) => UserActionType,
 }
 
-class Navibar extends React.PureComponent<PropsType, StateType> {
+class Navibar extends React.Component<PropsType, StateType> {
     public constructor(props : PropsType) {
         super(props);
         this.state = {
@@ -45,6 +46,10 @@ class Navibar extends React.PureComponent<PropsType, StateType> {
         });
     }
     
+    public shouldComponentUpdate(nextProps : PropsType, nextState : StateType) : boolean {
+        return !deepEqual(this.props.user, nextProps.user) || !deepEqual(this.state.user, nextState.user);
+    }
+
     public render() : JSX.Element {
         const userAvatar : String = this.state.user.avatar === "" ? avatar : this.state.user.avatar;
 

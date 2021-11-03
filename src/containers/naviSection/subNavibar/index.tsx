@@ -68,6 +68,4 @@ const SubNavibar = (props : PropsType) : JSX.Element => {
     )
 }
 
-export default withRouter(memo(SubNavibar, (prevProps : PropsType, props : PropsType) => {
-    return prevProps.currentTab === props.currentTab;
-}));
+export default withRouter(memo(SubNavibar));

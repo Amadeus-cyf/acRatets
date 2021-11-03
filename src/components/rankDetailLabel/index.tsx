@@ -6,16 +6,6 @@ import ScoreLabel from '../scoreLabel';
 import Color from '../../const/color'
 import './index.css';
 
-const imageStyle = {
-    width: '190px',
-    height: 'auto',
-}
-
-const titleStyle = {
-    margin: '5px',
-    color: Color.PINK,
-}
-
 const labelStyle = {
     position: 'relative',
     width: '100%',
@@ -32,9 +22,11 @@ const rankDetailLabel = (props : BangumiRankType) : JSX.Element => {
         <Label style={ labelStyle }>
             <div className="bangumiDetailLabelStyle">
                 <NumberLabel rank = { rank } width = { 37 } height = { 42 } style = {{ background: Color.PINK, fontSize:'12pt' }}/>
-                <Image className = 'hoverPartStyle' style = { imageStyle } src = {image_url} rounded/>
+                <Image className = 'hoverPartStyle' style = {{ width: '190px', height: 'auto' }} src = { image_url } rounded/>
                 <div className='bangumiInfoStyle'>
-                    <Header size='large' className = 'hoverPartStyle' style = { titleStyle }> { title } </Header>
+                    <Header size='large' className = 'hoverPartStyle' style = { { margin: '5px', color: Color.PINK } }> 
+                        { title }
+                    </Header>
                     <div className="synopsisStyle">
                         { synoBrief }
                     </div>

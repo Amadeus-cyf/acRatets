@@ -31,6 +31,4 @@ const NaviSection = ( props : NaviProps ) : JSX.Element => {
     )
 }
 
-export default memo(NaviSection, (prevProps : NaviProps, props : NaviProps) => {
-    return prevProps.currentTab === props.currentTab;
-});
+export default memo(NaviSection);

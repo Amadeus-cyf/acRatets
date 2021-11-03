@@ -5,16 +5,17 @@ import PageNavigator from '../../components/pageNavigator';
 import BangumiListApi from '../../api/bangumi_list';
 import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from '../../const/window_size_threshold';
 import { renderBangumiList } from '../render';
-import './index.css';  
+import './index.css';
+import { deepEqual } from '../../utils/deepEqual';
 
-interface BangumisState {
+interface StateType {
     bangumis: Array<BangumiType>,
     currentPage: number,
     pageNum: number,
     bangumiSectionWidth: string,
 }
 
-class BangumisView extends React.Component<{}, BangumisState> {
+class BangumisView extends React.Component<{}, StateType> {
     constructor(props : {}) {
         super(props);
         this.state = {
@@ -44,7 +45,11 @@ class BangumisView extends React.Component<{}, BangumisState> {
                 bangumiSectionWidth: width,
             })
         };
-    };
+    }
+
+    public shouldComponentUpdate(nextProps : {}, nextState : StateType) : boolean {
+        return !deepEqual(this.state, nextState);
+    }
 
     public onPageClicked = (pageNum : number) : void => {
         // avoid repeated click

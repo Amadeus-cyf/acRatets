@@ -12,20 +12,20 @@ import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from '../../const/window_size_threshold
 import './index.css';
 import { UserType } from '../../interface/UserType';
 
-interface HomeState {
+type StateType = {
     visibility: string,
     bangumiSectionWidth: string,
 }
 
-interface HomeProps {
+type PropsType = {
     user: UserType,
 }
 
-class Home extends React.Component<HomeProps, HomeState> {
+class Home extends React.PureComponent<PropsType, StateType> {
     private currentSeason : BangumiSeasonType = getCurrentDate();
     private previousSeason : BangumiSeasonType = getPreviousDate();
 
-    public constructor(props : HomeProps) {
+    public constructor(props : PropsType) {
         super(props);
         this.state = {
             visibility: window.innerWidth < USER_CARD_VISIBLE_MIN_WINDOW_SIZE ? 'none' : 'block',

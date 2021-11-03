@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { Label } from 'semantic-ui-react';
 import Color from '../../const/color';
+import { deepEqual } from '../../utils/deepEqual';
 
 type PropsType = {
     rank : number,
@@ -12,11 +13,9 @@ type PropsType = {
 const numberLabel = (props : PropsType) : JSX.Element => {
     let { rank, width, height, style } = props;
     
-    if(!style) {
-        style = {
-            background: Color.BLUE,
-            fontSize: "9pt",
-        }
+    style = style ? style : {
+        background: Color.BLUE,
+        fontSize: "9pt",
     }
     
     let labelStyle = {
@@ -32,9 +31,11 @@ const numberLabel = (props : PropsType) : JSX.Element => {
 
     return (
         <Label style={ labelStyle }>
-            {rank + ''}
+            { rank + '' }
         </Label>
     )
 }
 
-export default memo(numberLabel);
+export default memo(numberLabel, (prevProps : PropsType, props : PropsType) => {
+    return deepEqual(prevProps, props)
+});

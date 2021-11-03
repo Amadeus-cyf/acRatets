@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { Label } from 'semantic-ui-react';
+import { deepEqual } from '../../utils/deepEqual';
 import NumberLabel from '../numberLabel';
 import './index.css';
 
@@ -19,8 +20,7 @@ type PropsType = {
 
 const rankLabel = (props : PropsType) => {
     const { title, score, userNumber, rank } = props;
-    const titleBrief : string = title.length <= 20 
-    ? title : title.substring(0, 20) + '...';
+    const titleBrief : string = title.length <= 20 ? title : title.substring(0, 20) + '...';
 
     return (
         <Label style = { labelStyle } key = { "Rank " + rank }>
@@ -33,6 +33,5 @@ const rankLabel = (props : PropsType) => {
 }
 
 export default memo(rankLabel, (prevProps : PropsType, props : PropsType) : boolean => {
-    return (prevProps.title === props.title) && (prevProps.score === props.score) 
-        && (prevProps.userNumber === props.userNumber) && (prevProps.rank === props.rank);
+    return deepEqual(prevProps, props);
 });

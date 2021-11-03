@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button } from 'semantic-ui-react';
 import PageList from '../../model/pagelist';
 import PageButton from '../pageButton';
@@ -17,7 +17,7 @@ interface PropsType {
     onPageClicked: (page : number) => void,
 }
 
-class pageNavigator extends Component<PropsType, StateType> {
+class pageNavigator extends React.Component<PropsType, StateType> {
     constructor(props : PropsType) {
         super(props);
         const pageNum : number = this.props.pageNum;
@@ -92,7 +92,7 @@ class pageNavigator extends Component<PropsType, StateType> {
                 return (
                     <div key = { this.props.subkey+num }>
                         <span className = 'ellipsisStyle'>...</span>
-                        <PageButton pageNum = { num } onPageClicked = { this.onPageClicked } isFocus ={ num === this.state.selectedPage }/>
+                        <PageButton key = { this.props.subkey + 'button-' + num } pageNum = { num } onPageClicked = { this.onPageClicked } isFocus ={ num === this.state.selectedPage }/>
                     </div>
                 )
             }
