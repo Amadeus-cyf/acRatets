@@ -18,12 +18,15 @@ test('test getCurrentDate', () => {
         case month >= 1 && month < 4:
             assert.equal(date.month, 1)
             assert.equal(date.season, WINTER)
+            break
         case month >= 4 && month < 7:
             assert.equal(date.month, 4)
             assert.equal(date.season, SPRING)
+            break
         case month >= 7 && month < 10:
             assert.equal(date.month, 7)
             assert.equal(date.season, SUMMER)
+            break
         case month >= 10 && month <= 12:
             assert.equal(date.month, 10)
             assert.equal(date.season, FALL)
@@ -40,14 +43,17 @@ test('test getPreviousDate', () => {
             assert.equal(date.year, year-1,)
             assert.equal(date.month, 10)
             assert.equal(date.season, FALL)
+            break
         case month >= 4 && month < 7:
             assert.equal(date.year, year, )
             assert.equal(date.month, 1)
             assert.equal(WINTER, date.season)
+            break
         case month >= 7 && month < 10:
             assert.equal(year, date.year)
             assert.equal(date.month, 4)
             assert.equal(SPRING, date.season)
+            break
         case month >= 10 && month <= 12:
             assert.equal(date.month, 7)
             assert.equal(date.season, SUMMER)

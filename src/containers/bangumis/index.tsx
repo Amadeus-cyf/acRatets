@@ -82,8 +82,7 @@ class BangumisView extends React.Component<{}, StateType> {
         this.setState({
             bangumis: [],
         })
-        BangumiListApi.getBangumiWithPagingOrderByDate(page, order)
-        .then(res => {
+        BangumiListApi.getBangumiWithPagingOrderByDate(page, order).then(res => {
             if (res.data) {
                 this.setState({
                     bangumis: res.data.data.bangumiList,
