@@ -54,7 +54,7 @@ class Navibar extends React.Component<PropsType, StateType> {
         const userAvatar : String = this.state.user.avatar === "" ? avatar : this.state.user.avatar;
 
         return (
-            <Menu secondary>
+            <Menu secondary style={{'height': '50px'}}>
                 <Menu.Item name='主站'
                     style={{ color: 'white', position: 'absolute', top: '10px' }}
                 />

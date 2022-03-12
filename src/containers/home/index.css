@@ -4,9 +4,10 @@
     flex-direction: row;
     background-image: url('../../assets/home_background.png');
     background-attachment: fixed;
-    background-size: 100%;
-    overflow: hidden;
+    background-size: 120%;
+    background-repeat: no-repeat;
     padding-bottom: 10px;
+    overflow: hidden;
 }
 
 .bangumiStyle {
@@ -17,4 +18,9 @@
 .leftSectionStyle {
     width: 30%;
     margin: 1% 2% 0% 1%;
+}
+
+
+::-webkit-scrollbar {
+    display: none;
 }

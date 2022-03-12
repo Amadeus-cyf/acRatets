@@ -1,6 +1,6 @@
 import React from "react";
 import { BangumiRankType } from '../../interface/BangumiRankType';
-import NaviSection from '../naviSection';
+import NaviSection from '../navi_section';
 import BangumiListApi from '../../api/bangumi_list';
 import { renderBangumiRank } from '../render';
 import './index.css'

@@ -9,7 +9,7 @@ export const deepEqual = (obj1 : any, obj2 : any) : boolean => {
         return false;
     }
     if (typeof obj1 !== 'object') {
-        return obj1 === obj2;
+        return false;
     }
     if (Object.keys(obj1).length !== Object.keys(obj2).length) {
         return false

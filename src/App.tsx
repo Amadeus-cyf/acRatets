@@ -7,6 +7,7 @@ import BangumisView from './containers/bangumis';
 import Login from './containers/login';
 import Timeline from './containers/timeline';
 import Rank from './containers/rank';
+import BangumiDetail from './containers/bangumi_detail';
 
 class App extends React.Component<{}, {}> {
     public render() : JSX.Element {
@@ -19,6 +20,7 @@ class App extends React.Component<{}, {}> {
               <Route exact path = '/bangumi' component = { BangumisView }/>
               <Route exact path = '/timeline' component = { Timeline } />
               <Route exact path = '/rank' component = { Rank } />
+              <Route exact path = '/bangumi_detail/:id' component =  { BangumiDetail } />
             </Switch>      
           </Router>
         </Provider>

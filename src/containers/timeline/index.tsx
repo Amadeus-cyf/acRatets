@@ -2,7 +2,7 @@ import React from 'react';
 import { getCurrentDate, getSeasonFromMonth } from '../../utils/dateutil';
 import { BangumiSeasonType } from '../../interface/BangumiSeasonType';
 import { BangumiType } from '../../interface/BangumiType';
-import NaviSection from '../naviSection';
+import NaviSection from '../navi_section';
 import TimelineApi from '../../api/timeline';
 import DateSection from './dateSection';
 import PageNavigator from '../../components/pageNavigator';

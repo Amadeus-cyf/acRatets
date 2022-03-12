@@ -4,7 +4,8 @@
     height: 100%;
     background-image: url('../../assets/bangumi_background.jpeg');
     background-attachment: fixed;
-    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: 120%;
 } 
 
 .bangumilistStyle {

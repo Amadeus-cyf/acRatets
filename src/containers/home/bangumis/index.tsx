@@ -23,7 +23,7 @@ class Bangumis extends React.Component<BangumiSeasonType, BangumisState> {
     public componentDidMount() : void {
         const limit = 8;
         const { season, year } = this.props;
-        BangumiApi.getBangumiBySeasonWithLimit(year, season, limit)
+        BangumiApi.getBangumisBySeasonWithLimit(year, season, limit)
         .then(res => {
             this.setState({
                 bangumis: res.data.data.bangumiList,
