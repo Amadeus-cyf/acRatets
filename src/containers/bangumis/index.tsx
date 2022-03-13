@@ -1,7 +1,7 @@
 import React from 'react';
 import { BangumiType } from '../../interface/BangumiType';
 import NaviSection from '../navi_section';
-import PageNavigator from '../../components/pageNavigator';
+import PageNavigator from '../../components/page_navigator';
 import BangumiListApi from '../../api/bangumi_list';
 import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from '../../const/window_size_threshold';
 import { renderBangumiList } from '../render';

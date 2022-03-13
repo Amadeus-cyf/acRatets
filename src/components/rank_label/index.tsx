@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Label } from 'semantic-ui-react';
 import { deepEqual } from '../../utils/deepEqual';
-import NumberLabel from '../numberLabel';
+import NumberLabel from '../number_label';
 import './index.css';
 
 const labelStyle = {

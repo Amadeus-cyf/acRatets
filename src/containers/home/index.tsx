@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import mapStateToProps from '../../utils/mapStateToProps';
 import Bangumis from '../home/bangumis';
-import UserCard from '../../components/userCard';
+import UserCard from '../../components/user_card';
 import NaviSection from '../navi_section';
 import { BangumiSeasonType } from "../../interface/BangumiSeasonType";
 import { getCurrentDate } from '../../utils/dateutil';

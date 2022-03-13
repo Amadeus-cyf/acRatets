@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Header } from 'semantic-ui-react';
 import { getCurrentDate } from '../../../utils/dateutil';
 import { BangumiSeasonType } from '../../../interface/BangumiSeasonType';
-import DateButton from '../../../components/dateButton';
+import DateButton from '../../../components/date_button';
 import './index.css';
 import { deepEqual } from '../../../utils/deepEqual';
 

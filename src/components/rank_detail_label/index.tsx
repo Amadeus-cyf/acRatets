@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
-import NumberLabel from '../numberLabel';
+import NumberLabel from '../number_label';
 import { Label, Image, Header, Divider } from 'semantic-ui-react';
 import { BangumiRankType } from '../../interface/BangumiRankType';
-import ScoreLabel from '../scoreLabel';
+import ScoreLabel from '../score_label';
 import Color from '../../const/color'
 import './index.css';
 

@@ -10,13 +10,13 @@ type PropsType = {
     selected?: boolean,
 }
 
-const DateButton = (props : PropsType) => {    
+const dateButton = (props : PropsType) => {    
     return <Button content={ props.date } 
             style={{ ...props.style, color: props.selected ? Color.PINK : Color.BLACK }} 
             onClick={ props.onClick } outline='none'/>
 }
 
-export default memo(DateButton, (prevProps : PropsType, props : PropsType) : boolean => { 
+export default memo(dateButton, (prevProps : PropsType, props : PropsType) : boolean => { 
     return prevProps.date === props.date && prevProps.selected === props.selected 
         && deepEqual(prevProps.style, props.style);
 });

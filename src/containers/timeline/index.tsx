@@ -4,8 +4,8 @@ import { BangumiSeasonType } from '../../interface/BangumiSeasonType';
 import { BangumiType } from '../../interface/BangumiType';
 import NaviSection from '../navi_section';
 import TimelineApi from '../../api/timeline';
-import DateSection from './dateSection';
-import PageNavigator from '../../components/pageNavigator';
+import DateSection from './date_section';
+import PageNavigator from '../../components/page_navigator';
 import './index.css'
 import { renderBangumiList } from '../render';
 import { deepEqual } from '../../utils/deepEqual';

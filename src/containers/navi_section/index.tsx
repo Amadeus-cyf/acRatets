@@ -10,7 +10,7 @@ const searchbarStyle = {
     width: '40%',
     minWidth: '210px',
     height: '40px',
-    top: '6px',
+    top: '25px',
 }
 
 type NaviProps = {

@@ -3,6 +3,7 @@ import { RouteComponentProps } from 'react-router'
 import { BangumiDetailType } from '../../interface/BangumiDetailType';
 import BangumiDetailApi from '../../api/bangumi_detail';
 import Navibar from '../../components/navibar';
+import BangumiDetailLabel from '../../components/bangumi_detail_label';
 import './index.css';
 
 interface QueryParams {
@@ -72,6 +73,7 @@ class BangumiDetail extends React.Component<RouteComponentProps<QueryParams>, St
         return(
           <div className='navibarDetailPageStyle '>
               <Navibar />
+              { this.state.bangumi ? <BangumiDetailLabel bangumiDetail={ this.state.bangumi! } rating = { 0.0 }/> : "loading" }
           </div>
         )
     }
