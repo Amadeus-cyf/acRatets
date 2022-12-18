@@ -1,4 +1,4 @@
 export interface UserDispatchType {
-    setUser?: Function,
-    clearUser?: Function,
+    setUser?: Function;
+    clearUser?: Function;
 }

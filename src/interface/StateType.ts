@@ -1,5 +1,5 @@
-import { UserType } from './UserType';
+import { UserType } from "./UserType";
 
 export interface StateType {
-    user: UserType,
-};
+    user: UserType;
+}

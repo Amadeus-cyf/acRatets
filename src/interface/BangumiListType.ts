@@ -1,5 +1,5 @@
-import { BangumiType } from './BangumiType';
+import { BangumiType } from "./BangumiType";
 
 export interface BangumiListType {
-    bangumiList: Array<BangumiType>,
+    bangumiList: Array<BangumiType>;
 }

@@ -1,6 +1,6 @@
 .title {
     color: rgba(60, 60, 60, 0.7);
-    font-family: 'PT Sans Caption', sans-serif;
+    font-family: "PT Sans Caption", sans-serif;
     font-size: 30pt;
     padding-top: 30px;
 }
@@ -21,28 +21,27 @@
     margin-top: 5%;
     margin-left: 8%;
     width: 35%;
-    background-image: url('../../assets/login_background.jpg');
+    background-image: url("../../assets/login_background.jpg");
     background-size: auto 70%;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .error {
-    font-family: 'PT Sans Caption', sans-serif;
+    font-family: "PT Sans Caption", sans-serif;
     font-size: 12pt;
-    color: red
+    color: red;
 }
 
 .button {
-    font-family: 'PT Sans Caption', sans-serif;
+    font-family: "PT Sans Caption", sans-serif;
     font-size: 13pt;
     margin: 10px 25px 10px 25px;
 }
 
 .form {
-    font-family: 'PT Sans Caption', sans-serif;
+    font-family: "PT Sans Caption", sans-serif;
     font-size: 15pt;
     margin: 10% 20% 10% 2%;
     text-align: center;
 }
-

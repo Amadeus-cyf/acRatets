@@ -6,12 +6,12 @@
     justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
-    box-sizing:border-box;
+    box-sizing: border-box;
     position: relative;
     z-index: 0;
 }
 
-.detailLabelStyle:after{
+.detailLabelStyle:after {
     content: "";
     width: 70%;
     height: 100%;

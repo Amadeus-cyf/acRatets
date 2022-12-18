@@ -1,5 +1,5 @@
 export interface BangumiSeasonType {
-    season: string,
-    year: number,
-    month: number,
+    season: string;
+    year: number;
+    month: number;
 }

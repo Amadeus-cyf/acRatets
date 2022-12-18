@@ -1,4 +1,4 @@
 export interface SectionContextType {
-    sectionName: string,
-    route: string,
+    sectionName: string;
+    route: string;
 }

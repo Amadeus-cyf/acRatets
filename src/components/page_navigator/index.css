@@ -1,4 +1,4 @@
-.pageNavigatorStyle{
+.pageNavigatorStyle {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -6,7 +6,7 @@
     padding-bottom: 5pt;
 }
 
-.ellipsisStyle{
+.ellipsisStyle {
     color: white;
     margin-left: 5pt;
     margin-right: 5pt;
