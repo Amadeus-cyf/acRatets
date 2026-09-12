@@ -18,7 +18,7 @@ const imageStyle = {
 };
 
 const bangumiDetailLabel = (props: PropsType) => {
-    const { bangumiDetail, rating } = props;
+    const { bangumiDetail } = props;
 
     const labelStyle = {
         background: `url(${bangumiDetail.image_url})`,
@@ -29,7 +29,12 @@ const bangumiDetailLabel = (props: PropsType) => {
 
     return (
         <div style={labelStyle} className="detailLabelStyle">
-            <Image style={imageStyle} src={bangumiDetail.image_url} rounded />
+            <Image
+                style={imageStyle}
+                src={bangumiDetail.image_url}
+                loading="lazy"
+                rounded
+            />
             <div className="bangumiDetailStyle">
                 <div className="mainTitleStyle">
                     <Header
@@ -38,7 +43,7 @@ const bangumiDetailLabel = (props: PropsType) => {
                     />
                     <div className="tagsStyle">
                         {bangumiDetail.genres.map((g: string) => (
-                            <GenreLabel genre={g} />
+                            <GenreLabel key={g} genre={g} />
                         ))}
                     </div>
                 </div>

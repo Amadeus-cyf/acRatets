@@ -1,93 +1,55 @@
-import React from "react";
-import { connect } from "react-redux";
-import mapStateToProps from "../../utils/mapStateToProps";
-import Bangumis from "../home/bangumis";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import Bangumis from "./bangumis";
 import UserCard from "../../components/user_card";
 import NaviSection from "../navi_section";
-import { BangumiSeasonType } from "../../interface/BangumiSeasonType";
-import { getCurrentDate } from "../../utils/dateutil";
-import { getPreviousDate } from "../../utils/dateutil";
+import { getCurrentDate, getPreviousDate } from "../../utils/dateutil";
 import RankSection from "./rank";
 import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from "../../const/window_size_threshold";
+import { StateType } from "../../interface/StateType";
 import "./index.css";
-import { UserType } from "../../interface/UserType";
 
-type StateType = {
-    visibility: string;
-    bangumiSectionWidth: string;
-};
+const mediaQuery = `(max-width: ${USER_CARD_VISIBLE_MIN_WINDOW_SIZE - 1}px)`;
 
-type PropsType = {
-    user: UserType;
-};
+const Home = (): JSX.Element => {
+    const user = useSelector((state: StateType) => state.user);
+    const [isNarrow, setIsNarrow] = useState(
+        () => window.matchMedia(mediaQuery).matches
+    );
+    const [seasons] = useState(() => ({
+        current: getCurrentDate(),
+        previous: getPreviousDate(),
+    }));
 
-class Home extends React.PureComponent<PropsType, StateType> {
-    private currentSeason: BangumiSeasonType = getCurrentDate();
-    private previousSeason: BangumiSeasonType = getPreviousDate();
+    useEffect(() => {
+        const query = window.matchMedia(mediaQuery);
+        const onChange = (event: MediaQueryListEvent) =>
+            setIsNarrow(event.matches);
+        query.addEventListener("change", onChange);
+        return () => query.removeEventListener("change", onChange);
+    }, []);
 
-    public constructor(props: PropsType) {
-        super(props);
-        this.state = {
-            visibility:
-                window.innerWidth < USER_CARD_VISIBLE_MIN_WINDOW_SIZE
-                    ? "none"
-                    : "block",
-            bangumiSectionWidth:
-                window.innerWidth < USER_CARD_VISIBLE_MIN_WINDOW_SIZE
-                    ? String(window.innerWidth)
-                    : "65%",
-        };
-    }
-
-    public componentDidMount(): void {
-        // when the window size is smaller than the threshold, make user card invisible
-        window.onresize = () => {
-            let visibility: string = "block";
-            let bangumiSectionWidth: string = "65%";
-            if (window.innerWidth < USER_CARD_VISIBLE_MIN_WINDOW_SIZE) {
-                visibility = "none";
-                bangumiSectionWidth = "100%";
-            }
-            this.setState({
-                visibility: visibility,
-                bangumiSectionWidth: bangumiSectionWidth,
-            });
-        };
-    }
-
-    public render(): JSX.Element {
-        const { user } = this.props;
-
-        return (
-            <div>
-                <NaviSection currentTab="主页" />
-                <div className="contentStyle">
-                    <div
-                        style={{ width: this.state.bangumiSectionWidth }}
-                        className="bangumiStyle"
-                    >
-                        <Bangumis
-                            year={this.currentSeason.year}
-                            month={this.currentSeason.month}
-                            season={this.currentSeason.season}
-                        />
-                        <Bangumis
-                            year={this.previousSeason.year}
-                            month={this.previousSeason.month}
-                            season={this.previousSeason.season}
-                        />
-                    </div>
-                    <div
-                        className="leftSectionStyle"
-                        style={{ display: this.state.visibility }}
-                    >
-                        <UserCard user={user} />
-                        <RankSection />
-                    </div>
+    return (
+        <div>
+            <NaviSection currentTab="主页" />
+            <div className="contentStyle">
+                <div
+                    style={{ width: isNarrow ? "100%" : "65%" }}
+                    className="bangumiStyle"
+                >
+                    <Bangumis {...seasons.current} />
+                    <Bangumis {...seasons.previous} />
+                </div>
+                <div
+                    className="leftSectionStyle"
+                    style={{ display: isNarrow ? "none" : "block" }}
+                >
+                    <UserCard user={user} />
+                    <RankSection />
                 </div>
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
-export default connect(mapStateToProps)(Home);
+export default Home;

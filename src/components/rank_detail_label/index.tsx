@@ -32,6 +32,7 @@ const rankDetailLabel = (props: BangumiRankType): JSX.Element => {
                     className="hoverPartStyle"
                     style={{ width: "190px", height: "auto" }}
                     src={image_url}
+                    loading="lazy"
                     rounded
                 />
                 <div className="bangumiInfoStyle">

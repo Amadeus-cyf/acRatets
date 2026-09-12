@@ -3,17 +3,23 @@ import axios, { AxiosResponse } from "axios";
 class BangumiListApi {
     static getBangumiWithPagingOrderByDate(
         page: number,
-        order: 1 | -1
+        order: 1 | -1,
+        signal?: AbortSignal
     ): Promise<AxiosResponse<any>> {
-        return axios.get(`/api/bangumiList/date/${page}/order/${order}`);
+        return axios.get(`/api/bangumiList/date/${page}/order/${order}`, {
+            signal,
+        });
     }
 
-    static getBangumiCount(): Promise<AxiosResponse<any>> {
-        return axios.get("/api/bangumiList/count");
+    static getBangumiCount(signal?: AbortSignal): Promise<AxiosResponse<any>> {
+        return axios.get("/api/bangumiList/count", { signal });
     }
 
-    static getBangumiRank(rankNumber: number): Promise<AxiosResponse<any>> {
-        return axios.get(`/api/bangumiList/rank/${rankNumber}`);
+    static getBangumiRank(
+        rankNumber: number,
+        signal?: AbortSignal
+    ): Promise<AxiosResponse<any>> {
+        return axios.get(`/api/bangumiList/rank/${rankNumber}`, { signal });
     }
 }
 

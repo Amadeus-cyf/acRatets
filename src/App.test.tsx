@@ -1,9 +1,42 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { vi } from "vitest";
 import App from "./App";
 
-test("renders learn react link", () => {
+vi.mock("./api/bangumi", () => ({
+    __esModule: true,
+    default: {
+        getBangumisBySeasonWithLimit: vi.fn(() => new Promise(() => undefined)),
+    },
+}));
+vi.mock("./api/bangumi_list", () => ({
+    __esModule: true,
+    default: { getBangumiRank: vi.fn(() => new Promise(() => undefined)) },
+}));
+vi.mock("./api/auth", () => ({
+    __esModule: true,
+    default: { login: vi.fn(() => new Promise(() => undefined)) },
+}));
+vi.mock("./api/timeline", () => ({
+    __esModule: true,
+    default: {
+        GetTimelineInPage: vi.fn(() => new Promise(() => undefined)),
+        GetTimelineNum: vi.fn(() => new Promise(() => undefined)),
+    },
+}));
+vi.mock("./api/bangumi_detail", () => ({
+    __esModule: true,
+    default: {
+        getBangumiDetailV1: vi.fn(() => new Promise(() => undefined)),
+        getBangumiDetailV2: vi.fn(() => new Promise(() => undefined)),
+    },
+}));
+vi.mock("./containers/home", () => ({
+    __esModule: true,
+    default: () => <div>Home page</div>,
+}));
+
+test("renders the home route", async () => {
     render(<App />);
-    const linkElement = screen.getByText(/learn react/i);
-    expect(linkElement).toBeInTheDocument();
+    expect(await screen.findByText("Home page")).toBeInTheDocument();
 });

@@ -3,15 +3,18 @@ import axios, { AxiosResponse } from "axios";
 class BangumiApi {
     static getBangumisBySeasonWithLimit(
         year: number,
-        season: String,
-        limit: number
+        season: string,
+        limit: number,
+        signal?: AbortSignal
     ): Promise<AxiosResponse<any>> {
-        return axios.get(`/api/bangumi/${year}/${season}/limit/${limit}`);
+        return axios.get(`/api/bangumi/${year}/${season}/limit/${limit}`, {
+            signal,
+        });
     }
 
     static getBangumisBySeason(
         year: number,
-        season: String
+        season: string
     ): Promise<AxiosResponse<any>> {
         return axios.get(`/api/bangumi/${year}/${season}`);
     }

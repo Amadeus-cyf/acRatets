@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { RouteComponentProps, withRouter } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
 import Color from "../../../const/color";
 import "./index.css";
@@ -21,15 +21,16 @@ const subnaviStyle = {
     justifyContent: "center",
 };
 
-interface PropsType extends RouteComponentProps {
+interface PropsType {
     currentTab: string;
 }
 
 const SubNavibar = (props: PropsType): JSX.Element => {
     const { currentTab } = props;
+    const navigate = useNavigate();
 
-    const onTitleClick = (event: any): void => {
-        props.history.push(tabRouteMap[event.target.text]);
+    const onTitleClick = (_event: unknown, data: { name?: string }): void => {
+        if (data.name) navigate(tabRouteMap[data.name]);
     };
 
     return (
@@ -82,4 +83,4 @@ const SubNavibar = (props: PropsType): JSX.Element => {
     );
 };
 
-export default withRouter(memo(SubNavibar));
+export default memo(SubNavibar);

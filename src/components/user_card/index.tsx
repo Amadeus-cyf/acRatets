@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { Image, Header, Card, Icon } from "semantic-ui-react";
-import avatar from "../../assets/avatar.jpeg";
-import background from "../../assets/background.jpg";
+import avatar from "../../assets/avatar_optimized.jpg";
+import background from "../../assets/background_optimized.jpg";
 import { UserType } from "../../interface/UserType";
 import { deepEqual } from "../../utils/deepEqual";
 import "./index.css";
@@ -12,9 +12,9 @@ interface PropsType {
 }
 
 const userCard = (props: PropsType) => {
-    const userAvatar: String =
+    const userAvatar: string =
         props.user.avatar === "" ? avatar : props.user.avatar;
-    const userName: String =
+    const userName: string =
         props.user.username === "" ? "未登陆" : props.user.username;
     const followerNum: Number = props.user.follower;
     const followingNum: Number = props.user.following;

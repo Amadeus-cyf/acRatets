@@ -1,9 +1,9 @@
 export interface UserType {
-    _id: String;
-    username: String;
-    email: String;
-    avatar: String;
-    background: String;
-    follower: Number;
-    following: Number;
+    _id: string;
+    username: string;
+    email: string;
+    avatar: string;
+    background: string;
+    follower: number;
+    following: number;
 }

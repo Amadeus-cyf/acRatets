@@ -1,35 +1,33 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Provider } from "react-redux";
 import store from "./store";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./containers/home";
-import BangumisView from "./containers/bangumis";
-import Login from "./containers/login";
-import Timeline from "./containers/timeline";
-import Rank from "./containers/rank";
-import BangumiDetail from "./containers/bangumi_detail";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-class App extends React.Component<{}, {}> {
-    public render(): JSX.Element {
-        return (
-            <Provider store={store}>
-                <Router>
-                    <Switch>
-                        <Route exact path="/login" component={Login} />
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/bangumi" component={BangumisView} />
-                        <Route exact path="/timeline" component={Timeline} />
-                        <Route exact path="/rank" component={Rank} />
-                        <Route
-                            exact
-                            path="/bangumi_detail/:id"
-                            component={BangumiDetail}
-                        />
-                    </Switch>
-                </Router>
-            </Provider>
-        );
-    }
-}
+const Home = lazy(() => import("./containers/home"));
+const BangumisView = lazy(() => import("./containers/bangumis"));
+const Login = lazy(() => import("./containers/login"));
+const Timeline = lazy(() => import("./containers/timeline"));
+const Rank = lazy(() => import("./containers/rank"));
+const BangumiDetail = lazy(() => import("./containers/bangumi_detail"));
+
+const App = (): JSX.Element => (
+    <Provider store={store}>
+        <BrowserRouter>
+            <Suspense fallback={<div>loading</div>}>
+                <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/" element={<Home />} />
+                    <Route path="/bangumi" element={<BangumisView />} />
+                    <Route path="/timeline" element={<Timeline />} />
+                    <Route path="/rank" element={<Rank />} />
+                    <Route
+                        path="/bangumi_detail/:id"
+                        element={<BangumiDetail />}
+                    />
+                </Routes>
+            </Suspense>
+        </BrowserRouter>
+    </Provider>
+);
 
 export default App;

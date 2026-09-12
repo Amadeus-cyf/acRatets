@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    background-image: url("../../assets/home_background.png");
+    background-image: url("../../assets/home_background_optimized.jpg");
     background-attachment: fixed;
     background-size: 120%;
     background-repeat: no-repeat;

@@ -4,16 +4,18 @@ class TimelineApi {
     static GetTimelineInPage(
         year: number,
         season: string,
-        page: number
+        page: number,
+        signal?: AbortSignal
     ): Promise<AxiosResponse<any>> {
-        return axios.get(`/api/bangumi/${year}/${season}/${page}`);
+        return axios.get(`/api/bangumi/${year}/${season}/${page}`, { signal });
     }
 
     static GetTimelineNum(
         year: number,
-        season: string
+        season: string,
+        signal?: AbortSignal
     ): Promise<AxiosResponse<any>> {
-        return axios.get(`/api/bangumi/${year}/${season}/count`);
+        return axios.get(`/api/bangumi/${year}/${season}/count`, { signal });
     }
 }
 

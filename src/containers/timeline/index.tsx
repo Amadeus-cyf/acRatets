@@ -1,133 +1,92 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { getCurrentDate, getSeasonFromMonth } from "../../utils/dateutil";
-import { BangumiSeasonType } from "../../interface/BangumiSeasonType";
 import { BangumiType } from "../../interface/BangumiType";
 import NaviSection from "../navi_section";
 import TimelineApi from "../../api/timeline";
 import DateSection from "./date_section";
 import PageNavigator from "../../components/page_navigator";
-import "./index.css";
 import { renderBangumiList } from "../render";
-import { deepEqual } from "../../utils/deepEqual";
+import "./index.css";
 
-interface TimeState {
-    year: number;
-    month: number;
-    season: string;
-    page: number;
-    pageNum: number;
-    bangumis: Array<BangumiType>;
-}
+const Timeline = (): JSX.Element => {
+    const currentDate = getCurrentDate();
+    const [year, setYear] = useState(currentDate.year);
+    const [season, setSeason] = useState(currentDate.season);
+    const [page, setPage] = useState(1);
+    const [pageNum, setPageNum] = useState(0);
+    const [bangumis, setBangumis] = useState<BangumiType[]>([]);
 
-class Timeline extends React.Component<{}, TimeState> {
-    constructor(props: {}) {
-        super(props);
-        this.state = {
-            year: 0,
-            month: 0,
-            season: "",
-            page: 1,
-            pageNum: 0,
-            bangumis: new Array<BangumiType>(),
-        };
-        this.onSwitchDate = this.onSwitchDate.bind(this);
-    }
+    useEffect(() => {
+        const controller = new AbortController();
+        setBangumis([]);
+        TimelineApi.GetTimelineInPage(year, season, page, controller.signal)
+            .then((res) => setBangumis(res.data.data.bangumiList))
+            .catch((err) => {
+                if (!controller.signal.aborted) console.log(err);
+            });
+        return () => controller.abort();
+    }, [page, season, year]);
 
-    public componentDidMount(): void {
-        const date: BangumiSeasonType = getCurrentDate();
-        this.setState({
-            year: date.year,
-            month: date.month,
-            season: date.season,
-        });
-        this.onSwitchDate(date.year, date.month);
-    }
-
-    public shouldComponentUpdate(nextProps: {}, nextState: TimeState): boolean {
-        return !deepEqual(this.state, nextState);
-    }
-
-    private onSwitchDate(year: number, month: number): void {
-        const season: string = getSeasonFromMonth(month);
-        if (year === this.state.year && season === this.state.season) {
-            return;
-        }
-        this.setState({
-            year: year,
-            season: season,
-            bangumis: [],
-            pageNum: 0,
-            page: 1,
-        });
-        this.fetchBangumi(year, season, 1);
-        this.getPageNum(year, season);
-    }
-
-    public onPageClicked = (page: number): void => {
-        if (page === this.state.page) {
-            return;
-        }
-        this.setState({
-            page: page,
-            bangumis: [],
-        });
-        this.fetchBangumi(this.state.year, this.state.season, page);
-    };
-
-    private getPageNum(year: number, season: string): void {
-        TimelineApi.GetTimelineNum(year, season)
+    useEffect(() => {
+        const controller = new AbortController();
+        setPageNum(0);
+        TimelineApi.GetTimelineNum(year, season, controller.signal)
             .then((res) => {
-                this.setState({
-                    pageNum:
-                        Math.floor(res.data.data.bangumiNumber / 20) +
-                        (res.data.data.bangumiNumber % 20 === 0 ? 0 : 1),
-                });
+                const count = res.data.data.bangumiNumber;
+                setPageNum(Math.ceil(count / 20));
             })
             .catch((err) => {
-                console.log(err);
+                if (!controller.signal.aborted) console.log(err);
             });
-    }
+        return () => controller.abort();
+    }, [season, year]);
 
-    private fetchBangumi(year: number, season: string, page: number): void {
-        TimelineApi.GetTimelineInPage(year, season, page)
-            .then((res) => {
-                this.setState({
-                    bangumis: res.data.data.bangumiList,
-                });
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
+    const onSwitchDate = useCallback(
+        (nextYear: number, month: number): void => {
+            const nextSeason = getSeasonFromMonth(month);
+            if (nextYear === year && nextSeason === season) return;
+            setYear(nextYear);
+            setSeason(nextSeason);
+            setPage(1);
+        },
+        [season, year]
+    );
 
-    public render(): JSX.Element {
-        const loadingView: JSX.Element = <div>loading</div>;
-        return (
-            <div className="timelinePageStyle">
-                <NaviSection currentTab="时间表" />
-                <div className="timeline">
-                    <div className="timelineBangumi">
-                        <div className="timelineBangumiDataStyle">
-                            {this.state.bangumis.length > 0
-                                ? renderBangumiList(this.state.bangumis, "25%")
-                                : loadingView}
-                        </div>
-                        {this.state.pageNum > 0 ? (
-                            <PageNavigator
-                                subkey="TimelineNavi"
-                                pageNum={this.state.pageNum}
-                                onPageClicked={this.onPageClicked}
-                                selectedPage={this.state.page}
-                            />
-                        ) : null}
+    const onPageClicked = useCallback(
+        (nextPage: number): void => {
+            if (nextPage === page) return;
+            setPage(nextPage);
+        },
+        [page]
+    );
+
+    return (
+        <div className="timelinePageStyle">
+            <NaviSection currentTab="时间表" />
+            <div className="timeline">
+                <div className="timelineBangumi">
+                    <div className="timelineBangumiDataStyle">
+                        {bangumis.length > 0 ? (
+                            renderBangumiList(bangumis, "25%")
+                        ) : (
+                            <div>loading</div>
+                        )}
                     </div>
-                    <div className="timelineDate">
-                        <DateSection switchDateListener={this.onSwitchDate} />
-                    </div>
+                    {pageNum > 0 && (
+                        <PageNavigator
+                            subkey="TimelineNavi"
+                            pageNum={pageNum}
+                            onPageClicked={onPageClicked}
+                            selectedPage={page}
+                        />
+                    )}
+                </div>
+                <div className="timelineDate">
+                    <DateSection switchDateListener={onSwitchDate} />
                 </div>
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
 export default Timeline;

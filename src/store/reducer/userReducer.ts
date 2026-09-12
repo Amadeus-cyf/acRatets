@@ -3,7 +3,7 @@ import initialUser from "../../const/initialUser";
 import { UserType } from "../../interface/UserType";
 
 export default function userReducer(
-    state = { user: initialUser },
+    state: UserType = initialUser,
     action: UserActionType
 ): UserType {
     switch (action.type) {
@@ -18,6 +18,6 @@ export default function userReducer(
             localStorage.removeItem("user");
             return initialUser;
         default:
-            return state.user;
+            return state;
     }
 }

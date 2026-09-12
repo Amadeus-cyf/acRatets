@@ -40,6 +40,7 @@ const bangumiLabel = (props: BangumiBriefType): JSX.Element => {
                 className="hoverPartStyle"
                 style={imageStyle}
                 src={image_url}
+                loading="lazy"
                 rounded
             />
             <Header

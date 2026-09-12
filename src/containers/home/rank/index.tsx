@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Label, Header, Divider } from "semantic-ui-react";
 import { BangumiBriefScoreType } from "../../../interface/BangumiBriefScoreType";
 import BangumiListApi from "../../../api/bangumi_list";
-import { deepEqual } from "../../../utils/deepEqual";
 import { renderBangumiBreifRank } from "../../render";
 
 const labelStyle = {
@@ -11,54 +10,31 @@ const labelStyle = {
     minHeight: "500px",
     background: "rgba(255, 255, 255, 0.6)",
 };
+const headerStyle = { position: "relative" as const, top: "6px" };
+const RANK_NUMBER = 10;
 
-const headerStyle = {
-    position: "relative",
-    top: "6px",
-};
+const RankSection = (): JSX.Element => {
+    const [bangumis, setBangumis] = useState<BangumiBriefScoreType[]>([]);
 
-interface RankSectionState {
-    bangumis: Array<BangumiBriefScoreType>;
-}
-
-const RANK_NUMBER: number = 10;
-
-class RankSection extends React.Component<{}, RankSectionState> {
-    public constructor(props: {}) {
-        super(props);
-        this.state = {
-            bangumis: new Array<BangumiBriefScoreType>(),
-        };
-    }
-
-    public componentDidMount(): void {
-        BangumiListApi.getBangumiRank(RANK_NUMBER)
+    useEffect(() => {
+        const controller = new AbortController();
+        BangumiListApi.getBangumiRank(RANK_NUMBER, controller.signal)
             .then((res) => {
-                this.setState({
-                    bangumis: res.data.data.bangumiList,
-                });
+                setBangumis(res.data.data.bangumiList);
             })
             .catch((err) => {
-                console.log(err);
+                if (!controller.signal.aborted) console.log(err);
             });
-    }
+        return () => controller.abort();
+    }, []);
 
-    public shouldComponentUpdate(
-        nextProps: {},
-        nextState: RankSectionState
-    ): boolean {
-        return !deepEqual(this.state, nextState);
-    }
+    return (
+        <Label style={labelStyle}>
+            <Header size="large" style={headerStyle} content="排行榜" />
+            <Divider />
+            {renderBangumiBreifRank(bangumis)}
+        </Label>
+    );
+};
 
-    public render(): JSX.Element {
-        return (
-            <Label style={labelStyle}>
-                <Header size="large" style={headerStyle} content="排行榜" />
-                <Divider />
-                {renderBangumiBreifRank(this.state.bangumis)}
-            </Label>
-        );
-    }
-}
-
-export default RankSection;
+export default React.memo(RankSection);
