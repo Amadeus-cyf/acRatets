@@ -25,7 +25,7 @@ interface PropsType {
     currentTab: string;
 }
 
-const SubNavibar = (props: PropsType): JSX.Element => {
+const SubNavbar = (props: PropsType): JSX.Element => {
     const { currentTab } = props;
     const navigate = useNavigate();
 
@@ -83,4 +83,4 @@ const SubNavibar = (props: PropsType): JSX.Element => {
     );
 };
 
-export default memo(SubNavibar);
+export default memo(SubNavbar);

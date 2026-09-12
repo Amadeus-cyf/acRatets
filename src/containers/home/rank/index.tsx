@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Label, Header, Divider } from "semantic-ui-react";
 import { BangumiBriefScoreType } from "../../../interface/BangumiBriefScoreType";
 import BangumiListApi from "../../../api/bangumi_list";
-import { renderBangumiBreifRank } from "../../render";
+import { renderBangumiBriefRank } from "../../render";
 
 const labelStyle = {
     width: "100%",
@@ -32,7 +32,7 @@ const RankSection = (): JSX.Element => {
         <Label style={labelStyle}>
             <Header size="large" style={headerStyle} content="排行榜" />
             <Divider />
-            {renderBangumiBreifRank(bangumis)}
+            {renderBangumiBriefRank(bangumis)}
         </Label>
     );
 };

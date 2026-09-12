@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { BangumiType } from "../../interface/BangumiType";
-import NaviSection from "../navi_section";
+import NavigationSection from "../navigation_section";
 import PageNavigator from "../../components/page_navigator";
 import BangumiListApi from "../../api/bangumi_list";
 import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from "../../const/window_size_threshold";
@@ -65,7 +65,7 @@ const BangumisView = (): JSX.Element => {
 
     return (
         <div className="bangumiPageStyle">
-            <NaviSection currentTab="番剧" />
+            <NavigationSection currentTab="番剧" />
             <div
                 className="bangumilistStyle"
                 style={{ width: isNarrow ? "100%" : "75%" }}

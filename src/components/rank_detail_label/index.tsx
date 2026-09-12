@@ -13,7 +13,7 @@ const labelStyle = {
     background: "rgba(255, 255, 255, 0)",
 };
 
-const rankDetailLabel = (props: BangumiRankType): JSX.Element => {
+const RankDetailLabel = (props: BangumiRankType): JSX.Element => {
     const { title, image_url, synopsis, rank, score, userNumber } = props;
 
     const synoBrief =
@@ -54,4 +54,4 @@ const rankDetailLabel = (props: BangumiRankType): JSX.Element => {
     );
 };
 
-export default memo(rankDetailLabel);
+export default memo(RankDetailLabel);

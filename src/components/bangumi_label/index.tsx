@@ -20,7 +20,7 @@ const titleStyle = {
     textAlign: "center",
 };
 
-const bangumiLabel = (props: BangumiBriefType): JSX.Element => {
+const BangumiLabel = (props: BangumiBriefType): JSX.Element => {
     const { title, image_url, width } = props;
 
     const labelStyle = {
@@ -53,4 +53,4 @@ const bangumiLabel = (props: BangumiBriefType): JSX.Element => {
     );
 };
 
-export default memo(bangumiLabel);
+export default memo(BangumiLabel);

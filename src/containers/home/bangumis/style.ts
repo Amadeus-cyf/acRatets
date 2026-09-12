@@ -4,7 +4,7 @@ export const headerStyle = {
     top: "15px",
 };
 
-export const divierStyle = {
+export const dividerStyle = {
     marginLeft: "1.5%",
     marginRight: "1.5%",
     marginTop: "25px",

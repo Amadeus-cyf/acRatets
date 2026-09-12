@@ -3,7 +3,7 @@ import { Header, Divider } from "semantic-ui-react";
 import { BangumiType } from "../../../interface/BangumiType";
 import { BangumiSeasonType } from "../../../interface/BangumiSeasonType";
 import BangumiApi from "../../../api/bangumi";
-import { headerStyle, divierStyle } from "./style";
+import { headerStyle, dividerStyle } from "./style";
 import { renderBangumiList } from "../../render";
 import "./index.css";
 
@@ -34,7 +34,7 @@ const Bangumis = ({ season, month, year }: BangumiSeasonType): JSX.Element => {
                 style={headerStyle}
                 content={`${year}年${month}月番`}
             />
-            <Divider style={divierStyle} />
+            <Divider style={dividerStyle} />
             <div className="bangumiData">
                 {renderBangumiList(bangumis, "25%")}
             </div>

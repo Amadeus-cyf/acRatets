@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 class TimelineApi {
-    static GetTimelineInPage(
+    static getTimelineInPage(
         year: number,
         season: string,
         page: number,
@@ -10,7 +10,7 @@ class TimelineApi {
         return axios.get(`/api/bangumi/${year}/${season}/${page}`, { signal });
     }
 
-    static GetTimelineNum(
+    static getTimelineCount(
         year: number,
         season: string,
         signal?: AbortSignal

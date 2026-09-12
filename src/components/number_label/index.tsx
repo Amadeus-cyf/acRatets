@@ -10,7 +10,7 @@ type PropsType = {
     style?: object;
 };
 
-const numberLabel = (props: PropsType): JSX.Element => {
+const NumberLabel = (props: PropsType): JSX.Element => {
     let { rank, width, height, style } = props;
 
     style = style
@@ -34,6 +34,6 @@ const numberLabel = (props: PropsType): JSX.Element => {
     return <Label style={labelStyle}>{rank}</Label>;
 };
 
-export default memo(numberLabel, (prevProps: PropsType, props: PropsType) => {
+export default memo(NumberLabel, (prevProps: PropsType, props: PropsType) => {
     return deepEqual(prevProps, props);
 });

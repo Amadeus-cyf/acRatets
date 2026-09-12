@@ -9,6 +9,12 @@ updates:
           timezone: "Asia/Tokyo"
       open-pull-requests-limit: 10
       groups:
+          react:
+              patterns:
+                  - "react"
+                  - "react-dom"
+                  - "@types/react"
+                  - "@types/react-dom"
           development-dependencies:
               dependency-type: "development"
               update-types:
@@ -19,6 +25,16 @@ updates:
               update-types:
                   - "minor"
                   - "patch"
+      ignore:
+          # Semantic UI React 2.1.5 supports React through version 18.
+          - dependency-name: "react"
+            versions: [">=19"]
+          - dependency-name: "react-dom"
+            versions: [">=19"]
+          - dependency-name: "@types/react"
+            versions: [">=19"]
+          - dependency-name: "@types/react-dom"
+            versions: [">=19"]
       versioning-strategy: "increase"
       commit-message:
           prefix: "deps"

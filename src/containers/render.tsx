@@ -20,7 +20,7 @@ export const renderBangumiList = (
     ));
 };
 
-export const renderBangumiBreifRank = (
+export const renderBangumiBriefRank = (
     bangumis: Array<BangumiBriefScoreType>
 ): Array<JSX.Element> => {
     return bangumis.map((bangumi: BangumiBriefScoreType, index: number) => {

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { getCurrentDate, getSeasonFromMonth } from "../../utils/dateutil";
 import { BangumiType } from "../../interface/BangumiType";
-import NaviSection from "../navi_section";
+import NavigationSection from "../navigation_section";
 import TimelineApi from "../../api/timeline";
 import DateSection from "./date_section";
 import PageNavigator from "../../components/page_navigator";
@@ -19,7 +19,7 @@ const Timeline = (): JSX.Element => {
     useEffect(() => {
         const controller = new AbortController();
         setBangumis([]);
-        TimelineApi.GetTimelineInPage(year, season, page, controller.signal)
+        TimelineApi.getTimelineInPage(year, season, page, controller.signal)
             .then((res) => setBangumis(res.data.data.bangumiList))
             .catch((err) => {
                 if (!controller.signal.aborted) console.log(err);
@@ -30,7 +30,7 @@ const Timeline = (): JSX.Element => {
     useEffect(() => {
         const controller = new AbortController();
         setPageNum(0);
-        TimelineApi.GetTimelineNum(year, season, controller.signal)
+        TimelineApi.getTimelineCount(year, season, controller.signal)
             .then((res) => {
                 const count = res.data.data.bangumiNumber;
                 setPageNum(Math.ceil(count / 20));
@@ -62,7 +62,7 @@ const Timeline = (): JSX.Element => {
 
     return (
         <div className="timelinePageStyle">
-            <NaviSection currentTab="时间表" />
+            <NavigationSection currentTab="时间表" />
             <div className="timeline">
                 <div className="timelineBangumi">
                     <div className="timelineBangumiDataStyle">

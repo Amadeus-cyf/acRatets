@@ -7,7 +7,7 @@ type PropsType = {
     onPageClicked: (pageNum: number) => void;
 };
 
-const pageButton = (props: PropsType): JSX.Element => {
+const PageButton = (props: PropsType): JSX.Element => {
     const { pageNum, onPageClicked } = props;
 
     const clickListener = (): void => {
@@ -37,7 +37,7 @@ const pageButton = (props: PropsType): JSX.Element => {
 };
 
 export default memo(
-    pageButton,
+    PageButton,
     (prevProps: PropsType, props: PropsType): boolean => {
         return (
             prevProps.pageNum === props.pageNum &&

@@ -20,8 +20,8 @@ vi.mock("./api/auth", () => ({
 vi.mock("./api/timeline", () => ({
     __esModule: true,
     default: {
-        GetTimelineInPage: vi.fn(() => new Promise(() => undefined)),
-        GetTimelineNum: vi.fn(() => new Promise(() => undefined)),
+        getTimelineInPage: vi.fn(() => new Promise(() => undefined)),
+        getTimelineCount: vi.fn(() => new Promise(() => undefined)),
     },
 }));
 vi.mock("./api/bangumi_detail", () => ({

@@ -14,10 +14,10 @@ const labelStyle = {
     padding: "6px",
 };
 
-const genreLabel = (props: PropsType) => {
+const GenreLabel = (props: PropsType) => {
     const { genre } = props;
 
     return <Label style={labelStyle} content={genre} />;
 };
 
-export default memo(genreLabel);
+export default memo(GenreLabel);

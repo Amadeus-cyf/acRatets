@@ -11,7 +11,7 @@ interface PropsType {
     user: UserType;
 }
 
-const userCard = (props: PropsType) => {
+const UserCard = (props: PropsType) => {
     const userAvatar: string =
         props.user.avatar === "" ? avatar : props.user.avatar;
     const userName: string =
@@ -38,6 +38,6 @@ const userCard = (props: PropsType) => {
     );
 };
 
-export default memo(userCard, (prevProps: PropsType, props: PropsType) => {
+export default memo(UserCard, (prevProps: PropsType, props: PropsType) => {
     return deepEqual(prevProps.user, props.user);
 });

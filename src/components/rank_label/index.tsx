@@ -18,7 +18,7 @@ type PropsType = {
     rank: number;
 };
 
-const rankLabel = (props: PropsType) => {
+const RankLabel = (props: PropsType) => {
     const { title, score, userNumber, rank } = props;
     const titleBrief: string =
         title.length <= 20 ? title : title.substring(0, 20) + "...";
@@ -34,7 +34,7 @@ const rankLabel = (props: PropsType) => {
 };
 
 export default memo(
-    rankLabel,
+    RankLabel,
     (prevProps: PropsType, props: PropsType): boolean => {
         return deepEqual(prevProps, props);
     }

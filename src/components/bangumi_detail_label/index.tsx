@@ -17,7 +17,7 @@ const imageStyle = {
     border: "4px solid white",
 };
 
-const bangumiDetailLabel = (props: PropsType) => {
+const BangumiDetailLabel = (props: PropsType) => {
     const { bangumiDetail } = props;
 
     const labelStyle = {
@@ -81,7 +81,7 @@ const bangumiDetailLabel = (props: PropsType) => {
 };
 
 export default memo(
-    bangumiDetailLabel,
+    BangumiDetailLabel,
     (prevProps: PropsType, props: PropsType): boolean => {
         return deepEqual(prevProps, props);
     }

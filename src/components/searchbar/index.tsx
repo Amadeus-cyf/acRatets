@@ -2,7 +2,7 @@ import { memo } from "react";
 import { Input } from "semantic-ui-react";
 import { deepEqual } from "../../utils/deepEqual";
 
-const searchbar = (props: any): JSX.Element => {
+const Searchbar = (props: any): JSX.Element => {
     const { searchbarStyle } = props;
 
     return (
@@ -14,6 +14,6 @@ const searchbar = (props: any): JSX.Element => {
     );
 };
 
-export default memo(searchbar, (prevProps, props) => {
+export default memo(Searchbar, (prevProps, props) => {
     return deepEqual(prevProps.searchbarStyle, props.searchbarStyle);
 });

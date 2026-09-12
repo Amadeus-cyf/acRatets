@@ -1,7 +1,7 @@
 import React, { memo } from "react";
-import Navibar from "../../components/navibar";
+import Navbar from "../../components/navbar";
 import Searchbar from "../../components/searchbar";
-import SubNavibar from "./subNavibar";
+import SubNavbar from "./subNavbar";
 import "./index.css";
 
 const searchbarStyle = {
@@ -13,22 +13,22 @@ const searchbarStyle = {
     top: "25px",
 };
 
-type NaviProps = {
+type NavigationProps = {
     currentTab: string;
 };
 
-const NaviSection = (props: NaviProps): JSX.Element => {
+const NavigationSection = (props: NavigationProps): JSX.Element => {
     const { currentTab } = props;
 
     return (
         <div className="sectionStyle">
             <div>
-                <Navibar />
+                <Navbar />
                 <Searchbar searchbarStyle={searchbarStyle} />
             </div>
-            <SubNavibar currentTab={currentTab} />
+            <SubNavbar currentTab={currentTab} />
         </div>
     );
 };
 
-export default memo(NaviSection);
+export default memo(NavigationSection);

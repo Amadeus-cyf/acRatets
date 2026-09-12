@@ -1,4 +1,4 @@
-import PageList from "../model/pagelist";
+import PageList from "./pagelist";
 import { strict as assert } from "assert";
 
 test("test pagelist init", () => {

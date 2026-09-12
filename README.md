@@ -11,7 +11,7 @@ A React and TypeScript interface for browsing anime seasons, timelines, and rank
 
 ```sh
 npm ci
-npm start
+npm run dev
 ```
 
 Run the validation suite with:
@@ -19,6 +19,7 @@ Run the validation suite with:
 ```sh
 npm test
 npm run build
+npm run preview
 ```
 
 ## Dependency updates

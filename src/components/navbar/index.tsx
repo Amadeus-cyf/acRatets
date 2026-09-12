@@ -7,7 +7,7 @@ import { StateType } from "../../interface/StateType";
 import { setUser } from "../../store/action";
 import { AppDispatch } from "../../store";
 
-const Navibar = (): JSX.Element => {
+const Navbar = (): JSX.Element => {
     const dispatch = useDispatch<AppDispatch>();
     const user = useSelector((state: StateType) => state.user);
 
@@ -55,4 +55,4 @@ const Navibar = (): JSX.Element => {
     );
 };
 
-export default React.memo(Navibar);
+export default React.memo(Navbar);

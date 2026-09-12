@@ -1,4 +1,4 @@
-import { deepEqual } from "../utils/deepEqual";
+import { deepEqual } from "./deepEqual";
 import { strict as assert } from "assert";
 
 // to run all unit tests, enter command npm run test <path to deepEqual.test.ts>

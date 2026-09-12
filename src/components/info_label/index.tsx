@@ -12,10 +12,10 @@ const labelStyle = {
     marginLeft: "-10px",
 };
 
-const infoLabel = (props: PropsType) => {
+const InfoLabel = (props: PropsType) => {
     const { info } = props;
 
     return <Label style={labelStyle} content={info} />;
 };
 
-export default memo(infoLabel);
+export default memo(InfoLabel);

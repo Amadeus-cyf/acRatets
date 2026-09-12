@@ -2,7 +2,7 @@ import {
     getCurrentDate,
     getPreviousDate,
     getSeasonFromMonth,
-} from "../utils/dateutil";
+} from "./dateutil";
 import { BangumiSeasonType } from "../interface/BangumiSeasonType";
 import { strict as assert } from "assert";
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BangumiRankType } from "../../interface/BangumiRankType";
-import NaviSection from "../navi_section";
+import NavigationSection from "../navigation_section";
 import BangumiListApi from "../../api/bangumi_list";
 import { renderBangumiRank } from "../render";
 import "./index.css";
@@ -22,7 +22,7 @@ const Rank = (): JSX.Element => {
 
     return (
         <div className="rankPageStyle">
-            <NaviSection currentTab="排行榜" />
+            <NavigationSection currentTab="排行榜" />
             <div className="bangumiRankStyle">
                 {bangumis.length > 0 ? (
                     renderBangumiRank(bangumis)

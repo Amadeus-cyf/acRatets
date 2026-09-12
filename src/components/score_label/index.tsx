@@ -10,7 +10,7 @@ interface PropsType {
     style?: object;
 }
 
-const scoreLabel = (props: PropsType) => {
+const ScoreLabel = (props: PropsType) => {
     const { score, user, style } = props;
 
     const labelStyle = {
@@ -29,7 +29,7 @@ const scoreLabel = (props: PropsType) => {
 };
 
 export default memo(
-    scoreLabel,
+    ScoreLabel,
     (prevProps: PropsType, props: PropsType): boolean => {
         return (
             prevProps.score === props.score &&

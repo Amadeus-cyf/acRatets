@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Bangumis from "./bangumis";
 import UserCard from "../../components/user_card";
-import NaviSection from "../navi_section";
+import NavigationSection from "../navigation_section";
 import { getCurrentDate, getPreviousDate } from "../../utils/dateutil";
 import RankSection from "./rank";
 import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from "../../const/window_size_threshold";
@@ -31,7 +31,7 @@ const Home = (): JSX.Element => {
 
     return (
         <div>
-            <NaviSection currentTab="主页" />
+            <NavigationSection currentTab="主页" />
             <div className="contentStyle">
                 <div
                     style={{ width: isNarrow ? "100%" : "65%" }}

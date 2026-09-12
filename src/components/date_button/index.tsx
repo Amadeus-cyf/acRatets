@@ -10,7 +10,7 @@ type PropsType = {
     selected?: boolean;
 };
 
-const dateButton = (props: PropsType) => {
+const DateButton = (props: PropsType) => {
     return (
         <Button
             content={props.date}
@@ -25,7 +25,7 @@ const dateButton = (props: PropsType) => {
 };
 
 export default memo(
-    dateButton,
+    DateButton,
     (prevProps: PropsType, props: PropsType): boolean => {
         return (
             prevProps.date === props.date &&
