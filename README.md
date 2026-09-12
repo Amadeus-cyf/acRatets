@@ -1,6 +1,7 @@
 # acRatets
 
-A React and TypeScript interface for browsing anime seasons, timelines, and rankings.
+A React 19 and TypeScript interface for browsing anime seasons, timelines, and
+rankings. The application is built with Vite and uses Material UI components.
 
 ## Requirements
 
@@ -19,8 +20,10 @@ Run the validation suite with:
 ```sh
 npm test
 npm run build
-npm run preview
+npm run format:check
 ```
+
+Preview the production build with `npm run preview`.
 
 ## Dependency updates
 

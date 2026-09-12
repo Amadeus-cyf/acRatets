@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Image, Header, Card, Icon } from "semantic-ui-react";
+import { Image, Header, Card, Icon } from "../ui";
 import avatar from "../../assets/avatar_optimized.jpg";
 import background from "../../assets/background_optimized.jpg";
 import { UserType } from "../../interface/UserType";

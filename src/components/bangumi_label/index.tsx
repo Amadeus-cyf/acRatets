@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Label, Image, Header } from "semantic-ui-react";
+import { Label, Image, Header } from "../ui";
 import "./index.css";
 
 type BangumiBriefType = {
@@ -20,7 +20,7 @@ const titleStyle = {
     textAlign: "center",
 };
 
-const BangumiLabel = (props: BangumiBriefType): JSX.Element => {
+const BangumiLabel = (props: BangumiBriefType): React.ReactElement => {
     const { title, image_url, width } = props;
 
     const labelStyle = {

@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Button } from "semantic-ui-react";
+import { Button } from "../ui";
 import Color from "../../const/color";
 import { deepEqual } from "../../utils/deepEqual";
 
@@ -19,7 +19,6 @@ const DateButton = (props: PropsType) => {
                 color: props.selected ? Color.PINK : Color.BLACK,
             }}
             onClick={props.onClick}
-            outline="none"
         />
     );
 };

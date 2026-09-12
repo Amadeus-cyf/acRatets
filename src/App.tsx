@@ -10,7 +10,7 @@ const Timeline = lazy(() => import("./containers/timeline"));
 const Rank = lazy(() => import("./containers/rank"));
 const BangumiDetail = lazy(() => import("./containers/bangumi_detail"));
 
-const App = (): JSX.Element => (
+const App = (): React.ReactElement => (
     <Provider store={store}>
         <BrowserRouter>
             <Suspense fallback={<div>loading</div>}>

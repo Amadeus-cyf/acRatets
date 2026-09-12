@@ -1,8 +1,8 @@
-import { memo } from "react";
-import { Input } from "semantic-ui-react";
+import React, { memo } from "react";
+import { Input } from "../ui";
 import { deepEqual } from "../../utils/deepEqual";
 
-const Searchbar = (props: any): JSX.Element => {
+const Searchbar = (props: any): React.ReactElement => {
     const { searchbarStyle } = props;
 
     return (

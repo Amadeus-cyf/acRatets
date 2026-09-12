@@ -1,5 +1,5 @@
-import { memo } from "react";
-import { Label } from "semantic-ui-react";
+import React, { memo } from "react";
+import { Label } from "../ui";
 import Color from "../../const/color";
 import { deepEqual } from "../../utils/deepEqual";
 
@@ -10,7 +10,7 @@ type PropsType = {
     style?: object;
 };
 
-const NumberLabel = (props: PropsType): JSX.Element => {
+const NumberLabel = (props: PropsType): React.ReactElement => {
     let { rank, width, height, style } = props;
 
     style = style

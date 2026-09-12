@@ -9,7 +9,7 @@ import "./index.css";
 
 const mediaQuery = `(max-width: ${USER_CARD_VISIBLE_MIN_WINDOW_SIZE - 1}px)`;
 
-const BangumisView = (): JSX.Element => {
+const BangumisView = (): React.ReactElement => {
     const [bangumis, setBangumis] = useState<BangumiType[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageNum, setPageNum] = useState(0);

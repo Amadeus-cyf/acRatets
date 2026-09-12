@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Button } from "semantic-ui-react";
+import { Button } from "../ui";
 import PageList from "../../model/pagelist";
 import PageButton from "../page_button";
 
@@ -17,7 +17,7 @@ const PageNavigator = ({
     subkey,
     selectedPage,
     onPageClicked: notifyPageClicked,
-}: PropsType): JSX.Element => {
+}: PropsType): React.ReactElement => {
     const pages = useMemo(() => {
         const pageList = new PageList(pageNum);
         pageList.onPageClicked(selectedPage);

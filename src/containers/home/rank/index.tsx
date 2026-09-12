@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Label, Header, Divider } from "semantic-ui-react";
+import { Label, Header, Divider } from "../../../components/ui";
 import { BangumiBriefScoreType } from "../../../interface/BangumiBriefScoreType";
 import BangumiListApi from "../../../api/bangumi_list";
 import { renderBangumiBriefRank } from "../../render";
@@ -13,7 +13,7 @@ const labelStyle = {
 const headerStyle = { position: "relative" as const, top: "6px" };
 const RANK_NUMBER = 10;
 
-const RankSection = (): JSX.Element => {
+const RankSection = (): React.ReactElement => {
     const [bangumis, setBangumis] = useState<BangumiBriefScoreType[]>([]);
 
     useEffect(() => {

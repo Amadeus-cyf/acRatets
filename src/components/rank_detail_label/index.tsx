@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import NumberLabel from "../number_label";
-import { Label, Image, Header, Divider } from "semantic-ui-react";
+import { Label, Image, Header, Divider } from "../ui";
 import { BangumiRankType } from "../../interface/BangumiRankType";
 import ScoreLabel from "../score_label";
 import Color from "../../const/color";
@@ -13,7 +13,7 @@ const labelStyle = {
     background: "rgba(255, 255, 255, 0)",
 };
 
-const RankDetailLabel = (props: BangumiRankType): JSX.Element => {
+const RankDetailLabel = (props: BangumiRankType): React.ReactElement => {
     const { title, image_url, synopsis, rank, score, userNumber } = props;
 
     const synoBrief =

@@ -11,7 +11,7 @@ import "./index.css";
 
 const mediaQuery = `(max-width: ${USER_CARD_VISIBLE_MIN_WINDOW_SIZE - 1}px)`;
 
-const Home = (): JSX.Element => {
+const Home = (): React.ReactElement => {
     const user = useSelector((state: StateType) => state.user);
     const [isNarrow, setIsNarrow] = useState(
         () => window.matchMedia(mediaQuery).matches

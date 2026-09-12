@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Header, Divider } from "semantic-ui-react";
+import { Header, Divider } from "../../../components/ui";
 import { BangumiType } from "../../../interface/BangumiType";
 import { BangumiSeasonType } from "../../../interface/BangumiSeasonType";
 import BangumiApi from "../../../api/bangumi";
@@ -7,7 +7,11 @@ import { headerStyle, dividerStyle } from "./style";
 import { renderBangumiList } from "../../render";
 import "./index.css";
 
-const Bangumis = ({ season, month, year }: BangumiSeasonType): JSX.Element => {
+const Bangumis = ({
+    season,
+    month,
+    year,
+}: BangumiSeasonType): React.ReactElement => {
     const [bangumis, setBangumis] = useState<BangumiType[]>([]);
 
     useEffect(() => {

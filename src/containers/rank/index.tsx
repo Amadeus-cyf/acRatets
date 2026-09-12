@@ -5,7 +5,7 @@ import BangumiListApi from "../../api/bangumi_list";
 import { renderBangumiRank } from "../render";
 import "./index.css";
 
-const Rank = (): JSX.Element => {
+const Rank = (): React.ReactElement => {
     const [bangumis, setBangumis] = useState<BangumiRankType[]>([]);
 
     useEffect(() => {

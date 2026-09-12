@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { useNavigate } from "react-router-dom";
-import { Menu } from "semantic-ui-react";
+import { Menu } from "../../../components/ui";
 import Color from "../../../const/color";
 import "./index.css";
 
@@ -25,7 +25,7 @@ interface PropsType {
     currentTab: string;
 }
 
-const SubNavbar = (props: PropsType): JSX.Element => {
+const SubNavbar = (props: PropsType): React.ReactElement => {
     const { currentTab } = props;
     const navigate = useNavigate();
 

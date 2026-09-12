@@ -43,7 +43,7 @@ const toBangumiDetail = (res: BangumiDetailRespType): BangumiDetailType => ({
     producers: res.producers.map((producer) => producer.name),
 });
 
-const BangumiDetail = (): JSX.Element => {
+const BangumiDetail = (): React.ReactElement => {
     const [bangumi, setBangumi] = useState<BangumiDetailType>();
     const { id } = useParams<{ id: string }>();
 

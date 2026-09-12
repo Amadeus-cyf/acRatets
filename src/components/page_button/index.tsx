@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Button } from "semantic-ui-react";
+import { Button } from "../ui";
 
 type PropsType = {
     pageNum: number;
@@ -7,7 +7,7 @@ type PropsType = {
     onPageClicked: (pageNum: number) => void;
 };
 
-const PageButton = (props: PropsType): JSX.Element => {
+const PageButton = (props: PropsType): React.ReactElement => {
     const { pageNum, onPageClicked } = props;
 
     const clickListener = (): void => {

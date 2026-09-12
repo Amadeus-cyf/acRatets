@@ -1,5 +1,5 @@
 import React, { memo, useState } from "react";
-import { Header } from "semantic-ui-react";
+import { Header } from "../../../components/ui";
 import { getCurrentDate } from "../../../utils/dateutil";
 import DateButton from "../../../components/date_button";
 import "./index.css";
@@ -12,7 +12,7 @@ const YEARS = Array.from(
 );
 const MONTHS = [1, 4, 7, 10, -1];
 
-const DateSection = ({ switchDateListener }: PropsType): JSX.Element => {
+const DateSection = ({ switchDateListener }: PropsType): React.ReactElement => {
     const currentDate = getCurrentDate();
     const [selectedYear, setSelectedYear] = useState(currentDate.year);
     const [selectedMonth, setSelectedMonth] = useState(currentDate.month);

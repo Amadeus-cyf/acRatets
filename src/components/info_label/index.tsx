@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Label } from "semantic-ui-react";
+import { Label } from "../ui";
 
 type PropsType = {
     info: string;

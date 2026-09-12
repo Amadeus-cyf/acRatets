@@ -8,7 +8,7 @@ import PageNavigator from "../../components/page_navigator";
 import { renderBangumiList } from "../render";
 import "./index.css";
 
-const Timeline = (): JSX.Element => {
+const Timeline = (): React.ReactElement => {
     const currentDate = getCurrentDate();
     const [year, setYear] = useState(currentDate.year);
     const [season, setSeason] = useState(currentDate.season);

@@ -17,7 +17,7 @@ type NavigationProps = {
     currentTab: string;
 };
 
-const NavigationSection = (props: NavigationProps): JSX.Element => {
+const NavigationSection = (props: NavigationProps): React.ReactElement => {
     const { currentTab } = props;
 
     return (

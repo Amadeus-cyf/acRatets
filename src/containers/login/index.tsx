@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../store/action";
 import { useNavigate } from "react-router-dom";
-import { Header, Button, Form } from "semantic-ui-react";
+import { Header, Button, Form } from "../../components/ui";
 import { style } from "./style";
 import "./index.css";
 import AuthApi from "../../api/auth";
@@ -11,7 +11,7 @@ import { AppDispatch } from "../../store";
 
 type ErrorDisplayType = "none" | "inline" | "block";
 
-const Login = (): JSX.Element => {
+const Login = (): React.ReactElement => {
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
     const [email, setEmail] = useState("");
@@ -83,12 +83,14 @@ const Login = (): JSX.Element => {
                     />
                 </Form.Field>
                 <Button
+                    type="submit"
                     content="Log in"
                     style={style.buttonStyle}
                     disabled={isvalid}
                     color="blue"
                 />
                 <Button
+                    type="button"
                     content="Sign up"
                     style={style.buttonStyle}
                     color="blue"

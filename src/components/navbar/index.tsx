@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Menu, Image } from "semantic-ui-react";
+import { Menu, Image } from "../ui";
 import avatar from "../../assets/avatar_optimized.jpg";
 import { UserType } from "../../interface/UserType";
 import { StateType } from "../../interface/StateType";
 import { setUser } from "../../store/action";
 import { AppDispatch } from "../../store";
 
-const Navbar = (): JSX.Element => {
+const Navbar = (): React.ReactElement => {
     const dispatch = useDispatch<AppDispatch>();
     const user = useSelector((state: StateType) => state.user);
 

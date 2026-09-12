@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Label, Header } from "semantic-ui-react";
+import { Label, Header } from "../ui";
 import Color from "../../const/color";
 import { deepEqual } from "../../utils/deepEqual";
 import "./index.css";

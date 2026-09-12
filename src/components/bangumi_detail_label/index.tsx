@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Image, Header } from "semantic-ui-react";
+import { Image, Header } from "../ui";
 import { BangumiDetailType } from "../../interface/BangumiDetailType";
 import { deepEqual } from "../../utils/deepEqual";
 import GenreLabel from "../genre_label";

@@ -8,7 +8,7 @@ import { BangumiBriefScoreType } from "../interface/BangumiBriefScoreType";
 export const renderBangumiList = (
     bangumis: Array<BangumiType>,
     width: string = "25%"
-): Array<JSX.Element> => {
+): Array<React.ReactElement> => {
     return bangumis.map((bangumi) => (
         <BangumiLabel
             key={`BangumisView ${bangumi.anime_id}`}
@@ -22,7 +22,7 @@ export const renderBangumiList = (
 
 export const renderBangumiBriefRank = (
     bangumis: Array<BangumiBriefScoreType>
-): Array<JSX.Element> => {
+): Array<React.ReactElement> => {
     return bangumis.map((bangumi: BangumiBriefScoreType, index: number) => {
         return (
             <RankLabel
@@ -38,7 +38,7 @@ export const renderBangumiBriefRank = (
 
 export const renderBangumiRank = (
     bangumis: Array<BangumiRankType>
-): Array<JSX.Element> => {
+): Array<React.ReactElement> => {
     return bangumis.map((bangumi, i) => (
         <RankDetailLabel
             key={`rank-detail-${bangumi.anime_id}`}
@@ -53,3 +53,4 @@ export const renderBangumiRank = (
         />
     ));
 };
+import React from "react";
