@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Header, Divider } from "../../../components/ui";
-import { BangumiType } from "../../../interface/BangumiType";
-import { BangumiSeasonType } from "../../../interface/BangumiSeasonType";
-import BangumiApi from "../../../api/bangumi";
+import { Header, Divider } from "@/components/ui";
+import { BangumiType } from "@/interface/BangumiType";
+import { BangumiSeasonType } from "@/interface/BangumiSeasonType";
+import BangumiApi from "@/api/bangumi";
 import { headerStyle, dividerStyle } from "./style";
-import { renderBangumiList } from "../../render";
+import { renderBangumiList } from "@/containers/render";
 import "./index.css";
 
 const Bangumis = ({

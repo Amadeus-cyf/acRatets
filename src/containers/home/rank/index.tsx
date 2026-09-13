@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Label, Header, Divider } from "../../../components/ui";
-import { BangumiBriefScoreType } from "../../../interface/BangumiBriefScoreType";
-import BangumiListApi from "../../../api/bangumi_list";
-import { renderBangumiBriefRank } from "../../render";
+import { Label, Header, Divider } from "@/components/ui";
+import { BangumiBriefScoreType } from "@/interface/BangumiBriefScoreType";
+import BangumiListApi from "@/api/bangumi_list";
+import { renderBangumiBriefRank } from "@/containers/render";
 
 const labelStyle = {
     width: "100%",

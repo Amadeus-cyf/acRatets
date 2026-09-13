@@ -1,9 +1,9 @@
 import React, { memo } from "react";
-import { Image, Header, Card, Icon } from "../ui";
-import avatar from "../../assets/avatar_optimized.jpg";
-import background from "../../assets/background_optimized.jpg";
-import { UserType } from "../../interface/UserType";
-import { deepEqual } from "../../utils/deepEqual";
+import { Image, Header, Card, Icon } from "@/components/ui";
+import avatar from "@/assets/avatar_optimized.jpg";
+import background from "@/assets/background_optimized.jpg";
+import { UserType } from "@/interface/UserType";
+import { deepEqual } from "@/utils/deepEqual";
 import "./index.css";
 import { cardStyle } from "./style";
 

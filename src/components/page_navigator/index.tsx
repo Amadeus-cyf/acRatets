@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
-import { Button } from "../ui";
-import PageList from "../../model/pagelist";
-import PageButton from "../page_button";
+import { Button } from "@/components/ui";
+import PageList from "@/model/pagelist";
+import PageButton from "@/components/page_button";
 
 import "./index.css";
 

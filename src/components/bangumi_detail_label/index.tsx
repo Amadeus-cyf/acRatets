@@ -1,9 +1,9 @@
 import React, { memo } from "react";
-import { Image, Header } from "../ui";
-import { BangumiDetailType } from "../../interface/BangumiDetailType";
-import { deepEqual } from "../../utils/deepEqual";
-import GenreLabel from "../genre_label";
-import InfoLabel from "../info_label";
+import { Image, Header } from "@/components/ui";
+import { BangumiDetailType } from "@/interface/BangumiDetailType";
+import { deepEqual } from "@/utils/deepEqual";
+import GenreLabel from "@/components/genre_label";
+import InfoLabel from "@/components/info_label";
 import "./index.css";
 
 interface PropsType {

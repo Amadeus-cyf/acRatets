@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { BangumiRankType } from "../../interface/BangumiRankType";
-import NavigationSection from "../navigation_section";
-import BangumiListApi from "../../api/bangumi_list";
-import { renderBangumiRank } from "../render";
+import { BangumiRankType } from "@/interface/BangumiRankType";
+import NavigationSection from "@/containers/navigation_section";
+import BangumiListApi from "@/api/bangumi_list";
+import { renderBangumiRank } from "@/containers/render";
 import "./index.css";
 
 const Rank = (): React.ReactElement => {

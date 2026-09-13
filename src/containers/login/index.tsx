@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../store/action";
+import { setUser } from "@/store/action";
 import { useNavigate } from "react-router-dom";
-import { Header, Button, Form } from "../../components/ui";
+import { Header, Button, Form } from "@/components/ui";
 import { style } from "./style";
 import "./index.css";
-import AuthApi from "../../api/auth";
-import { UserType } from "../../interface/UserType";
-import { AppDispatch } from "../../store";
+import AuthApi from "@/api/auth";
+import { UserType } from "@/interface/UserType";
+import { AppDispatch } from "@/store";
 
 type ErrorDisplayType = "none" | "inline" | "block";
 

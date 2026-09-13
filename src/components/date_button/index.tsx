@@ -1,7 +1,7 @@
 import React, { memo } from "react";
-import { Button } from "../ui";
-import Color from "../../const/color";
-import { deepEqual } from "../../utils/deepEqual";
+import { Button } from "@/components/ui";
+import Color from "@/const/color";
+import { deepEqual } from "@/utils/deepEqual";
 
 type PropsType = {
     date: string; // the info button represents

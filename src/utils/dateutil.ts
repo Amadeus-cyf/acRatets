@@ -1,4 +1,4 @@
-import { BangumiSeasonType } from "../interface/BangumiSeasonType";
+import { BangumiSeasonType } from "@/interface/BangumiSeasonType";
 
 const WINTER = "winter";
 const SPRING = "spring";

@@ -1,7 +1,7 @@
 import { memo } from "react";
-import { Label, Header } from "../ui";
-import Color from "../../const/color";
-import { deepEqual } from "../../utils/deepEqual";
+import { Label, Header } from "@/components/ui";
+import Color from "@/const/color";
+import { deepEqual } from "@/utils/deepEqual";
 import "./index.css";
 
 interface PropsType {

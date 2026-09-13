@@ -1,7 +1,7 @@
 import React, { memo } from "react";
-import { Label } from "../ui";
-import Color from "../../const/color";
-import { deepEqual } from "../../utils/deepEqual";
+import { Label } from "@/components/ui";
+import Color from "@/const/color";
+import { deepEqual } from "@/utils/deepEqual";
 
 type PropsType = {
     rank: number;

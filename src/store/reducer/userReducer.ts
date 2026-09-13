@@ -1,6 +1,6 @@
-import { UserActionType } from "../../interface/ActionType";
-import initialUser from "../../const/initialUser";
-import { UserType } from "../../interface/UserType";
+import { UserActionType } from "@/interface/ActionType";
+import initialUser from "@/const/initialUser";
+import { UserType } from "@/interface/UserType";
 
 export default function userReducer(
     state: UserType = initialUser,

@@ -1,4 +1,4 @@
-import { UserType } from "../interface/UserType";
+import { UserType } from "@/interface/UserType";
 
 const InitialUser: UserType = {
     _id: "",

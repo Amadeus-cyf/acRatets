@@ -1,9 +1,9 @@
 import React, { memo } from "react";
-import NumberLabel from "../number_label";
-import { Label, Image, Header, Divider } from "../ui";
-import { BangumiRankType } from "../../interface/BangumiRankType";
-import ScoreLabel from "../score_label";
-import Color from "../../const/color";
+import NumberLabel from "@/components/number_label";
+import { Label, Image, Header, Divider } from "@/components/ui";
+import { BangumiRankType } from "@/interface/BangumiRankType";
+import ScoreLabel from "@/components/score_label";
+import Color from "@/const/color";
 import "./index.css";
 
 const labelStyle = {

@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Label, Image, Header } from "../ui";
+import { Label, Image, Header } from "@/components/ui";
 import "./index.css";
 
 type BangumiBriefType = {

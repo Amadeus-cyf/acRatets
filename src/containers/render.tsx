@@ -1,9 +1,9 @@
-import { BangumiType } from "../interface/BangumiType";
-import { BangumiRankType } from "../interface/BangumiRankType";
-import BangumiLabel from "../components/bangumi_label";
-import RankLabel from "../components/rank_label";
-import RankDetailLabel from "../components/rank_detail_label";
-import { BangumiBriefScoreType } from "../interface/BangumiBriefScoreType";
+import { BangumiType } from "@/interface/BangumiType";
+import { BangumiRankType } from "@/interface/BangumiRankType";
+import BangumiLabel from "@/components/bangumi_label";
+import RankLabel from "@/components/rank_label";
+import RankDetailLabel from "@/components/rank_detail_label";
+import { BangumiBriefScoreType } from "@/interface/BangumiBriefScoreType";
 
 export const renderBangumiList = (
     bangumis: Array<BangumiType>,

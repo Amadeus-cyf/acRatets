@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Bangumis from "./bangumis";
-import UserCard from "../../components/user_card";
-import NavigationSection from "../navigation_section";
-import { getCurrentDate, getPreviousDate } from "../../utils/dateutil";
+import UserCard from "@/components/user_card";
+import NavigationSection from "@/containers/navigation_section";
+import { getCurrentDate, getPreviousDate } from "@/utils/dateutil";
 import RankSection from "./rank";
-import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from "../../const/window_size_threshold";
-import { StateType } from "../../interface/StateType";
+import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from "@/const/window_size_threshold";
+import { StateType } from "@/interface/StateType";
 import "./index.css";
 
 const mediaQuery = `(max-width: ${USER_CARD_VISIBLE_MIN_WINDOW_SIZE - 1}px)`;

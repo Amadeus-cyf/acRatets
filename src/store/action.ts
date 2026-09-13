@@ -1,6 +1,6 @@
-import { UserType } from "../interface/UserType";
-import { UserActionType } from "../interface/ActionType";
-import InitialUser from "../const/initialUser";
+import { UserType } from "@/interface/UserType";
+import { UserActionType } from "@/interface/ActionType";
+import InitialUser from "@/const/initialUser";
 
 export const setUser = (user: UserType): UserActionType => {
     return {

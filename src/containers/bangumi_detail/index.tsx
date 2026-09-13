@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { BangumiDetailType } from "../../interface/BangumiDetailType";
-import BangumiDetailApi from "../../api/bangumi_detail";
-import Navbar from "../../components/navbar";
-import BangumiDetailLabel from "../../components/bangumi_detail_label";
+import { BangumiDetailType } from "@/interface/BangumiDetailType";
+import BangumiDetailApi from "@/api/bangumi_detail";
+import Navbar from "@/components/navbar";
+import BangumiDetailLabel from "@/components/bangumi_detail_label";
 import "./index.css";
 
 interface AiringDate {

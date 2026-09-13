@@ -1,7 +1,7 @@
 import React, { memo, useState } from "react";
-import { Header } from "../../../components/ui";
-import { getCurrentDate } from "../../../utils/dateutil";
-import DateButton from "../../../components/date_button";
+import { Header } from "@/components/ui";
+import { getCurrentDate } from "@/utils/dateutil";
+import DateButton from "@/components/date_button";
 import "./index.css";
 
 type PropsType = { switchDateListener: (year: number, month: number) => void };

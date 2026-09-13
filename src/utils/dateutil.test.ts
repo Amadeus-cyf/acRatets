@@ -3,7 +3,7 @@ import {
     getPreviousDate,
     getSeasonFromMonth,
 } from "./dateutil";
-import { BangumiSeasonType } from "../interface/BangumiSeasonType";
+import { BangumiSeasonType } from "@/interface/BangumiSeasonType";
 import { strict as assert } from "assert";
 
 const WINTER = "winter";

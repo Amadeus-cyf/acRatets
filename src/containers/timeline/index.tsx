@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { getCurrentDate, getSeasonFromMonth } from "../../utils/dateutil";
-import { BangumiType } from "../../interface/BangumiType";
-import NavigationSection from "../navigation_section";
-import TimelineApi from "../../api/timeline";
+import { getCurrentDate, getSeasonFromMonth } from "@/utils/dateutil";
+import { BangumiType } from "@/interface/BangumiType";
+import NavigationSection from "@/containers/navigation_section";
+import TimelineApi from "@/api/timeline";
 import DateSection from "./date_section";
-import PageNavigator from "../../components/page_navigator";
-import { renderBangumiList } from "../render";
+import PageNavigator from "@/components/page_navigator";
+import { renderBangumiList } from "@/containers/render";
 import "./index.css";
 
 const Timeline = (): React.ReactElement => {
