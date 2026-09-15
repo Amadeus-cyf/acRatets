@@ -1,4 +1,10 @@
-import axios, { AxiosResponse } from "axios";
+import type { AxiosResponse } from "axios";
+import { apiClient } from "./client";
+import type {
+    ApiEnvelope,
+    BangumiCountPayload,
+    BangumiListPayload,
+} from "./types";
 
 class TimelineApi {
     static getTimelineInPage(
@@ -6,16 +12,16 @@ class TimelineApi {
         season: string,
         page: number,
         signal?: AbortSignal
-    ): Promise<AxiosResponse<any>> {
-        return axios.get(`/api/bangumi/${year}/${season}/${page}`, { signal });
+    ): Promise<AxiosResponse<ApiEnvelope<BangumiListPayload>>> {
+        return apiClient.get(`/bangumi/${year}/${season}/${page}`, { signal });
     }
 
     static getTimelineCount(
         year: number,
         season: string,
         signal?: AbortSignal
-    ): Promise<AxiosResponse<any>> {
-        return axios.get(`/api/bangumi/${year}/${season}/count`, { signal });
+    ): Promise<AxiosResponse<ApiEnvelope<BangumiCountPayload>>> {
+        return apiClient.get(`/bangumi/${year}/${season}/count`, { signal });
     }
 }
 

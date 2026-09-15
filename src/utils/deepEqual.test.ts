@@ -80,7 +80,7 @@ test("test array object", () => {
 });
 
 test("null/undefined compare", () => {
-    let a = null;
-    let b = undefined;
+    const a = null;
+    const b = undefined;
     assert.equal(deepEqual(a, b), false);
 });

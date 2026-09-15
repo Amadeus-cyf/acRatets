@@ -53,7 +53,7 @@ export const Button = memo(
 
 type LabelProps = Omit<React.HTMLAttributes<HTMLDivElement>, "style"> & {
     content?: React.ReactNode;
-    style?: any;
+    style?: React.CSSProperties;
 };
 
 export const Label = memo(({ content, children, ...props }: LabelProps) => (
@@ -63,7 +63,7 @@ export const Label = memo(({ content, children, ...props }: LabelProps) => (
 type ImageProps = Omit<React.ImgHTMLAttributes<HTMLImageElement>, "style"> & {
     avatar?: boolean;
     rounded?: boolean;
-    style?: any;
+    style?: React.CSSProperties;
 };
 
 export const Image = memo(
@@ -82,7 +82,7 @@ export const Image = memo(
 type HeaderProps = Omit<React.HTMLAttributes<HTMLHeadingElement>, "style"> & {
     content?: React.ReactNode;
     size?: "small" | "medium" | "large";
-    style?: any;
+    style?: React.CSSProperties;
 };
 
 export const Header = memo(
@@ -105,7 +105,7 @@ export const Divider = memo((props: React.HTMLAttributes<HTMLHRElement>) => (
 
 type MenuProps = Omit<React.HTMLAttributes<HTMLElement>, "style"> & {
     secondary?: boolean;
-    style?: any;
+    style?: React.CSSProperties;
 };
 type MenuItemProps = Omit<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -113,7 +113,7 @@ type MenuItemProps = Omit<
 > & {
     active?: boolean;
     name?: string;
-    style?: any;
+    style?: React.CSSProperties;
     onClick?: (
         event: React.MouseEvent<HTMLButtonElement>,
         data: { name?: string }
@@ -154,7 +154,7 @@ type InputProps = Omit<
 > & {
     icon?: string;
     size?: "medium" | "big";
-    style?: any;
+    style?: React.CSSProperties;
 };
 
 export const Input = memo(
@@ -183,7 +183,7 @@ const FormField = ({ children }: React.PropsWithChildren) => (
     <Stack spacing={1}>{children}</Stack>
 );
 type FormProps = Omit<React.FormHTMLAttributes<HTMLFormElement>, "style"> & {
-    style?: any;
+    style?: React.CSSProperties;
 };
 const FormRoot = (props: FormProps) => <form {...props} />;
 export const Form = Object.assign(FormRoot, { Field: FormField, Input });
@@ -194,7 +194,9 @@ const CardContent = ({
     <MuiCardContent>{children}</MuiCardContent>
 );
 const CardRoot = (
-    props: Omit<React.HTMLAttributes<HTMLDivElement>, "style"> & { style?: any }
+    props: Omit<React.HTMLAttributes<HTMLDivElement>, "style"> & {
+        style?: React.CSSProperties;
+    }
 ) => <MuiCard {...props} />;
 export const Card = Object.assign(CardRoot, { Content: CardContent });
 

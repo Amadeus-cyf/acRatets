@@ -1,29 +1,35 @@
 /*
  *  return true if two objs are the same in value
  */
-export const deepEqual = (obj1: any, obj2: any): boolean => {
-    if (obj1 === obj2) {
+export const deepEqual = (obj1: unknown, obj2: unknown): boolean => {
+    if (Object.is(obj1, obj2)) {
         return true;
     }
-    if (typeof obj1 !== typeof obj2) {
+
+    if (
+        obj1 === null ||
+        obj2 === null ||
+        typeof obj1 !== "object" ||
+        typeof obj2 !== "object"
+    ) {
         return false;
     }
-    if (typeof obj1 !== "object") {
+
+    if (Array.isArray(obj1) !== Array.isArray(obj2)) {
         return false;
     }
-    if (Object.keys(obj1).length !== Object.keys(obj2).length) {
+
+    const first = obj1 as Record<string, unknown>;
+    const second = obj2 as Record<string, unknown>;
+    const firstKeys = Object.keys(first);
+
+    if (firstKeys.length !== Object.keys(second).length) {
         return false;
     }
-    let isEqual: boolean = true;
-    for (let key in obj1) {
-        if (typeof obj1[key] === "object") {
-            isEqual = isEqual && deepEqual(obj1[key], obj2[key]);
-        } else {
-            isEqual = isEqual && obj1[key] === obj2[key];
-        }
-        if (!isEqual) {
-            return false;
-        }
-    }
-    return isEqual;
+
+    return firstKeys.every(
+        (key) =>
+            Object.prototype.hasOwnProperty.call(second, key) &&
+            deepEqual(first[key], second[key])
+    );
 };

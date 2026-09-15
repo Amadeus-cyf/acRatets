@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 export const cardStyle = {
     avatarStyle: {
         transform: "scale(1.7, 1.7)",
@@ -21,4 +23,4 @@ export const cardStyle = {
     iconStyle: {
         marginLeft: "15px",
     },
-};
+} satisfies Record<string, CSSProperties>;

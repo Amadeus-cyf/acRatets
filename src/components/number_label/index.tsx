@@ -7,21 +7,18 @@ type PropsType = {
     rank: number;
     width: number;
     height: number;
-    style?: object;
+    style?: React.CSSProperties;
 };
 
 const NumberLabel = (props: PropsType): React.ReactElement => {
-    let { rank, width, height, style } = props;
+    const { rank, width, height, style } = props;
+    const resolvedStyle = style ?? {
+        background: Color.BLUE,
+        fontSize: "9pt",
+    };
 
-    style = style
-        ? style
-        : {
-              background: Color.BLUE,
-              fontSize: "9pt",
-          };
-
-    let labelStyle = {
-        ...style,
+    const labelStyle = {
+        ...resolvedStyle,
         width: `${width}px`,
         height: `${height}px`,
         marginRight: "15px",

@@ -2,7 +2,11 @@ import React, { memo } from "react";
 import { Input } from "@/components/ui";
 import { deepEqual } from "@/utils/deepEqual";
 
-const Searchbar = (props: any): React.ReactElement => {
+interface SearchbarProps {
+    searchbarStyle?: React.CSSProperties;
+}
+
+const Searchbar = (props: SearchbarProps): React.ReactElement => {
     const { searchbarStyle } = props;
 
     return (

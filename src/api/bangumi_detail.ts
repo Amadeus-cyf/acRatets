@@ -1,18 +1,24 @@
-import axios, { AxiosResponse } from "axios";
+import type { AxiosResponse } from "axios";
+import { apiClient, jikanClient } from "./client";
+import type {
+    ApiEnvelope,
+    BangumiDetailPayload,
+    JikanAnimeResponse,
+} from "./types";
 
 class BangumiDetailApi {
     static getBangumiDetailV2(
         id: string,
         signal?: AbortSignal
-    ): Promise<AxiosResponse<any>> {
-        return axios.get(`https://api.jikan.moe/v3/anime/${id}`, { signal });
+    ): Promise<AxiosResponse<JikanAnimeResponse>> {
+        return jikanClient.get(`/anime/${id}`, { signal });
     }
 
     static getBangumiDetailV1(
         id: string,
         signal?: AbortSignal
-    ): Promise<AxiosResponse<any>> {
-        return axios.get(`/api/bangumi/${id}`, { signal });
+    ): Promise<AxiosResponse<ApiEnvelope<BangumiDetailPayload>>> {
+        return apiClient.get(`/bangumi/${id}`, { signal });
     }
 }
 

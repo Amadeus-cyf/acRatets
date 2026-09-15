@@ -2,43 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BangumiDetailType } from "@/interface/BangumiDetailType";
 import BangumiDetailApi from "@/api/bangumi_detail";
+import type { JikanAnime } from "@/api/types";
 import Navbar from "@/components/navbar";
 import BangumiDetailLabel from "@/components/bangumi_detail_label";
 import "./index.css";
 
-interface AiringDate {
-    day: number;
-    month: number;
-    year: number;
-}
-interface BangumiDetailRespType {
-    mal_id: number;
-    title: string;
-    title_japanese: string;
-    image_url: string;
-    episodes: number;
-    status: string;
-    airing: boolean;
-    aired: { prop: { from: AiringDate; to: AiringDate } };
-    synopsis: string;
-    genres: Array<{ name: string }>;
-    producers: Array<{ name: string }>;
-}
+const airingDateToString = (airing: string | null): string =>
+    airing ? airing.slice(0, 10).replaceAll("-", "/") : "Unknown";
 
-const airingDateToString = (airing: AiringDate): string =>
-    `${airing.year}/${airing.month}/${airing.day}`;
-
-const toBangumiDetail = (res: BangumiDetailRespType): BangumiDetailType => ({
+const toBangumiDetail = (res: JikanAnime): BangumiDetailType => ({
     anime_id: res.mal_id,
     title: res.title,
-    title_japanese: res.title_japanese,
-    image_url: res.image_url,
-    episodes: res.episodes,
-    status: res.status,
+    title_japanese: res.title_japanese ?? "",
+    image_url: res.images.jpg.image_url,
+    episodes: res.episodes ?? 0,
+    status: res.status ?? "Unknown",
     airing: res.airing,
-    aired_from: airingDateToString(res.aired.prop.from),
-    aired_to: airingDateToString(res.aired.prop.to),
-    synopsis: res.synopsis,
+    aired_from: airingDateToString(res.aired.from),
+    aired_to: airingDateToString(res.aired.to),
+    synopsis: res.synopsis ?? "",
     genres: res.genres.map((genre) => genre.name),
     producers: res.producers.map((producer) => producer.name),
 });
@@ -53,7 +35,7 @@ const BangumiDetail = (): React.ReactElement => {
 
         BangumiDetailApi.getBangumiDetailV2(id, controller.signal)
             .then((res) => {
-                setBangumi(toBangumiDetail(res.data));
+                setBangumi(toBangumiDetail(res.data.data));
             })
             .catch((err) => {
                 if (controller.signal.aborted) return;

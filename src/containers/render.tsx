@@ -1,3 +1,4 @@
+import React from "react";
 import { BangumiType } from "@/interface/BangumiType";
 import { BangumiRankType } from "@/interface/BangumiRankType";
 import BangumiLabel from "@/components/bangumi_label";
@@ -53,4 +54,3 @@ export const renderBangumiRank = (
         />
     ));
 };
-import React from "react";

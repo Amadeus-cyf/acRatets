@@ -4,7 +4,7 @@ import Searchbar from "@/components/searchbar";
 import SubNavbar from "./subNavbar";
 import "./index.css";
 
-const searchbarStyle = {
+const searchbarStyle: React.CSSProperties = {
     position: "relative",
     left: "15%",
     width: "40%",

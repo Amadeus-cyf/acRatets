@@ -6,6 +6,7 @@ import { Header, Button, Form } from "@/components/ui";
 import { style } from "./style";
 import "./index.css";
 import AuthApi from "@/api/auth";
+import type { LoginResponse } from "@/api/types";
 import { UserType } from "@/interface/UserType";
 import { AppDispatch } from "@/store";
 
@@ -18,28 +19,28 @@ const Login = (): React.ReactElement => {
     const [password, setPassword] = useState("");
     const [errorDisplay, setErrorDisplay] = useState<ErrorDisplayType>("none");
 
-    const login = (): void => {
-        AuthApi.login(email, password)
-            .then((res) => {
-                switch (res.data.message) {
-                    case "Successfully Login":
-                        navigate("/");
-                        saveUserToContext(res.data);
-                        break;
-                    case "Could not find user":
-                        setPassword("");
-                        setErrorDisplay("block");
-                        break;
-                    default:
-                        console.log("Unknown message type");
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+    const login = async (
+        event: React.FormEvent<HTMLFormElement>
+    ): Promise<void> => {
+        event.preventDefault();
+        setErrorDisplay("none");
+
+        try {
+            const { data } = await AuthApi.login(email, password);
+            if (data.message === "Successfully Login") {
+                saveUserToContext(data);
+                navigate("/");
+                return;
+            }
+
+            setPassword("");
+            setErrorDisplay("block");
+        } catch {
+            setErrorDisplay("block");
+        }
     };
 
-    const saveUserToContext = (data: any): void => {
+    const saveUserToContext = (data: LoginResponse): void => {
         const userData: UserType = {
             _id: data._id,
             username: data.username,

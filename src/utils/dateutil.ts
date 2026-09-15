@@ -7,9 +7,9 @@ const FALL = "fall";
 const ALL_YEAR = "allyear";
 
 const getCurrentDate = (): BangumiSeasonType => {
-    let date: Date = new Date();
-    let year: number = date.getFullYear();
-    let month: number = date.getMonth() + 1;
+    const date: Date = new Date();
+    const year: number = date.getFullYear();
+    const month: number = date.getMonth() + 1;
     switch (true) {
         case month >= 1 && month < 4:
             return {
@@ -39,9 +39,9 @@ const getCurrentDate = (): BangumiSeasonType => {
 };
 
 const getPreviousDate = (): BangumiSeasonType => {
-    let date: Date = new Date();
-    let year: number = date.getFullYear();
-    let month: number = date.getMonth() + 1;
+    const date: Date = new Date();
+    const year: number = date.getFullYear();
+    const month: number = date.getMonth() + 1;
     switch (true) {
         case month >= 1 && month < 4:
             return {

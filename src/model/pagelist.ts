@@ -36,7 +36,7 @@ class PageList {
             }
         }
         if (this.pages.length < MaxPagesThreshold) {
-            let mid: number = Math.floor(this.pageCount / 2);
+            const mid: number = Math.floor(this.pageCount / 2);
             for (
                 let i = Math.max(1, mid - 2);
                 i <= Math.min(mid + 2, this.pageCount) &&
@@ -68,7 +68,7 @@ class PageList {
         for (let i = 1; i <= Math.min(this.pageCount, 3); i++) {
             this.pages.push(i);
         }
-        let mid: number = Math.floor(this.pageCount / 2);
+        const mid: number = Math.floor(this.pageCount / 2);
         for (
             let i = Math.max(1, mid - 2);
             i <= Math.min(mid + 2, this.pageCount) &&
@@ -88,7 +88,7 @@ class PageList {
 
     [Symbol.iterator]() {
         let current: number = 1;
-        let end: number = this.pages.length;
+        const end: number = this.pages.length;
         const pages = this.pages;
         return {
             next() {

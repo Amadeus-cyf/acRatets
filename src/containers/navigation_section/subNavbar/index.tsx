@@ -15,7 +15,7 @@ const tabRouteMap: MapType = {
     排行榜: "/rank",
 };
 
-const subnaviStyle = {
+const subnaviStyle: React.CSSProperties = {
     display: "flex",
     flexWrap: "nowrap",
     justifyContent: "center",

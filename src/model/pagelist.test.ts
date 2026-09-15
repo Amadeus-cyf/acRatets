@@ -1,120 +1,41 @@
 import PageList from "./pagelist";
-import { strict as assert } from "assert";
 
-test("test pagelist init", () => {
-    let pagelist: PageList = new PageList(20);
-    let n: number = 1;
-    for (let i of pagelist) {
-        assert.equal(i, n);
-        if (n < 3 || (n >= 8 && n < 12) || n >= 18) {
-            n++;
-        } else if (n == 3) {
-            n = 8;
-        } else if (n == 12) {
-            n = 18;
-        }
-    }
+test("initializes a compact list for twenty pages", () => {
+    expect([...new PageList(20)]).toEqual([
+        1, 2, 3, 8, 9, 10, 11, 12, 18, 19, 20,
+    ]);
 });
 
-test("test pagelist<20> onPageClicked", () => {
-    let pagelist: PageList = new PageList(20);
-    pagelist.onPageClicked(15);
-    let n: number = 1;
-    for (let i of pagelist) {
-        assert.equal(i, n);
-        if (n < 3 || (n >= 13 && n <= 17) || n >= 18) {
-            n++;
-        } else if (n == 3) {
-            n = 13;
-        } else if (n == 13) {
-            n = 18;
-        }
-    }
-    assert.equal(n, 21);
+test("moves the compact window around the selected page", () => {
+    const pageList = new PageList(20);
 
-    n = 1;
-    pagelist.onPageClicked(3);
-    for (let i of pagelist) {
-        assert.equal(i, n);
-        if (n < 5 || (n >= 8 && n < 10) || n >= 18) {
-            n++;
-        } else if (n == 5) {
-            n = 8;
-        } else if (n == 10) {
-            n = 18;
-        }
-    }
-    assert.equal(n, 21);
+    pageList.onPageClicked(15);
+    expect([...pageList]).toEqual([1, 2, 3, 13, 14, 15, 16, 17, 18, 19, 20]);
 
-    n = 1;
-    pagelist.onPageClicked(19);
-    for (let i of pagelist) {
-        assert.equal(i, n);
-        if (n < 3 || (n >= 8 && n < 11) || n >= 17) {
-            n++;
-        } else if (n == 3) {
-            n = 8;
-        } else if (n == 11) {
-            n = 17;
-        }
-    }
-    assert.equal(n, 21);
+    pageList.onPageClicked(3);
+    expect([...pageList]).toEqual([1, 2, 3, 4, 5, 8, 9, 10, 18, 19, 20]);
+
+    pageList.onPageClicked(19);
+    expect([...pageList]).toEqual([1, 2, 3, 8, 9, 10, 11, 17, 18, 19, 20]);
 });
 
-test("test pagelist<11> onPageClicked", () => {
-    let n: number = 1;
-    let pagelist: PageList = new PageList(11);
-    for (let i of pagelist) {
-        assert.equal(i, n++);
-    }
-    n = 1;
-    pagelist.onPageClicked(5);
-    for (let i of pagelist) {
-        assert.equal(i, n++);
-    }
-    assert.equal(n, 12);
+test.each([5, 11])("shows every page when the page count is %i", (count) => {
+    const pageList = new PageList(count);
+    expect([...pageList]).toEqual(
+        Array.from({ length: count }, (_, index) => index + 1)
+    );
+
+    pageList.onPageClicked(Math.ceil(count / 2));
+    expect(pageList.length()).toBe(count);
 });
 
-test("test pagelist<5> onPageClicked", () => {
-    let n: number = 1;
-    let pagelist: PageList = new PageList(5);
-    for (let i of pagelist) {
-        assert.equal(i, n++);
-    }
-    assert.equal(n, 6);
-    n = 1;
-    pagelist.onPageClicked(2);
-    for (let i of pagelist) {
-        assert.equal(i, n++);
-    }
-    assert.equal(n, 6);
-});
+test("ignores selections outside the available page range", () => {
+    const pageList = new PageList(5);
+    const initialPages = [...pageList];
 
-test("test pagelist<6> onPageClick out of border", () => {
-    let n: number = 1;
-    let pagelist: PageList = new PageList(5);
-    for (let i of pagelist) {
-        assert.equal(i, n++);
-    }
-    assert.equal(n, 6);
-    n = 1;
-    pagelist.onPageClicked(0);
-    for (let i of pagelist) {
-        assert.equal(i, n++);
-    }
-    assert.equal(n, 6);
-    n = 1;
-    pagelist.onPageClicked(6);
-    for (let i of pagelist) {
-        assert.equal(i, n++);
-    }
-    assert.equal(n, 6);
-});
+    pageList.onPageClicked(0);
+    expect([...pageList]).toEqual(initialPages);
 
-test("test pagelist length", () => {
-    let pagelist: PageList = new PageList(20);
-    assert.equal(pagelist.length(), 11);
-
-    pagelist = new PageList(5);
-    assert.equal(pagelist.length(), 5);
+    pageList.onPageClicked(6);
+    expect([...pageList]).toEqual(initialPages);
 });

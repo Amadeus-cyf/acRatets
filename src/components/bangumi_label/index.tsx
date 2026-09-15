@@ -9,13 +9,13 @@ type BangumiBriefType = {
     width?: string;
 };
 
-const imageStyle = {
+const imageStyle: React.CSSProperties = {
     width: "170px",
     height: "230px",
     margin: "0 auto",
 };
 
-const titleStyle = {
+const titleStyle: React.CSSProperties = {
     margin: "5px",
     textAlign: "center",
 };
@@ -23,7 +23,7 @@ const titleStyle = {
 const BangumiLabel = (props: BangumiBriefType): React.ReactElement => {
     const { title, image_url, width } = props;
 
-    const labelStyle = {
+    const labelStyle: React.CSSProperties = {
         width: width,
         height: "auto",
         minWidth: "200px",
@@ -40,6 +40,7 @@ const BangumiLabel = (props: BangumiBriefType): React.ReactElement => {
                 className="hoverPartStyle"
                 style={imageStyle}
                 src={image_url}
+                alt={`${title} cover`}
                 loading="lazy"
                 rounded
             />

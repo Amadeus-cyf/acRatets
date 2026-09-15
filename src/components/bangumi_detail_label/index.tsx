@@ -32,6 +32,7 @@ const BangumiDetailLabel = (props: PropsType) => {
             <Image
                 style={imageStyle}
                 src={bangumiDetail.image_url}
+                alt={`${bangumiDetail.title} cover`}
                 loading="lazy"
                 rounded
             />

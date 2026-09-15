@@ -6,7 +6,7 @@ import ScoreLabel from "@/components/score_label";
 import Color from "@/const/color";
 import "./index.css";
 
-const labelStyle = {
+const labelStyle: React.CSSProperties = {
     position: "relative",
     width: "100%",
     height: "100%",
@@ -32,6 +32,7 @@ const RankDetailLabel = (props: BangumiRankType): React.ReactElement => {
                     className="hoverPartStyle"
                     style={{ width: "190px", height: "auto" }}
                     src={image_url}
+                    alt={`${title} cover`}
                     loading="lazy"
                     rounded
                 />

@@ -1,4 +1,6 @@
-import axios, { AxiosResponse } from "axios";
+import type { AxiosResponse } from "axios";
+import { apiClient } from "./client";
+import type { ApiEnvelope, BangumiListPayload } from "./types";
 
 class BangumiApi {
     static getBangumisBySeasonWithLimit(
@@ -6,8 +8,8 @@ class BangumiApi {
         season: string,
         limit: number,
         signal?: AbortSignal
-    ): Promise<AxiosResponse<any>> {
-        return axios.get(`/api/bangumi/${year}/${season}/limit/${limit}`, {
+    ): Promise<AxiosResponse<ApiEnvelope<BangumiListPayload>>> {
+        return apiClient.get(`/bangumi/${year}/${season}/limit/${limit}`, {
             signal,
         });
     }
@@ -15,8 +17,8 @@ class BangumiApi {
     static getBangumisBySeason(
         year: number,
         season: string
-    ): Promise<AxiosResponse<any>> {
-        return axios.get(`/api/bangumi/${year}/${season}`);
+    ): Promise<AxiosResponse<ApiEnvelope<BangumiListPayload>>> {
+        return apiClient.get(`/bangumi/${year}/${season}`);
     }
 }
 

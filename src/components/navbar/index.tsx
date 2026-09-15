@@ -31,7 +31,11 @@ const Navbar = (): React.ReactElement => {
             <Menu.Item
                 style={{ color: "white", position: "absolute", right: "100px" }}
             >
-                <Image avatar src={userAvatar} />
+                <Image
+                    avatar
+                    src={userAvatar}
+                    alt={`${user.username || "Guest"} avatar`}
+                />
             </Menu.Item>
             <Menu.Item
                 name="登陆"

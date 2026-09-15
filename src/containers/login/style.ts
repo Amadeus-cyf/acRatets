@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 export const style = {
     formStyle: {
         fontFamily: "'PT Sans Caption', sans-serif",
@@ -10,4 +12,4 @@ export const style = {
         fontSize: "13pt",
         margin: "10px 25px 10px 25px",
     },
-};
+} satisfies Record<string, CSSProperties>;

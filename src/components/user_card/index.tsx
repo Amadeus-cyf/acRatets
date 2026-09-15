@@ -16,13 +16,18 @@ const UserCard = (props: PropsType) => {
         props.user.avatar === "" ? avatar : props.user.avatar;
     const userName: string =
         props.user.username === "" ? "未登陆" : props.user.username;
-    const followerNum: Number = props.user.follower;
-    const followingNum: Number = props.user.following;
+    const followerNum: number = props.user.follower;
+    const followingNum: number = props.user.following;
 
     return (
         <Card style={cardStyle.cardStyle}>
-            <Image className="backgroundStyle" src={background} />
-            <Image avatar src={userAvatar} style={cardStyle.avatarStyle} />
+            <Image className="backgroundStyle" src={background} alt="" />
+            <Image
+                avatar
+                src={userAvatar}
+                alt={`${userName} avatar`}
+                style={cardStyle.avatarStyle}
+            />
             <Header
                 size="medium"
                 style={cardStyle.userHeaderStyle}
