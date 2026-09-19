@@ -3,6 +3,7 @@ import { Label, Header, Divider } from "@/components/ui";
 import { BangumiBriefScoreType } from "@/interface/BangumiBriefScoreType";
 import BangumiListApi from "@/api/bangumi_list";
 import { renderBangumiBriefRank } from "@/containers/render";
+import AsyncState, { LoadStatus } from "@/components/async_state";
 
 const labelStyle = {
     width: "100%",
@@ -15,15 +16,18 @@ const RANK_NUMBER = 10;
 
 const RankSection = (): React.ReactElement => {
     const [bangumis, setBangumis] = useState<BangumiBriefScoreType[]>([]);
+    const [status, setStatus] = useState<LoadStatus>("loading");
 
     useEffect(() => {
         const controller = new AbortController();
         BangumiListApi.getBangumiRank(RANK_NUMBER, controller.signal)
             .then((res) => {
-                setBangumis(res.data.data.bangumiList);
+                const nextBangumis = res.data.data.bangumiList;
+                setBangumis(nextBangumis);
+                setStatus(nextBangumis.length > 0 ? "success" : "empty");
             })
-            .catch((err) => {
-                if (!controller.signal.aborted) console.log(err);
+            .catch(() => {
+                if (!controller.signal.aborted) setStatus("error");
             });
         return () => controller.abort();
     }, []);
@@ -32,7 +36,20 @@ const RankSection = (): React.ReactElement => {
         <Label style={labelStyle}>
             <Header size="large" style={headerStyle} content="排行榜" />
             <Divider />
-            {renderBangumiBriefRank(bangumis)}
+            {status === "success" ? (
+                renderBangumiBriefRank(bangumis)
+            ) : (
+                <AsyncState
+                    status={status}
+                    message={
+                        status === "error"
+                            ? "The ranking could not be loaded."
+                            : status === "empty"
+                              ? "No ranking data is available."
+                              : "Loading ranking…"
+                    }
+                />
+            )}
         </Label>
     );
 };

@@ -5,6 +5,7 @@ import BangumiDetailApi from "@/api/bangumi_detail";
 import type { JikanAnime } from "@/api/types";
 import Navbar from "@/components/navbar";
 import BangumiDetailLabel from "@/components/bangumi_detail_label";
+import AsyncState, { LoadStatus } from "@/components/async_state";
 import "./index.css";
 
 const airingDateToString = (airing: string | null): string =>
@@ -27,29 +28,38 @@ const toBangumiDetail = (res: JikanAnime): BangumiDetailType => ({
 
 const BangumiDetail = (): React.ReactElement => {
     const [bangumi, setBangumi] = useState<BangumiDetailType>();
+    const [status, setStatus] = useState<LoadStatus>("loading");
     const { id } = useParams<{ id: string }>();
 
     useEffect(() => {
         const controller = new AbortController();
-        if (!id) return;
+        setBangumi(undefined);
+        setStatus("loading");
+        if (!id) {
+            setStatus("error");
+            return () => controller.abort();
+        }
 
         BangumiDetailApi.getBangumiDetailV2(id, controller.signal)
             .then((res) => {
                 setBangumi(toBangumiDetail(res.data.data));
+                setStatus("success");
             })
-            .catch((err) => {
+            .catch(() => {
                 if (controller.signal.aborted) return;
-                console.log(err);
                 return BangumiDetailApi.getBangumiDetailV1(
                     id,
                     controller.signal
                 );
             })
             .then((res) => {
-                if (res) setBangumi(res.data.data.bangumi);
+                if (res) {
+                    setBangumi(res.data.data.bangumi);
+                    setStatus("success");
+                }
             })
-            .catch((err) => {
-                if (!controller.signal.aborted) console.log(err);
+            .catch(() => {
+                if (!controller.signal.aborted) setStatus("error");
             });
 
         return () => controller.abort();
@@ -61,7 +71,14 @@ const BangumiDetail = (): React.ReactElement => {
             {bangumi ? (
                 <BangumiDetailLabel bangumiDetail={bangumi} rating={0.0} />
             ) : (
-                "loading"
+                <AsyncState
+                    status={status === "success" ? "loading" : status}
+                    message={
+                        status === "error"
+                            ? "Anime details could not be loaded."
+                            : "Loading anime details…"
+                    }
+                />
             )}
         </div>
     );

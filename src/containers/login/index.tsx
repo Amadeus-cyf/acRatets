@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setUser } from "@/store/action";
+import { setUser } from "@/store/userSlice";
 import { useNavigate } from "react-router-dom";
 import { Header, Button, Form } from "@/components/ui";
 import { style } from "./style";
@@ -8,13 +7,13 @@ import "./index.css";
 import AuthApi from "@/api/auth";
 import type { LoginResponse } from "@/api/types";
 import { UserType } from "@/interface/UserType";
-import { AppDispatch } from "@/store";
+import { useAppDispatch } from "@/store/hooks";
 
 type ErrorDisplayType = "none" | "inline" | "block";
 
 const Login = (): React.ReactElement => {
     const navigate = useNavigate();
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorDisplay, setErrorDisplay] = useState<ErrorDisplayType>("none");

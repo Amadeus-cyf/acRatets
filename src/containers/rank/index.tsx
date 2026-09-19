@@ -3,19 +3,23 @@ import { BangumiRankType } from "@/interface/BangumiRankType";
 import NavigationSection from "@/containers/navigation_section";
 import BangumiListApi from "@/api/bangumi_list";
 import { renderBangumiRank } from "@/containers/render";
+import AsyncState, { LoadStatus } from "@/components/async_state";
 import "./index.css";
 
 const Rank = (): React.ReactElement => {
     const [bangumis, setBangumis] = useState<BangumiRankType[]>([]);
+    const [status, setStatus] = useState<LoadStatus>("loading");
 
     useEffect(() => {
         const controller = new AbortController();
         BangumiListApi.getBangumiRank(20, controller.signal)
             .then((res) => {
-                setBangumis(res.data.data.bangumiList);
+                const nextBangumis = res.data.data.bangumiList;
+                setBangumis(nextBangumis);
+                setStatus(nextBangumis.length > 0 ? "success" : "empty");
             })
-            .catch((err) => {
-                if (!controller.signal.aborted) console.log(err);
+            .catch(() => {
+                if (!controller.signal.aborted) setStatus("error");
             });
         return () => controller.abort();
     }, []);
@@ -24,10 +28,19 @@ const Rank = (): React.ReactElement => {
         <div className="rankPageStyle">
             <NavigationSection currentTab="排行榜" />
             <div className="bangumiRankStyle">
-                {bangumis.length > 0 ? (
+                {status === "success" ? (
                     renderBangumiRank(bangumis)
                 ) : (
-                    <div>loading</div>
+                    <AsyncState
+                        status={status}
+                        message={
+                            status === "error"
+                                ? "The ranking could not be loaded."
+                                : status === "empty"
+                                  ? "No ranking data is available."
+                                  : "Loading ranking…"
+                        }
+                    />
                 )}
             </div>
         </div>

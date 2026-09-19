@@ -5,6 +5,7 @@ import PageNavigator from "@/components/page_navigator";
 import BangumiListApi from "@/api/bangumi_list";
 import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from "@/const/window_size_threshold";
 import { renderBangumiList } from "@/containers/render";
+import AsyncState, { LoadStatus } from "@/components/async_state";
 import "./index.css";
 
 const mediaQuery = `(max-width: ${USER_CARD_VISIBLE_MIN_WINDOW_SIZE - 1}px)`;
@@ -16,33 +17,38 @@ const BangumisView = (): React.ReactElement => {
     const [isNarrow, setIsNarrow] = useState(
         () => window.matchMedia(mediaQuery).matches
     );
+    const [status, setStatus] = useState<LoadStatus>("loading");
+    const [paginationFailed, setPaginationFailed] = useState(false);
 
     useEffect(() => {
         const controller = new AbortController();
         setBangumis([]);
+        setStatus("loading");
         BangumiListApi.getBangumiWithPagingOrderByDate(
             currentPage,
             -1,
             controller.signal
         )
             .then((res) => {
-                if (res.data) setBangumis(res.data.data.bangumiList);
-                else console.log("No bangumi found");
+                const nextBangumis = res.data.data.bangumiList;
+                setBangumis(nextBangumis);
+                setStatus(nextBangumis.length > 0 ? "success" : "empty");
             })
-            .catch((err) => {
-                if (!controller.signal.aborted) console.log(err);
+            .catch(() => {
+                if (!controller.signal.aborted) setStatus("error");
             });
         return () => controller.abort();
     }, [currentPage]);
 
     useEffect(() => {
         const controller = new AbortController();
+        setPaginationFailed(false);
         BangumiListApi.getBangumiCount(controller.signal)
             .then((res) =>
                 setPageNum(Math.ceil(res.data.data.bangumiNumber / 24))
             )
-            .catch((err) => {
-                if (!controller.signal.aborted) console.log(err);
+            .catch(() => {
+                if (!controller.signal.aborted) setPaginationFailed(true);
             });
 
         const query = window.matchMedia(mediaQuery);
@@ -70,12 +76,27 @@ const BangumisView = (): React.ReactElement => {
                 className="bangumilistStyle"
                 style={{ width: isNarrow ? "100%" : "75%" }}
             >
-                {bangumis.length > 0 ? (
+                {status === "success" ? (
                     renderBangumiList(bangumis, "25%")
                 ) : (
-                    <div>loading</div>
+                    <AsyncState
+                        status={status}
+                        message={
+                            status === "error"
+                                ? "The anime list could not be loaded."
+                                : status === "empty"
+                                  ? "No anime found."
+                                  : "Loading anime…"
+                        }
+                    />
                 )}
             </div>
+            {paginationFailed && (
+                <AsyncState
+                    status="error"
+                    message="Anime pagination is unavailable."
+                />
+            )}
             {pageNum > 0 && (
                 <PageNavigator
                     subkey="BangumisViewNavi"

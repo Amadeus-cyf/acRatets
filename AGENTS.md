@@ -6,7 +6,7 @@ These instructions apply to the entire repository. Read any more specific
 ## Project and setup
 
 acRatets is a React 19 and TypeScript anime-browsing frontend built with Vite.
-It uses Material UI and Emotion, React Router, Redux, Axios, Vitest, and
+It uses Material UI and Emotion, React Router, Redux Toolkit, Axios, Vitest, and
 Playwright. The application backend is not part of this repository.
 
 - Use Node.js 22 (see `.nvmrc`) and npm 10 or newer. With nvm installed, run

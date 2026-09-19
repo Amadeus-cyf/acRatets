@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { Provider } from "react-redux";
 import store from "@/store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AsyncState from "@/components/async_state";
 
 const Home = lazy(() => import("@/containers/home"));
 const BangumisView = lazy(() => import("@/containers/bangumis"));
@@ -13,7 +14,11 @@ const BangumiDetail = lazy(() => import("@/containers/bangumi_detail"));
 const App = (): React.ReactElement => (
     <Provider store={store}>
         <BrowserRouter>
-            <Suspense fallback={<div>loading</div>}>
+            <Suspense
+                fallback={
+                    <AsyncState status="loading" message="Loading page…" />
+                }
+            >
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route path="/" element={<Home />} />

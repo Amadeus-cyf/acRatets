@@ -1,12 +1,11 @@
 import type { AxiosResponse } from "axios";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { legacy_createStore } from "redux";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import AuthApi from "@/api/auth";
 import type { LoginResponse } from "@/api/types";
-import reducer from "@/store/reducer";
+import { createAppStore } from "@/store";
 import Login from ".";
 
 vi.mock("@/api/auth", () => ({
@@ -26,7 +25,7 @@ const successResponse: LoginResponse = {
 
 const renderLogin = () =>
     render(
-        <Provider store={legacy_createStore(reducer)}>
+        <Provider store={createAppStore()}>
             <MemoryRouter initialEntries={["/login"]}>
                 <Routes>
                     <Route path="/login" element={<Login />} />

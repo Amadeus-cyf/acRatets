@@ -5,6 +5,7 @@ import { BangumiSeasonType } from "@/interface/BangumiSeasonType";
 import BangumiApi from "@/api/bangumi";
 import { headerStyle, dividerStyle } from "./style";
 import { renderBangumiList } from "@/containers/render";
+import AsyncState, { LoadStatus } from "@/components/async_state";
 import "./index.css";
 
 const Bangumis = ({
@@ -13,9 +14,11 @@ const Bangumis = ({
     year,
 }: BangumiSeasonType): React.ReactElement => {
     const [bangumis, setBangumis] = useState<BangumiType[]>([]);
+    const [status, setStatus] = useState<LoadStatus>("loading");
 
     useEffect(() => {
         const controller = new AbortController();
+        setStatus("loading");
         BangumiApi.getBangumisBySeasonWithLimit(
             year,
             season,
@@ -23,10 +26,12 @@ const Bangumis = ({
             controller.signal
         )
             .then((res) => {
-                setBangumis(res.data.data.bangumiList);
+                const nextBangumis = res.data.data.bangumiList;
+                setBangumis(nextBangumis);
+                setStatus(nextBangumis.length > 0 ? "success" : "empty");
             })
-            .catch((err) => {
-                if (!controller.signal.aborted) console.log(err);
+            .catch(() => {
+                if (!controller.signal.aborted) setStatus("error");
             });
         return () => controller.abort();
     }, [season, year]);
@@ -40,7 +45,20 @@ const Bangumis = ({
             />
             <Divider style={dividerStyle} />
             <div className="bangumiData">
-                {renderBangumiList(bangumis, "25%")}
+                {status === "success" ? (
+                    renderBangumiList(bangumis, "25%")
+                ) : (
+                    <AsyncState
+                        status={status}
+                        message={
+                            status === "error"
+                                ? "This season could not be loaded."
+                                : status === "empty"
+                                  ? "No anime found for this season."
+                                  : "Loading this season…"
+                        }
+                    />
+                )}
             </div>
         </div>
     );
