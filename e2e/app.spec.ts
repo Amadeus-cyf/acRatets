@@ -25,6 +25,6 @@ test("loads the application and navigates between lazy routes", async ({
     await page.getByRole("button", { name: "番剧" }).click();
 
     await expect(page).toHaveURL(/\/bangumi$/);
-    await expect(page.getByText("loading")).toBeVisible();
+    await expect(page.getByText("No anime found.")).toBeVisible();
     expect(pageErrors).toEqual([]);
 });

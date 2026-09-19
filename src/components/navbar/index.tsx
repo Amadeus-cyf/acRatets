@@ -1,24 +1,10 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import { Menu, Image } from "@/components/ui";
 import avatar from "@/assets/avatar_optimized.jpg";
-import { UserType } from "@/interface/UserType";
-import { StateType } from "@/interface/StateType";
-import { setUser } from "@/store/action";
-import { AppDispatch } from "@/store";
+import { useAppSelector } from "@/store/hooks";
 
 const Navbar = (): React.ReactElement => {
-    const dispatch = useDispatch<AppDispatch>();
-    const user = useSelector((state: StateType) => state.user);
-
-    useEffect(() => {
-        if (user._id !== "") return;
-
-        const storedUser = localStorage.getItem("user");
-        if (storedUser !== null) {
-            dispatch(setUser(JSON.parse(storedUser) as UserType));
-        }
-    }, [dispatch, user._id]);
+    const user = useAppSelector((state) => state.user);
 
     const userAvatar: string = user.avatar === "" ? avatar : user.avatar;
 

@@ -6,6 +6,7 @@ import TimelineApi from "@/api/timeline";
 import DateSection from "./date_section";
 import PageNavigator from "@/components/page_navigator";
 import { renderBangumiList } from "@/containers/render";
+import AsyncState, { LoadStatus } from "@/components/async_state";
 import "./index.css";
 
 const Timeline = (): React.ReactElement => {
@@ -15,14 +16,21 @@ const Timeline = (): React.ReactElement => {
     const [page, setPage] = useState(1);
     const [pageNum, setPageNum] = useState(0);
     const [bangumis, setBangumis] = useState<BangumiType[]>([]);
+    const [status, setStatus] = useState<LoadStatus>("loading");
+    const [paginationFailed, setPaginationFailed] = useState(false);
 
     useEffect(() => {
         const controller = new AbortController();
         setBangumis([]);
+        setStatus("loading");
         TimelineApi.getTimelineInPage(year, season, page, controller.signal)
-            .then((res) => setBangumis(res.data.data.bangumiList))
-            .catch((err) => {
-                if (!controller.signal.aborted) console.log(err);
+            .then((res) => {
+                const nextBangumis = res.data.data.bangumiList;
+                setBangumis(nextBangumis);
+                setStatus(nextBangumis.length > 0 ? "success" : "empty");
+            })
+            .catch(() => {
+                if (!controller.signal.aborted) setStatus("error");
             });
         return () => controller.abort();
     }, [page, season, year]);
@@ -30,13 +38,14 @@ const Timeline = (): React.ReactElement => {
     useEffect(() => {
         const controller = new AbortController();
         setPageNum(0);
+        setPaginationFailed(false);
         TimelineApi.getTimelineCount(year, season, controller.signal)
             .then((res) => {
                 const count = res.data.data.bangumiNumber;
                 setPageNum(Math.ceil(count / 20));
             })
-            .catch((err) => {
-                if (!controller.signal.aborted) console.log(err);
+            .catch(() => {
+                if (!controller.signal.aborted) setPaginationFailed(true);
             });
         return () => controller.abort();
     }, [season, year]);
@@ -66,12 +75,27 @@ const Timeline = (): React.ReactElement => {
             <div className="timeline">
                 <div className="timelineBangumi">
                     <div className="timelineBangumiDataStyle">
-                        {bangumis.length > 0 ? (
+                        {status === "success" ? (
                             renderBangumiList(bangumis, "25%")
                         ) : (
-                            <div>loading</div>
+                            <AsyncState
+                                status={status}
+                                message={
+                                    status === "error"
+                                        ? "The timeline could not be loaded."
+                                        : status === "empty"
+                                          ? "No anime found for this period."
+                                          : "Loading timeline…"
+                                }
+                            />
                         )}
                     </div>
+                    {paginationFailed && (
+                        <AsyncState
+                            status="error"
+                            message="Timeline pagination is unavailable."
+                        />
+                    )}
                     {pageNum > 0 && (
                         <PageNavigator
                             subkey="TimelineNavi"
