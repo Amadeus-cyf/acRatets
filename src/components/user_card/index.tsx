@@ -1,9 +1,8 @@
 import React, { memo } from "react";
 import { Image, Header, Card, Icon } from "@/components/ui";
-import avatar from "@/assets/avatar_optimized.jpg";
-import background from "@/assets/background_optimized.jpg";
+import avatar from "@/assets/avatar.webp";
+import background from "@/assets/background.webp";
 import { UserType } from "@/interface/UserType";
-import { deepEqual } from "@/utils/deepEqual";
 import "./index.css";
 import { cardStyle } from "./style";
 
@@ -43,6 +42,4 @@ const UserCard = (props: PropsType) => {
     );
 };
 
-export default memo(UserCard, (prevProps: PropsType, props: PropsType) => {
-    return deepEqual(prevProps.user, props.user);
-});
+export default memo(UserCard);

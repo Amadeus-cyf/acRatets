@@ -1,7 +1,6 @@
 import React, { memo } from "react";
 import { Image, Header } from "@/components/ui";
 import { BangumiDetailType } from "@/interface/BangumiDetailType";
-import { deepEqual } from "@/utils/deepEqual";
 import GenreLabel from "@/components/genre_label";
 import InfoLabel from "@/components/info_label";
 import "./index.css";
@@ -81,9 +80,4 @@ const BangumiDetailLabel = (props: PropsType) => {
     );
 };
 
-export default memo(
-    BangumiDetailLabel,
-    (prevProps: PropsType, props: PropsType): boolean => {
-        return deepEqual(prevProps, props);
-    }
-);
+export default memo(BangumiDetailLabel);

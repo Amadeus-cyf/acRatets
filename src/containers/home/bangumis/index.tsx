@@ -6,6 +6,7 @@ import BangumiApi from "@/api/bangumi";
 import { headerStyle, dividerStyle } from "./style";
 import { renderBangumiList } from "@/containers/render";
 import AsyncState, { LoadStatus } from "@/components/async_state";
+import { useRetry } from "@/hooks/useRetry";
 import "./index.css";
 
 const Bangumis = ({
@@ -15,6 +16,7 @@ const Bangumis = ({
 }: BangumiSeasonType): React.ReactElement => {
     const [bangumis, setBangumis] = useState<BangumiType[]>([]);
     const [status, setStatus] = useState<LoadStatus>("loading");
+    const [retryKey, retry] = useRetry();
 
     useEffect(() => {
         const controller = new AbortController();
@@ -34,7 +36,7 @@ const Bangumis = ({
                 if (!controller.signal.aborted) setStatus("error");
             });
         return () => controller.abort();
-    }, [season, year]);
+    }, [retryKey, season, year]);
 
     return (
         <div className="bangumiSection">
@@ -49,6 +51,7 @@ const Bangumis = ({
                     renderBangumiList(bangumis, "25%")
                 ) : (
                     <AsyncState
+                        onRetry={retry}
                         status={status}
                         message={
                             status === "error"

@@ -6,6 +6,7 @@ import type { JikanAnime } from "@/api/types";
 import Navbar from "@/components/navbar";
 import BangumiDetailLabel from "@/components/bangumi_detail_label";
 import AsyncState, { LoadStatus } from "@/components/async_state";
+import { useRetry } from "@/hooks/useRetry";
 import "./index.css";
 
 const airingDateToString = (airing: string | null): string =>
@@ -29,6 +30,7 @@ const toBangumiDetail = (res: JikanAnime): BangumiDetailType => ({
 const BangumiDetail = (): React.ReactElement => {
     const [bangumi, setBangumi] = useState<BangumiDetailType>();
     const [status, setStatus] = useState<LoadStatus>("loading");
+    const [retryKey, retry] = useRetry();
     const { id } = useParams<{ id: string }>();
 
     useEffect(() => {
@@ -63,7 +65,7 @@ const BangumiDetail = (): React.ReactElement => {
             });
 
         return () => controller.abort();
-    }, [id]);
+    }, [id, retryKey]);
 
     return (
         <div className="navbarDetailPageStyle ">
@@ -72,6 +74,7 @@ const BangumiDetail = (): React.ReactElement => {
                 <BangumiDetailLabel bangumiDetail={bangumi} rating={0.0} />
             ) : (
                 <AsyncState
+                    onRetry={retry}
                     status={status === "success" ? "loading" : status}
                     message={
                         status === "error"

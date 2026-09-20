@@ -7,6 +7,7 @@ import DateSection from "./date_section";
 import PageNavigator from "@/components/page_navigator";
 import { renderBangumiList } from "@/containers/render";
 import AsyncState, { LoadStatus } from "@/components/async_state";
+import { useRetry } from "@/hooks/useRetry";
 import "./index.css";
 
 const Timeline = (): React.ReactElement => {
@@ -18,6 +19,7 @@ const Timeline = (): React.ReactElement => {
     const [bangumis, setBangumis] = useState<BangumiType[]>([]);
     const [status, setStatus] = useState<LoadStatus>("loading");
     const [paginationFailed, setPaginationFailed] = useState(false);
+    const [retryKey, retry] = useRetry();
 
     useEffect(() => {
         const controller = new AbortController();
@@ -33,7 +35,7 @@ const Timeline = (): React.ReactElement => {
                 if (!controller.signal.aborted) setStatus("error");
             });
         return () => controller.abort();
-    }, [page, season, year]);
+    }, [page, retryKey, season, year]);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -48,7 +50,7 @@ const Timeline = (): React.ReactElement => {
                 if (!controller.signal.aborted) setPaginationFailed(true);
             });
         return () => controller.abort();
-    }, [season, year]);
+    }, [retryKey, season, year]);
 
     const onSwitchDate = useCallback(
         (nextYear: number, month: number): void => {
@@ -79,6 +81,7 @@ const Timeline = (): React.ReactElement => {
                             renderBangumiList(bangumis, "25%")
                         ) : (
                             <AsyncState
+                                onRetry={retry}
                                 status={status}
                                 message={
                                     status === "error"
@@ -92,6 +95,7 @@ const Timeline = (): React.ReactElement => {
                     </div>
                     {paginationFailed && (
                         <AsyncState
+                            onRetry={retry}
                             status="error"
                             message="Timeline pagination is unavailable."
                         />

@@ -6,6 +6,7 @@ import type {
     BangumiCountPayload,
     BangumiListPayload,
 } from "./types";
+import { cachedRequest } from "./request";
 
 class BangumiListApi {
     static getBangumiWithPagingOrderByDate(
@@ -13,7 +14,9 @@ class BangumiListApi {
         order: 1 | -1,
         signal?: AbortSignal
     ): Promise<AxiosResponse<ApiEnvelope<BangumiListPayload>>> {
-        return apiClient.get(`/bangumiList/date/${page}/order/${order}`, {
+        const path = `/bangumiList/date/${page}/order/${order}`;
+        return cachedRequest(() => apiClient.get(path, { signal }), {
+            cacheKey: `api:${path}`,
             signal,
         });
     }
@@ -21,7 +24,11 @@ class BangumiListApi {
     static getBangumiCount(
         signal?: AbortSignal
     ): Promise<AxiosResponse<ApiEnvelope<BangumiCountPayload>>> {
-        return apiClient.get("/bangumiList/count", { signal });
+        const path = "/bangumiList/count";
+        return cachedRequest(() => apiClient.get(path, { signal }), {
+            cacheKey: `api:${path}`,
+            signal,
+        });
     }
 
     static getBangumiRank(
@@ -30,7 +37,11 @@ class BangumiListApi {
     ): Promise<
         AxiosResponse<ApiEnvelope<BangumiListPayload<BangumiRankType>>>
     > {
-        return apiClient.get(`/bangumiList/rank/${rankNumber}`, { signal });
+        const path = `/bangumiList/rank/${rankNumber}`;
+        return cachedRequest(() => apiClient.get(path, { signal }), {
+            cacheKey: `api:${path}`,
+            signal,
+        });
     }
 }
 

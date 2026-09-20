@@ -1,6 +1,5 @@
 import React, { memo } from "react";
 import { Label } from "@/components/ui";
-import { deepEqual } from "@/utils/deepEqual";
 import NumberLabel from "@/components/number_label";
 import "./index.css";
 
@@ -33,9 +32,4 @@ const RankLabel = (props: PropsType) => {
     );
 };
 
-export default memo(
-    RankLabel,
-    (prevProps: PropsType, props: PropsType): boolean => {
-        return deepEqual(prevProps, props);
-    }
-);
+export default memo(RankLabel);

@@ -4,11 +4,13 @@ import NavigationSection from "@/containers/navigation_section";
 import BangumiListApi from "@/api/bangumi_list";
 import { renderBangumiRank } from "@/containers/render";
 import AsyncState, { LoadStatus } from "@/components/async_state";
+import { useRetry } from "@/hooks/useRetry";
 import "./index.css";
 
 const Rank = (): React.ReactElement => {
     const [bangumis, setBangumis] = useState<BangumiRankType[]>([]);
     const [status, setStatus] = useState<LoadStatus>("loading");
+    const [retryKey, retry] = useRetry();
 
     useEffect(() => {
         const controller = new AbortController();
@@ -22,7 +24,7 @@ const Rank = (): React.ReactElement => {
                 if (!controller.signal.aborted) setStatus("error");
             });
         return () => controller.abort();
-    }, []);
+    }, [retryKey]);
 
     return (
         <div className="rankPageStyle">
@@ -32,6 +34,7 @@ const Rank = (): React.ReactElement => {
                     renderBangumiRank(bangumis)
                 ) : (
                     <AsyncState
+                        onRetry={retry}
                         status={status}
                         message={
                             status === "error"

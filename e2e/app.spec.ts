@@ -28,3 +28,22 @@ test("loads the application and navigates between lazy routes", async ({
     await expect(page.getByText("No anime found.")).toBeVisible();
     expect(pageErrors).toEqual([]);
 });
+
+test("loads responsive WebP assets on a mobile viewport", async ({ page }) => {
+    const imageRequests: string[] = [];
+    page.on("request", (request) => {
+        if (request.resourceType() === "image") {
+            imageRequests.push(request.url());
+        }
+    });
+    await page.setViewportSize({ width: 390, height: 844 });
+
+    await page.goto("/", { waitUntil: "networkidle" });
+
+    expect(
+        imageRequests.some((url) => url.includes("home_background_mobile"))
+    ).toBe(true);
+    expect(
+        imageRequests.every((url) => !/\.(?:jpe?g|png)(?:\?|$)/i.test(url))
+    ).toBe(true);
+});

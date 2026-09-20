@@ -1,0 +1,57 @@
+.asyncState {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    min-height: 96px;
+    padding: 16px;
+    width: 100%;
+}
+
+.asyncState p {
+    margin: 0;
+}
+
+.asyncStateError {
+    background: rgba(211, 47, 47, 0.08);
+    border: 1px solid rgba(211, 47, 47, 0.35);
+    border-radius: 4px;
+    color: #b71c1c;
+}
+
+.asyncStateError button {
+    background: transparent;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    padding: 6px 12px;
+}
+
+.asyncStateError button:focus-visible {
+    outline: 3px solid rgba(25, 118, 210, 0.45);
+    outline-offset: 2px;
+}
+
+.asyncStateSpinner {
+    animation: asyncStateSpin 0.8s linear infinite;
+    border: 3px solid rgba(25, 118, 210, 0.25);
+    border-radius: 50%;
+    border-top-color: #1976d2;
+    height: 18px;
+    width: 18px;
+}
+
+@keyframes asyncStateSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .asyncStateSpinner {
+        animation: none;
+    }
+}

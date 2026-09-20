@@ -5,8 +5,12 @@ import BangumiDetailApi from "./bangumi_detail";
 import BangumiListApi from "./bangumi_list";
 import { apiClient, jikanClient } from "./client";
 import TimelineApi from "./timeline";
+import { clearRequestCache } from "./request";
 
-afterEach(() => vi.restoreAllMocks());
+afterEach(() => {
+    clearRequestCache();
+    vi.restoreAllMocks();
+});
 
 test("backend API modules use the shared client and relative endpoints", async () => {
     const get = vi.spyOn(apiClient, "get").mockResolvedValue({} as never);
@@ -15,7 +19,7 @@ test("backend API modules use the shared client and relative endpoints", async (
 
     await AuthApi.login("test@example.com", "secret");
     await BangumiApi.getBangumisBySeasonWithLimit(2026, "fall", 8, signal);
-    await BangumiApi.getBangumisBySeason(2026, "fall");
+    await BangumiApi.getBangumisBySeason(2026, "fall", signal);
     await BangumiDetailApi.getBangumiDetailV1("1", signal);
     await BangumiListApi.getBangumiWithPagingOrderByDate(2, -1, signal);
     await BangumiListApi.getBangumiCount(signal);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, Image } from "@/components/ui";
-import avatar from "@/assets/avatar_optimized.jpg";
+import avatar from "@/assets/avatar.webp";
 import { useAppSelector } from "@/store/hooks";
 
 const Navbar = (): React.ReactElement => {

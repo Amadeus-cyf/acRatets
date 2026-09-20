@@ -2,8 +2,15 @@
     position: relative;
     height: 170px;
     margin-top: 0;
-    background-image: url("../../assets/navi_background_optimized.jpg");
+    background-image: url("../../assets/navi_background.webp");
     background-position: center 40%;
     background-repeat: no-repeat;
     background-size: 100%;
+}
+
+@media (max-width: 768px) {
+    .sectionStyle {
+        background-image: url("../../assets/navi_background_mobile.webp");
+        background-size: cover;
+    }
 }

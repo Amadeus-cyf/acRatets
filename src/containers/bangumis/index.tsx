@@ -6,6 +6,7 @@ import BangumiListApi from "@/api/bangumi_list";
 import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from "@/const/window_size_threshold";
 import { renderBangumiList } from "@/containers/render";
 import AsyncState, { LoadStatus } from "@/components/async_state";
+import { useRetry } from "@/hooks/useRetry";
 import "./index.css";
 
 const mediaQuery = `(max-width: ${USER_CARD_VISIBLE_MIN_WINDOW_SIZE - 1}px)`;
@@ -19,6 +20,7 @@ const BangumisView = (): React.ReactElement => {
     );
     const [status, setStatus] = useState<LoadStatus>("loading");
     const [paginationFailed, setPaginationFailed] = useState(false);
+    const [retryKey, retry] = useRetry();
 
     useEffect(() => {
         const controller = new AbortController();
@@ -38,7 +40,7 @@ const BangumisView = (): React.ReactElement => {
                 if (!controller.signal.aborted) setStatus("error");
             });
         return () => controller.abort();
-    }, [currentPage]);
+    }, [currentPage, retryKey]);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -59,7 +61,7 @@ const BangumisView = (): React.ReactElement => {
             controller.abort();
             query.removeEventListener("change", onChange);
         };
-    }, []);
+    }, [retryKey]);
 
     const onPageClicked = useCallback(
         (nextPage: number): void => {
@@ -80,6 +82,7 @@ const BangumisView = (): React.ReactElement => {
                     renderBangumiList(bangumis, "25%")
                 ) : (
                     <AsyncState
+                        onRetry={retry}
                         status={status}
                         message={
                             status === "error"
@@ -93,6 +96,7 @@ const BangumisView = (): React.ReactElement => {
             </div>
             {paginationFailed && (
                 <AsyncState
+                    onRetry={retry}
                     status="error"
                     message="Anime pagination is unavailable."
                 />

@@ -25,7 +25,7 @@ Playwright. The application backend is not part of this repository.
 - `src/containers/`: pages and page-specific sections.
 - `src/components/`: reusable UI; `src/components/ui/` contains Material UI adapters.
 - `src/api/`: shared HTTP clients, endpoint modules, and response types.
-- `src/store/`: Redux store, actions, and reducers.
+- `src/store/`: Redux Toolkit store, typed hooks, and slices.
 - `src/interface/`: shared domain interfaces; `src/model/` contains domain helpers.
 - `src/const/`, `src/utils/`, and `src/assets/`: constants, utilities, and bundled assets.
 - `public/`: files served without bundling.
@@ -79,9 +79,10 @@ npm run validate
 ```
 
 This checks formatting, lint, unit tests with coverage, TypeScript, the Vite
-production build, and the bundle budget. Coverage must meet 40% for statements,
+production build, and the bundle budget. Coverage must meet 70% for statements,
 branches, functions, and lines. JavaScript bundles must stay within 200 KiB total
-gzip and 300 KiB uncompressed per chunk.
+gzip and 300 KiB uncompressed per chunk. Local production images must stay within
+750 KiB total and 250 KiB per asset.
 
 For UI, routing, or browser-runtime changes, also run:
 
