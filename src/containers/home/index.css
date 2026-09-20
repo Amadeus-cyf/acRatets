@@ -2,12 +2,20 @@
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    background-image: url("../../assets/home_background_optimized.jpg");
+    background-image: url("../../assets/home_background.webp");
     background-attachment: fixed;
     background-size: 120%;
     background-repeat: no-repeat;
     padding-bottom: 10px;
     overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .contentStyle {
+        background-attachment: scroll;
+        background-image: url("../../assets/home_background_mobile.webp");
+        background-size: cover;
+    }
 }
 
 .bangumiStyle {

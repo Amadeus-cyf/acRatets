@@ -1,11 +1,12 @@
 import React, { memo } from "react";
-import { Alert, Box, CircularProgress, Typography } from "@mui/material";
+import "./index.css";
 
 export type AsyncStatus = "loading" | "empty" | "error";
 export type LoadStatus = AsyncStatus | "success";
 
 interface AsyncStateProps {
     message?: string;
+    onRetry?: () => void;
     status: AsyncStatus;
 }
 
@@ -17,36 +18,31 @@ const defaultMessages: Record<AsyncStatus, string> = {
 
 const AsyncState = ({
     message,
+    onRetry,
     status,
 }: AsyncStateProps): React.ReactElement => {
     const content = message ?? defaultMessages[status];
 
     if (status === "error") {
         return (
-            <Alert severity="error" role="alert">
-                {content}
-            </Alert>
+            <div className="asyncState asyncStateError" role="alert">
+                <p>{content}</p>
+                {onRetry && (
+                    <button type="button" onClick={onRetry}>
+                        Try again
+                    </button>
+                )}
+            </div>
         );
     }
 
     return (
-        <Box
-            role="status"
-            aria-live="polite"
-            sx={{
-                alignItems: "center",
-                display: "flex",
-                gap: 1.5,
-                justifyContent: "center",
-                minHeight: 96,
-                width: "100%",
-            }}
-        >
+        <div className="asyncState" role="status" aria-live="polite">
             {status === "loading" && (
-                <CircularProgress aria-hidden="true" size={24} />
+                <span className="asyncStateSpinner" aria-hidden="true" />
             )}
-            <Typography>{content}</Typography>
-        </Box>
+            <p>{content}</p>
+        </div>
     );
 };
 

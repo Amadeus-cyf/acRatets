@@ -4,6 +4,7 @@ import { BangumiBriefScoreType } from "@/interface/BangumiBriefScoreType";
 import BangumiListApi from "@/api/bangumi_list";
 import { renderBangumiBriefRank } from "@/containers/render";
 import AsyncState, { LoadStatus } from "@/components/async_state";
+import { useRetry } from "@/hooks/useRetry";
 
 const labelStyle = {
     width: "100%",
@@ -17,6 +18,7 @@ const RANK_NUMBER = 10;
 const RankSection = (): React.ReactElement => {
     const [bangumis, setBangumis] = useState<BangumiBriefScoreType[]>([]);
     const [status, setStatus] = useState<LoadStatus>("loading");
+    const [retryKey, retry] = useRetry();
 
     useEffect(() => {
         const controller = new AbortController();
@@ -30,7 +32,7 @@ const RankSection = (): React.ReactElement => {
                 if (!controller.signal.aborted) setStatus("error");
             });
         return () => controller.abort();
-    }, []);
+    }, [retryKey]);
 
     return (
         <Label style={labelStyle}>
@@ -40,6 +42,7 @@ const RankSection = (): React.ReactElement => {
                 renderBangumiBriefRank(bangumis)
             ) : (
                 <AsyncState
+                    onRetry={retry}
                     status={status}
                     message={
                         status === "error"

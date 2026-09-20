@@ -1,7 +1,6 @@
-import React, { memo } from "react";
+import React from "react";
 import { Button } from "@/components/ui";
 import Color from "@/const/color";
-import { deepEqual } from "@/utils/deepEqual";
 
 type PropsType = {
     date: string; // the info button represents
@@ -23,13 +22,4 @@ const DateButton = (props: PropsType) => {
     );
 };
 
-export default memo(
-    DateButton,
-    (prevProps: PropsType, props: PropsType): boolean => {
-        return (
-            prevProps.date === props.date &&
-            prevProps.selected === props.selected &&
-            deepEqual(prevProps.style, props.style)
-        );
-    }
-);
+export default DateButton;

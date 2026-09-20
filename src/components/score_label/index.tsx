@@ -1,7 +1,6 @@
 import { memo } from "react";
 import { Label, Header } from "@/components/ui";
 import Color from "@/const/color";
-import { deepEqual } from "@/utils/deepEqual";
 import "./index.css";
 
 interface PropsType {
@@ -28,13 +27,4 @@ const ScoreLabel = (props: PropsType) => {
     );
 };
 
-export default memo(
-    ScoreLabel,
-    (prevProps: PropsType, props: PropsType): boolean => {
-        return (
-            prevProps.score === props.score &&
-            prevProps.user === props.user &&
-            deepEqual(prevProps.style, props.style)
-        );
-    }
-);
+export default memo(ScoreLabel);

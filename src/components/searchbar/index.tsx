@@ -1,6 +1,5 @@
 import React, { memo } from "react";
 import { Input } from "@/components/ui";
-import { deepEqual } from "@/utils/deepEqual";
 
 interface SearchbarProps {
     searchbarStyle?: React.CSSProperties;
@@ -18,6 +17,4 @@ const Searchbar = (props: SearchbarProps): React.ReactElement => {
     );
 };
 
-export default memo(Searchbar, (prevProps, props) => {
-    return deepEqual(prevProps.searchbarStyle, props.searchbarStyle);
-});
+export default memo(Searchbar);

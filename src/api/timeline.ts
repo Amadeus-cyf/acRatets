@@ -5,6 +5,7 @@ import type {
     BangumiCountPayload,
     BangumiListPayload,
 } from "./types";
+import { cachedRequest } from "./request";
 
 class TimelineApi {
     static getTimelineInPage(
@@ -13,7 +14,11 @@ class TimelineApi {
         page: number,
         signal?: AbortSignal
     ): Promise<AxiosResponse<ApiEnvelope<BangumiListPayload>>> {
-        return apiClient.get(`/bangumi/${year}/${season}/${page}`, { signal });
+        const path = `/bangumi/${year}/${season}/${page}`;
+        return cachedRequest(() => apiClient.get(path, { signal }), {
+            cacheKey: `api:${path}`,
+            signal,
+        });
     }
 
     static getTimelineCount(
@@ -21,7 +26,11 @@ class TimelineApi {
         season: string,
         signal?: AbortSignal
     ): Promise<AxiosResponse<ApiEnvelope<BangumiCountPayload>>> {
-        return apiClient.get(`/bangumi/${year}/${season}/count`, { signal });
+        const path = `/bangumi/${year}/${season}/count`;
+        return cachedRequest(() => apiClient.get(path, { signal }), {
+            cacheKey: `api:${path}`,
+            signal,
+        });
     }
 }
 
