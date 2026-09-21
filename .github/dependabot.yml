@@ -8,6 +8,10 @@ updates:
           time: "09:00"
           timezone: "Asia/Tokyo"
       open-pull-requests-limit: 10
+      ignore:
+          - dependency-name: "typescript"
+            versions:
+                - ">=7.0.0 <8.0.0"
       groups:
           react:
               patterns:
