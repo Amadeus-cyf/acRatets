@@ -13,12 +13,12 @@
         "@emotion/styled": "^11.14.1",
         "@mui/icons-material": "^9.5.0",
         "@mui/material": "^9.4.0",
-        "@reduxjs/toolkit": "^2.13.0",
-        "axios": "^1.20.0",
+        "@reduxjs/toolkit": "^2.14.0",
+        "axios": "^1.21.0",
         "react": "^19.3.1",
         "react-dom": "^19.3.1",
-        "react-redux": "^9.3.0",
-        "react-router-dom": "^7.18.4"
+        "react-redux": "^9.3.1",
+        "react-router-dom": "^7.18.5"
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
